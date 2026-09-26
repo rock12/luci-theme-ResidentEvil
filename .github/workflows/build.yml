@@ -147,13 +147,13 @@ jobs:
             installs it and switches LuCI over to the theme.
 
             ```bash
-            wget -qO- https://raw.githubusercontent.com/ChesterGoodiny/luci-theme-proton2025/main/install.sh | sh
+            wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/install.sh | sh
             ```
 
             ### Removal
 
             ```bash
-            wget -qO- https://raw.githubusercontent.com/ChesterGoodiny/luci-theme-proton2025/main/uninstall.sh | sh
+            wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/uninstall.sh | sh
             ```
 
             To install by hand, take the exact file name from the assets below:

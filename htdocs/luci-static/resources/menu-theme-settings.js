@@ -52,10 +52,10 @@ return baseclass.extend({
           themeMode:
             storedThemeMode === "light" || storedThemeMode === "dark"
               ? storedThemeMode
-              : "auto",
-          accentColor: localStorage.getItem("proton-accent-color") || "blue",
+              : "dark",
+          accentColor: localStorage.getItem("proton-accent-color") || "red",
           accentCustom:
-            localStorage.getItem("proton-accent-custom") || "#5e9eff",
+            localStorage.getItem("proton-accent-custom") || "#dc2626",
           borderRadius:
             localStorage.getItem("proton-border-radius") || "default",
           tabOutline: localStorage.getItem("proton-tab-outline") === "true",

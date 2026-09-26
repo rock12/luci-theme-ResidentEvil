@@ -162,14 +162,14 @@
 	else if (r === 'extra') document.documentElement.classList.add('proton-radius-extra');
 
 	// Accent color
-	var a = localStorage.getItem('proton-accent-color') || 'blue';
+	var a = localStorage.getItem('proton-accent-color') || 'red';
 	var c = {
 		default: { accent: '#4b5563', hover: '#374151', glow: 'rgba(75, 85, 99, 0.22)', rgb: '75, 85, 99' },
 		blue:    { accent: '#5e9eff', hover: '#7db2ff', glow: 'rgba(94, 158, 255, 0.18)', rgb: '94, 158, 255' },
 		purple:  { accent: '#a78bfa', hover: '#c3b4ff', glow: 'rgba(167, 139, 250, 0.22)', rgb: '167, 139, 250' },
 		green:   { accent: '#34d399', hover: '#2fb885', glow: 'rgba(52, 211, 153, 0.18)', rgb: '52, 211, 153' },
 		orange:  { accent: '#fb923c', hover: '#f47c1f', glow: 'rgba(251, 146, 60, 0.20)', rgb: '251, 146, 60' },
-		red:     { accent: '#f87171', hover: '#f04c4c', glow: 'rgba(248, 113, 113, 0.20)', rgb: '248, 113, 113' }
+		red:     { accent: '#dc2626', hover: '#ef4444', glow: 'rgba(220, 38, 38, 0.28)', rgb: '220, 38, 38' }
 	};
 	if (a === 'custom') {
 		var hx = (localStorage.getItem('proton-accent-custom') || '#5e9eff').trim().replace(/^#/, '');
@@ -264,14 +264,8 @@ body.login-page { background-color: {{ serverTheme === 'light' ? '#ffffff' : '#0
 		</div>
 		{% else %}
 		<div class="login-header">
-			<svg class="login-logo" viewBox="0 0 200 60" aria-label="Proton2025">
-				<circle cx="25" cy="30" r="18" fill="var(--proton-accent)" opacity="0.2"/>
-				<circle cx="25" cy="30" r="12" fill="var(--proton-accent)" opacity="0.4"/>
-				<circle cx="25" cy="30" r="6" fill="var(--proton-accent)"/>
-				<ellipse cx="25" cy="30" rx="22" ry="8" fill="none" stroke="var(--proton-accent)" stroke-width="1.5" opacity="0.6" transform="rotate(-20 25 30)"/>
-				<ellipse cx="25" cy="30" rx="22" ry="8" fill="none" stroke="var(--proton-accent)" stroke-width="1.5" opacity="0.4" transform="rotate(40 25 30)"/>
-				<text x="55" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="600" fill="var(--proton-fg)">Proton<tspan fill="var(--proton-accent)">2025</tspan></text>
-			</svg>
+			<img class="login-logo re-brand-logo" src="{{ media }}/img/brand.svg" alt="Umbrella Corporation" width="220" height="48" style="height: 48px; max-width: 240px; margin: 0 auto; display: block;" />
+			<div class="re-terminal-sub" style="font-family: monospace; font-size: 10px; color: #ef4444; letter-spacing: 2px; text-transform: uppercase; margin-top: 8px;">[ LEVEL 4 CLASSIFIED ACCESS ]</div>
 		</div>
 		{% endif %}
 
@@ -331,7 +325,7 @@ body.login-page { background-color: {{ serverTheme === 'light' ? '#ffffff' : '#0
 		</form>
 
 		<div class="login-powered">
-			<span>Powered by OpenWrt</span>
+			<span>UMBRELLA SECURITY NETWORK • OpenWrt</span>
 		</div>
 	</div>
 </div>

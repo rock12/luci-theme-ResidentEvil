@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark" data-darkmode="true">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Resident Evil (Umbrella Edition) - OpenWrt LuCI Preview</title>
+<link rel="icon" href="htdocs/luci-static/proton2025/img/logo.svg" sizes="any" />
+<link rel="stylesheet" href="htdocs/luci-static/proton2025/css/cascade.css" />
+<link rel="stylesheet" href="htdocs/luci-static/proton2025/css/login-bg.css" />
+<style>
+/* Preview Mode Switcher Bar */
+#preview-switcher {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 99999;
+  display: flex;
+  gap: 8px;
+  background: rgba(10, 12, 16, 0.92);
+  border: 1px solid rgba(220, 38, 38, 0.5);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.8), 0 0 15px rgba(220, 38, 38, 0.3);
+  padding: 6px;
+  border-radius: 30px;
+  backdrop-filter: blur(12px);
+}
+#preview-switcher button {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#preview-switcher button.active {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(220, 38, 38, 0.5);
+}
+
+/* View 1: Login View */
+#view-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+}
+.login-container {
+  width: 100%;
+  max-width: 440px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.login-card {
+  padding: 34px 30px;
+  position: relative;
+}
+.login-header {
+  text-align: center;
+  margin-bottom: 26px;
+}
+.re-brand-logo {
+  filter: drop-shadow(0 0 12px rgba(220, 38, 38, 0.45));
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+.login-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.login-input-icon {
+  position: absolute;
+  left: 14px;
+  display: flex;
+  align-items: center;
+  color: #64748b;
+  pointer-events: none;
+}
+.login-input-icon svg {
+  width: 18px;
+  height: 18px;
+}
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  height: 44px;
+  padding: 0 42px 0 42px;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+.login-password-toggle {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.login-password-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+.login-form button[type="submit"] {
+  width: 100%;
+  height: 46px;
+  border-radius: 8px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 26px;
+  transition: all 0.25s ease;
+}
+.login-powered {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 11px;
+  color: #64748b;
+  letter-spacing: 1px;
+  font-family: monospace;
+}
+.corner-badge {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-family: monospace;
+  font-size: 9px;
+  color: rgba(220, 38, 38, 0.7);
+  letter-spacing: 1.5px;
+}
+
+/* View 2: Dashboard View */
+#view-dashboard {
+  display: none;
+  min-height: 100vh;
+  background-color: var(--proton-bg-solid, #080a0e);
+}
+.re-topbar {
+  height: 60px;
+  background: rgba(10, 12, 16, 0.95);
+  border-bottom: 1px solid rgba(220, 38, 38, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.re-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.re-nav-items {
+  display: flex;
+  gap: 6px;
+}
+.re-nav-item {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+.re-nav-item:hover, .re-nav-item.active {
+  color: #fff;
+  background: rgba(220, 38, 38, 0.15);
+  border-bottom: 2px solid #dc2626;
+}
+.re-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #10b981;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.re-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.re-content {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+.re-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+.re-card {
+  background: var(--proton-card-solid, #10131b);
+  border: 1px solid var(--proton-border, rgba(255, 255, 255, 0.07));
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: var(--proton-shadow, 0 8px 32px rgba(0, 0, 0, 0.45));
+  transition: border-color 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.re-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #dc2626, transparent);
+  opacity: 0.8;
+}
+.re-card:hover {
+  border-color: rgba(220, 38, 38, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 15px rgba(220, 38, 38, 0.15);
+}
+.re-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0 0 14px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.re-meter-label {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+.re-meter-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.re-meter-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+.fill-green { background: linear-gradient(90deg, #10b981, #34d399); }
+.fill-amber { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+.fill-red { background: linear-gradient(90deg, #dc2626, #ef4444); }
+
+.re-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.re-table td {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.re-table td:first-child {
+  color: #94a3b8;
+  width: 40%;
+}
+.re-table td:last-child {
+  color: #f8fafc;
+  font-weight: 500;
+}
+.re-btn-primary {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
+  transition: all 0.2s;
+}
+.re-btn-primary:hover {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 6px 18px rgba(220, 38, 38, 0.55);
+}
+</style>
+</head>
+<body class="login-page">
+
+<!-- Switcher Bar -->
+<div id="preview-switcher">
+  <button id="btn-login" class="active" onclick="switchView('login')">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+    Экран входа (Leon & Ada)
+  </button>
+  <button id="btn-dashboard" onclick="switchView('dashboard')">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+    Интерфейс LuCI (Dashboard)
+  </button>
+</div>
+
+<!-- VIEW 1: LOGIN -->
+<div id="view-login">
+  <div class="login-container">
+    <div class="login-card">
+      <div class="corner-badge">SEC-SYS-04</div>
+      <div class="login-header">
+        <img class="login-logo re-brand-logo" src="htdocs/luci-static/proton2025/img/brand.svg" alt="Umbrella Corporation" width="220" height="48" style="height: 48px; max-width: 240px; margin: 0 auto; display: block;" />
+        <div class="re-terminal-sub" style="font-family: monospace; font-size: 10px; color: #ef4444; letter-spacing: 2px; text-transform: uppercase; margin-top: 8px;">[ LEVEL 4 CLASSIFIED ACCESS ]</div>
+      </div>
+
+      <form class="login-form" onsubmit="event.preventDefault(); switchView('dashboard');">
+        <div class="form-group">
+          <label for="luci_username">Имя пользователя (ID)</label>
+          <div class="login-input-wrap">
+            <span class="login-input-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21a8 8 0 0 0-16 0" />
+                <circle cx="12" cy="7" r="4" fill="none" />
+              </svg>
+            </span>
+            <input type="text" id="luci_username" name="luci_username" value="root" autocomplete="username" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="luci_password">Пароль авторизации (KEY)</label>
+          <div class="login-input-wrap login-password-wrap">
+            <span class="login-input-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="10" width="14" height="10" rx="2" fill="none" />
+                <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+              </svg>
+            </span>
+            <input type="password" id="luci_password" name="luci_password" value="••••••••••••" autofocus />
+            <button class="login-password-toggle" type="button" aria-label="Show password">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6Z" />
+                <circle cx="12" cy="12" r="3" fill="none" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3" />
+            <path d="M10 17l5-5-5-5" />
+            <path d="M15 12H3" />
+          </svg>
+          <span>Авторизоваться</span>
+        </button>
+      </form>
+
+      <div class="login-powered">
+        <span>UMBRELLA SECURITY NETWORK • OpenWrt</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIEW 2: DASHBOARD -->
+<div id="view-dashboard">
+  <div class="re-topbar">
+    <div class="re-topbar-left">
+      <img src="htdocs/luci-static/proton2025/img/brand.svg" height="34" alt="Umbrella" />
+      <nav class="re-nav-items">
+        <a href="#" class="re-nav-item active">Состояние</a>
+        <a href="#" class="re-nav-item">Система</a>
+        <a href="#" class="re-nav-item">Сеть</a>
+        <a href="#" class="re-nav-item">Службы</a>
+        <a href="#" class="re-nav-item">VPN</a>
+      </nav>
+    </div>
+    <div class="re-status-badge">
+      <span class="re-status-dot"></span>
+      STATUS: FINE
+    </div>
+  </div>
+
+  <div class="re-content">
+    <div class="re-grid">
+      <!-- Status Card 1 -->
+      <div class="re-card">
+        <div class="re-card-title">
+          <span>Нагрузка и ресурсы</span>
+          <span style="font-family: monospace; font-size: 11px; color: #10b981;">FINE</span>
+        </div>
+        <div class="re-meter-label"><span>Процессор (CPU)</span><span>14%</span></div>
+        <div class="re-meter-bar"><div class="re-meter-fill fill-green" style="width: 14%;"></div></div>
+
+        <div class="re-meter-label"><span>ОЗУ (Memory)</span><span>42%</span></div>
+        <div class="re-meter-bar"><div class="re-meter-fill fill-green" style="width: 42%;"></div></div>
+
+        <div class="re-meter-label"><span>Температура SoC</span><span>48°C</span></div>
+        <div class="re-meter-bar"><div class="re-meter-fill fill-amber" style="width: 48%;"></div></div>
+      </div>
+
+      <!-- Status Card 2 -->
+      <div class="re-card">
+        <div class="re-card-title">
+          <span>Система Umbrella Hive</span>
+          <span style="font-family: monospace; font-size: 10px; color: #94a3b8;">NEST-01</span>
+        </div>
+        <table class="re-table">
+          <tr><td>Модель:</td><td>OpenWrt Gateway Pro</td></tr>
+          <tr><td>Архитектура:</td><td>MediaTek MT7981 (ARM64)</td></tr>
+          <tr><td>Прошивка:</td><td>OpenWrt 23.05.5 r24106</td></tr>
+          <tr><td>Время работы:</td><td>14 дней, 6 часов</td></tr>
+        </table>
+      </div>
+
+      <!-- Status Card 3 -->
+      <div class="re-card">
+        <div class="re-card-title">
+          <span>Сетевые шлюзы (Interfaces)</span>
+          <span style="font-family: monospace; font-size: 11px; color: #10b981;">ONLINE</span>
+        </div>
+        <table class="re-table">
+          <tr><td>WAN (IPv4):</td><td><span style="color:#ef4444;">●</span> 31.77.57.245</td></tr>
+          <tr><td>LAN:</td><td>192.168.1.1/24</td></tr>
+          <tr><td>Защита rkn-guard:</td><td><strong style="color:#10b981;">Активна (2960 сетей)</strong></td></tr>
+          <tr><td>Блокировка Fail2ban:</td><td>sshd, recidive</td></tr>
+        </table>
+        <div style="margin-top: 14px; text-align: right;">
+          <button class="re-btn-primary">Управление сетью</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchView(mode) {
+  var loginView = document.getElementById('view-login');
+  var dashView = document.getElementById('view-dashboard');
+  var btnLogin = document.getElementById('btn-login');
+  var btnDash = document.getElementById('btn-dashboard');
+
+  if (mode === 'login') {
+    loginView.style.display = 'flex';
+    dashView.style.display = 'none';
+    btnLogin.classList.add('active');
+    btnDash.classList.remove('active');
+    document.body.className = 'login-page';
+  } else {
+    loginView.style.display = 'none';
+    dashView.style.display = 'block';
+    btnLogin.classList.remove('active');
+    btnDash.classList.add('active');
+    document.body.className = '';
+  }
+}
+</script>
+</body>
+</html>

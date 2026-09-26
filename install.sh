@@ -17,19 +17,17 @@
 # Proton2025 Theme Installer for OpenWrt/LuCI
 # ============================================================
 # Theme only:
-#   wget -qO- https://raw.githubusercontent.com/ChesterGoodiny/luci-theme-proton2025/main/install.sh | sh
-# Theme + dashboard widgets (dashboard repo not published yet):
-#   wget -qO- https://raw.githubusercontent.com/ChesterGoodiny/luci-theme-proton2025/main/install.sh | WITH_DASHBOARD=1 sh
+#   wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/install.sh | sh
 # ============================================================
 
 set -e
 
 PKG_NAME="luci-theme-proton2025"
 THEME_NAME="proton2025"
-REPO="ChesterGoodiny/luci-theme-proton2025"
+REPO="rock12/luci-theme-ResidentEvil"
 API_URL="https://api.github.com/repos/${REPO}/releases/latest"
 ATOM_URL="https://github.com/${REPO}/releases.atom"
-DOWNLOAD_DIR="/tmp/proton2025-install"
+DOWNLOAD_DIR="/tmp/residentevil-install"
 ATTEMPTS=3
 
 # Dashboard widgets live in a separate package that isn't released yet.
@@ -51,8 +49,8 @@ err() { printf "[-] %s\n" "$1"; }
 
 printf "\n"
 printf "================================================\n"
-printf "    Proton2025 Theme Installer\n"
-printf "    Modern Dark Theme for LuCI\n"
+printf "  Resident Evil Theme Installer (Umbrella Ed.) \n"
+printf "  Based on Proton2025 by ChesterGoodiny         \n"
 printf "================================================\n"
 printf "\n"
 

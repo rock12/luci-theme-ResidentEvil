@@ -1,61 +1,43 @@
-# luci-theme-proton2025
+# luci-theme-ResidentEvil (Umbrella Edition)
 
-A dark LuCI theme for OpenWrt 23.05+ (ucode) with an optional light mode, a
-built-in page search and theme settings inside the LuCI UI.
+A dark LuCI theme for OpenWrt 23.05+ (ucode) inspired by **Resident Evil: Umbrella Corporation / Hive Security Terminal**.
+
+> **Based on:** [**luci-theme-proton2025**](https://github.com/ChesterGoodiny/luci-theme-proton2025) by [**ChesterGoodiny**](https://github.com/ChesterGoodiny).  
+> Huge thanks to ChesterGoodiny for the exceptional foundation, modern ucode architecture, and settings framework!
 
 ![OpenWrt](https://img.shields.io/badge/OpenWrt-23.05%2B-blue)
 ![LuCI](https://img.shields.io/badge/LuCI-ucode-green)
+![Resident Evil](https://img.shields.io/badge/Style-Umbrella%20Corp-red)
 ![License](https://img.shields.io/badge/License-Apache%202.0-orange)
 
-<div align="center">
-  <img src="docs/status.png" alt="LuCI Status page with the Proton2025 theme" width="80%" />
-  <img src="docs/status-sidebar.png" alt="LuCI Status page with the Proton2025 side panel" width="80%" />
-</div>
+## ☣️ Features
 
-<details>
-<summary>More screenshots</summary>
+* 🧟 **Cinematic Login Art:** Atmospheric wallpaper with Leon S. Kennedy (R.P.D.) on the left and Ada Wong on the right, framing the center login card.
+* 🛡️ **Umbrella Corporation SVG Assets:** Authentic 8-segment scalloped red & white Umbrella badge (`logo.svg` and `brand.svg`).
+* 🔴 **Umbrella Crimson Colorway:** Deep carbon stealth background (`#080a0e`) with vibrant red accents (`#dc2626`).
+* 🩺 **Resident Evil Health Status:** Gauges styled after the classic RE health meter (FINE 🟢 / CAUTION 🟡 / DANGER 🔴).
+* ⚡ **All Proton2025 Innovations:** Zero layout shift, full mobile responsiveness, instant menu search, and UCI-backed configuration.
 
-<div align="center">
-  <img src="docs/settings.png" alt="Theme settings" width="48%" />
-  <img src="docs/temperature.png" alt="Temperature page" width="48%" />
-  <img src="docs/system-log.png" alt="System log with highlighting" width="48%" />
-  <img src="docs/wireless.png" alt="Wireless networks" width="48%" />
-  <img src="docs/interfaces.png" alt="Network interfaces" width="48%" />
-  <img src="docs/login.png" alt="Login page" width="48%" />
-</div>
-
-<div align="center">
-  <img src="docs/status-mobile.png" alt="Status page on mobile" width="23%" />
-  <img src="docs/settings-mobile.png" alt="Theme settings on mobile" width="23%" />
-  <img src="docs/temperature-mobile.png" alt="Temperature page on mobile" width="23%" />
-  <img src="docs/login-mobile.png" alt="Login page on mobile" width="23%" />
-</div>
-
-</details>
+---
 
 ## Requirements
 
 - OpenWrt 23.05 or newer with the ucode-based LuCI (`luci-base`)
-- The package is architecture-independent, so one build fits every device
-- Root SSH access for the commands below
+- Architecture-independent (`all`)
+- Root SSH access
 
-## Installation
+## One-Command Installation
 
-One command over root SSH. The script works out the rest itself: which package
-manager the build has (`apk` or `opkg`), the current release, the exact asset
-name for that format, then installs the package and switches LuCI over to the
-theme.
-
-**Theme only:**
+Run over SSH on your OpenWrt router:
 
 ```sh
-wget -qO- https://raw.githubusercontent.com/ChesterGoodiny/luci-theme-proton2025/main/install.sh | sh
+wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/install.sh | sh
 ```
 
-**Theme with dashboard widgets:**
+## Removal
 
 ```sh
-wget -qO- https://raw.githubusercontent.com/ChesterGoodiny/luci-theme-proton2025/main/install.sh | WITH_DASHBOARD=1 sh
+wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/uninstall.sh | sh
 ```
 
 The widgets on Status → Overview are no longer part of the theme; they are being

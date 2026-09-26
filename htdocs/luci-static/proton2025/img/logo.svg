@@ -1,66 +1,31 @@
-<!-- Proton2025 SVG Asset -->
-<!-- Copyright 2025-2026 ChesterGoodiny -->
-<!-- Licensed under the Apache License, Version 2.0 -->
-<!-- See LICENSE and NOTICE for details. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <linearGradient id="darkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f1419"/>
-      <stop offset="100%" stop-color="#1a1f2e"/>
-    </linearGradient>
-    
-    <linearGradient id="accentGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#5e9eff"/>
-      <stop offset="100%" stop-color="#7db2ff"/>
-    </linearGradient>
-    
-    <clipPath id="rounded">
-      <rect width="100" height="100" rx="18"/>
-    </clipPath>
-    
-    <clipPath id="topSlice">
-      <polygon points="0,0 100,0 100,46 0,62"/>
-    </clipPath>
-    
-    <clipPath id="bottomSlice">
-      <polygon points="0,62 100,46 100,100 0,100"/>
-    </clipPath>
+    <radialGradient id="redGrad" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="70%" stop-color="#dc2626"/>
+      <stop offset="100%" stop-color="#991b1b"/>
+    </radialGradient>
+    <radialGradient id="whiteGrad" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="75%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </radialGradient>
+    <filter id="reGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="2.5" flood-color="#dc2626" flood-opacity="0.45"/>
+    </filter>
   </defs>
-  
-  <g clip-path="url(#rounded)">
-    <!-- Тёмная часть -->
-    <g clip-path="url(#topSlice)">
-      <rect width="100" height="100" fill="url(#darkGrad)"/>
-      
-      <!-- WiFi дуги -->
-      <path d="M14,24 L20,30 A40,40 0 0 1 80,30 L86,24 A50,50 0 0 0 14,24" fill="#fff"/>
-      <path d="M24,36 L30,42 A28,28 0 0 1 70,42 L76,36 A38,38 0 0 0 24,36" fill="#fff"/>
-      
-      <!-- Proton ядро (центральная точка) -->
-      <circle cx="50" cy="68" r="8" fill="#5e9eff"/>
-      
-      <!-- Орбиты атома -->
-      <ellipse cx="50" cy="68" rx="22" ry="7" fill="none" stroke="#fff" stroke-width="1.5" transform="rotate(-25 50 68)"/>
-      <ellipse cx="50" cy="68" rx="22" ry="7" fill="none" stroke="#fff" stroke-width="1.5" transform="rotate(35 50 68)"/>
-    </g>
-    
-    <!-- Акцентная часть -->
-    <g clip-path="url(#bottomSlice)">
-      <rect width="100" height="100" fill="url(#accentGrad)"/>
-      
-      <!-- WiFi дуги -->
-      <path d="M14,24 L20,30 A40,40 0 0 1 80,30 L86,24 A50,50 0 0 0 14,24" fill="#0f1419"/>
-      <path d="M24,36 L30,42 A28,28 0 0 1 70,42 L76,36 A38,38 0 0 0 24,36" fill="#0f1419"/>
-      
-      <!-- Proton ядро -->
-      <circle cx="50" cy="68" r="8" fill="#0f1419"/>
-      
-      <!-- Орбиты атома -->
-      <ellipse cx="50" cy="68" rx="22" ry="7" fill="none" stroke="#0f1419" stroke-width="1.5" transform="rotate(-25 50 68)"/>
-      <ellipse cx="50" cy="68" rx="22" ry="7" fill="none" stroke="#0f1419" stroke-width="1.5" transform="rotate(35 50 68)"/>
-    </g>
+  <circle cx="50" cy="50" r="48" fill="#0b0d12" stroke="#262a36" stroke-width="1.5" />
+  <circle cx="50" cy="50" r="44.5" fill="none" stroke="#dc2626" stroke-width="0.8" opacity="0.6" />
+  <g filter="url(#reGlow)">
+    <path d="M 50.00,50.00 L 33.93,11.20 A 38,38 0 0,0 66.07,11.20 Z" fill="url(#redGrad)" stroke="#0b0d12" stroke-width="0.75" />
+    <path d="M 50.00,50.00 L 66.07,11.20 A 38,38 0 0,0 88.80,33.93 Z" fill="url(#whiteGrad)" stroke="#0b0d12" stroke-width="0.75" />
+    <path d="M 50.00,50.00 L 88.80,33.93 A 38,38 0 0,0 88.80,66.07 Z" fill="url(#redGrad)" stroke="#0b0d12" stroke-width="0.75" />
+    <path d="M 50.00,50.00 L 88.80,66.07 A 38,38 0 0,0 66.07,88.80 Z" fill="url(#whiteGrad)" stroke="#0b0d12" stroke-width="0.75" />
+    <path d="M 50.00,50.00 L 66.07,88.80 A 38,38 0 0,0 33.93,88.80 Z" fill="url(#redGrad)" stroke="#0b0d12" stroke-width="0.75" />
+    <path d="M 50.00,50.00 L 33.93,88.80 A 38,38 0 0,0 11.20,66.07 Z" fill="url(#whiteGrad)" stroke="#0b0d12" stroke-width="0.75" />
+    <path d="M 50.00,50.00 L 11.20,66.07 A 38,38 0 0,0 11.20,33.93 Z" fill="url(#redGrad)" stroke="#0b0d12" stroke-width="0.75" />
+    <path d="M 50.00,50.00 L 11.20,33.93 A 38,38 0 0,0 33.93,11.20 Z" fill="url(#whiteGrad)" stroke="#0b0d12" stroke-width="0.75" />
   </g>
-  
-  <!-- Обводка -->
-  <rect width="100" height="100" rx="18" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <circle cx="50" cy="50" r="3.5" fill="#1e222d" stroke="#f8fafc" stroke-width="1" />
+  <circle cx="50" cy="50" r="1.5" fill="#dc2626" />
 </svg>

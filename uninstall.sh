@@ -14,9 +14,9 @@
 # limitations under the License.
 #
 # ============================================================
-# Proton2025 Theme Uninstaller for OpenWrt/LuCI
+# Resident Evil Theme Uninstaller for OpenWrt/LuCI
 # ============================================================
-# Run: wget -qO- https://raw.githubusercontent.com/ChesterGoodiny/luci-theme-proton2025/main/uninstall.sh | sh
+# Run: wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/uninstall.sh | sh
 # ============================================================
 
 set -e

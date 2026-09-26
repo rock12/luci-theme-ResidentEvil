@@ -18,7 +18,7 @@ PROTON_RELEASE?=1
 PKG_VERSION:=$(PROTON_VERSION)
 PKG_RELEASE:=$(PROTON_RELEASE)
 
-LUCI_TITLE:=Proton2025 - Elegant Dark Theme for LuCI
+LUCI_TITLE:=Resident Evil (Umbrella Edition) Dark Theme for LuCI
 LUCI_DEPENDS:=+luci-base
 LUCI_PKGARCH:=all
 

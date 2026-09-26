@@ -1,37 +1,24 @@
-# luci-theme-proton2025
+# luci-theme-ResidentEvil (Umbrella Edition)
 
-Тёмная тема для LuCI (OpenWrt 23.05+, ucode) с опциональным светлым режимом,
-встроенным поиском по страницам и настройками темы прямо в интерфейсе LuCI.
+Тёмная тема для LuCI (OpenWrt 23.05+, ucode) в стиле **Resident Evil: Umbrella Corporation / Hive Security Terminal**.
+
+> **Основано на проекте:** [**luci-theme-proton2025**](https://github.com/ChesterGoodiny/luci-theme-proton2025) от [**ChesterGoodiny**](https://github.com/ChesterGoodiny).  
+> Выражаем огромную благодарность автору оригинального проекта за современную архитектуру, поддержку ucode, высокую производительность и гибкую систему настроек!
 
 ![OpenWrt](https://img.shields.io/badge/OpenWrt-23.05%2B-blue)
 ![LuCI](https://img.shields.io/badge/LuCI-ucode-green)
+![Resident Evil](https://img.shields.io/badge/Style-Umbrella%20Corp-red)
 ![License](https://img.shields.io/badge/License-Apache%202.0-orange)
 
-<div align="center">
-  <img src="docs/status.png" alt="Страница Status с темой Proton2025" width="80%" />
-  <img src="docs/status-sidebar.png" alt="Страница Status с боковой панелью Proton2025" width="80%" />
-</div>
+## ☣️ Особенности Resident Evil Edition
 
-<details>
-<summary>Больше скриншотов</summary>
+* 🧟 **Кинематографичный экран входа:** арт с Леоном Кеннеди (R.P.D.) и Адой Вонг, тёмный туман и логотип Umbrella в центре.
+* 🛡️ **Фирменные векторные логотипы:** оригинальный восьмиугольный красно-белый зонтик Umbrella Corporation (`logo.svg` и `brand.svg`).
+* 🔴 **Цветовая палитра Umbrella:** глубокий графитовый/карбоновый фон (`#080a0e`), неоновый алый акцент Umbrella Red (`#dc2626`).
+* 🩺 **Индикация статусов роутера:** шкала здоровья в стиле Resident Evil (FINE 🟢 / CAUTION 🟡 / DANGER 🔴).
+* ⚡ **Все преимущества Proton2025:** моментальная загрузка без дергания интерфейса, адаптивность для смартфонов, встроенный поиск по меню и страницам, сохранение настроек в UCI.
 
-<div align="center">
-  <img src="docs/settings.png" alt="Настройки темы" width="48%" />
-  <img src="docs/temperature.png" alt="Страница температуры" width="48%" />
-  <img src="docs/system-log.png" alt="Системный журнал с подсветкой" width="48%" />
-  <img src="docs/wireless.png" alt="Беспроводные сети" width="48%" />
-  <img src="docs/interfaces.png" alt="Сетевые интерфейсы" width="48%" />
-  <img src="docs/login.png" alt="Страница входа" width="48%" />
-</div>
-
-<div align="center">
-  <img src="docs/status-mobile.png" alt="Страница Status на мобильном" width="23%" />
-  <img src="docs/settings-mobile.png" alt="Настройки темы на мобильном" width="23%" />
-  <img src="docs/temperature-mobile.png" alt="Страница температуры на мобильном" width="23%" />
-  <img src="docs/login-mobile.png" alt="Страница входа на мобильном" width="23%" />
-</div>
-
-</details>
+---
 
 ## Требования
 
@@ -39,45 +26,30 @@
 - Пакет не зависит от архитектуры — одна сборка подходит любому устройству
 - Доступ по SSH под root
 
-## Установка
+## Установка одной командой
 
-Одна команда по SSH. Всё остальное скрипт определяет сам: какой менеджер пакетов
-в прошивке (`apk` или `opkg`), текущий релиз, точное имя файла для этого формата,
-после чего ставит пакет и переключает LuCI на тему.
-
-**Только тема:**
+Выполните команду по SSH на роутере:
 
 ```sh
-wget -qO- https://raw.githubusercontent.com/ChesterGoodiny/luci-theme-proton2025/main/install.sh | sh
+wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/install.sh | sh
 ```
 
-**Тема вместе с виджетами дашборда:**
+Скрипт автоматически определит пакетный менеджер вашей прошивки (`apk` или `opkg`), загрузит подходящий пакет из релизов, установит его и переключит тему в LuCI.
 
-```sh
-wget -qO- https://raw.githubusercontent.com/ChesterGoodiny/luci-theme-proton2025/main/install.sh | WITH_DASHBOARD=1 sh
-```
-
-Виджеты на Status → Overview больше не часть темы — они выделяются в отдельный пакет
-`luci-app-proton2025-dashboard`. Пакет пока не опубликован, поэтому вторая команда
-сейчас ставит только тему и сообщает об этом. После релиза дашборда та же
-команда будет подтягивать его автоматически.
-
-После установки обновите страницу LuCI через Ctrl+F5. Если хочется поставить пакет
-вручную, возьмите точное имя файла со страницы
-[Releases](https://github.com/ChesterGoodiny/luci-theme-proton2025/releases): `.apk`, если
-`command -v apk` выводит путь, иначе `.ipk`.
+После установки обновите страницу LuCI в браузере (Ctrl+F5).
 
 ## Обновление
 
-Запустите команду установки ещё раз либо обновите тему из её же интерфейса:
-**System → System → Language and Style → Инструменты → Проверить обновления**.
-
-Настройки хранятся в `/etc/config/proton2025` и сохраняются при обновлении.
+Запустите команду установки ещё раз:
+```sh
+wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/install.sh | sh
+```
 
 ## Удаление
 
 ```sh
-wget -qO- https://raw.githubusercontent.com/ChesterGoodiny/luci-theme-proton2025/main/uninstall.sh | sh
+wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/uninstall.sh | sh
+```
 ```
 
 Скрипт возвращает LuCI на штатную тему, удаляет пакет и оставшиеся файлы,

@@ -1,27 +1,26 @@
-<!-- Proton2025 SVG Asset -->
-<!-- Copyright 2025-2026 ChesterGoodiny -->
-<!-- Licensed under the Apache License, Version 2.0 -->
-<!-- See LICENSE and NOTICE for details. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
-  <style>
-    .accent { fill: var(--proton-accent, #5e9eff); }
-    .accent-stroke { stroke: var(--proton-accent, #5e9eff); fill: none; }
-    .accent-20 { fill: var(--proton-accent, #5e9eff); opacity: 0.2; }
-    .accent-40 { fill: var(--proton-accent, #5e9eff); opacity: 0.4; }
-    .text-main { fill: var(--proton-fg, #f5f7fa); }
-  </style>
-  
-  <!-- Icon -->
-  <circle cx="25" cy="30" r="18" class="accent-20"/>
-  <circle cx="25" cy="30" r="12" class="accent-40"/>
-  <circle cx="25" cy="30" r="6" class="accent"/>
-  
-  <!-- Orbit rings -->
-  <ellipse cx="25" cy="30" rx="22" ry="8" class="accent-stroke" stroke-width="1.5" opacity="0.6" transform="rotate(-20 25 30)"/>
-  <ellipse cx="25" cy="30" rx="22" ry="8" class="accent-stroke" stroke-width="1.5" opacity="0.4" transform="rotate(40 25 30)"/>
-  
-  <!-- Text -->
-  <text x="55" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="600" class="text-main">
-    Proton<tspan class="accent">2025</tspan>
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60">
+  <defs>
+    <radialGradient id="bRed" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#b91c1c"/>
+    </radialGradient>
+    <radialGradient id="bWhite" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </radialGradient>
+  </defs>
+  <g>
+    <path d="M 30.00,30.00 L 21.58,9.67 A 20,20 0 0,0 38.42,9.67 Z" fill="url(#bRed)" stroke="#0b0d12" stroke-width="0.5" />
+    <path d="M 30.00,30.00 L 38.42,9.67 A 20,20 0 0,0 50.33,21.58 Z" fill="url(#bWhite)" stroke="#0b0d12" stroke-width="0.5" />
+    <path d="M 30.00,30.00 L 50.33,21.58 A 20,20 0 0,0 50.33,38.42 Z" fill="url(#bRed)" stroke="#0b0d12" stroke-width="0.5" />
+    <path d="M 30.00,30.00 L 50.33,38.42 A 20,20 0 0,0 38.42,50.33 Z" fill="url(#bWhite)" stroke="#0b0d12" stroke-width="0.5" />
+    <path d="M 30.00,30.00 L 38.42,50.33 A 20,20 0 0,0 21.58,50.33 Z" fill="url(#bRed)" stroke="#0b0d12" stroke-width="0.5" />
+    <path d="M 30.00,30.00 L 21.58,50.33 A 20,20 0 0,0 9.67,38.42 Z" fill="url(#bWhite)" stroke="#0b0d12" stroke-width="0.5" />
+    <path d="M 30.00,30.00 L 9.67,38.42 A 20,20 0 0,0 9.67,21.58 Z" fill="url(#bRed)" stroke="#0b0d12" stroke-width="0.5" />
+    <path d="M 30.00,30.00 L 9.67,21.58 A 20,20 0 0,0 21.58,9.67 Z" fill="url(#bWhite)" stroke="#0b0d12" stroke-width="0.5" />
+    <circle cx="30" cy="30" r="2.5" fill="#1e222d" stroke="#f8fafc" stroke-width="0.75" />
+  </g>
+  <text x="64" y="27" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800" letter-spacing="3" fill="#f8fafc">UMBRELLA</text>
+  <text x="65" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" letter-spacing="4" fill="#dc2626">CORPORATION</text>
+  <text x="215" y="44" font-family="monospace" font-size="8" font-weight="600" fill="#64748b" letter-spacing="1">HIVE</text>
 </svg>

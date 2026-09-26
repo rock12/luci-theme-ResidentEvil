@@ -14,6 +14,11 @@ if ! uci -q get luci.themes >/dev/null; then
 	uci commit luci
 fi
 
+if ! uci -q get luci.themes.ResidentEvil >/dev/null; then
+	uci set luci.themes.ResidentEvil="/luci-static/proton2025"
+	uci commit luci
+fi
+
 if ! uci -q get luci.themes.Proton2025 >/dev/null; then
 	uci set luci.themes.Proton2025="/luci-static/proton2025"
 	uci commit luci
@@ -37,8 +42,8 @@ set_proton_default() {
 	fi
 }
 
-set_proton_default mode 'auto'
-set_proton_default accent 'blue'
+set_proton_default mode 'dark'
+set_proton_default accent 'red'
 set_proton_default zoom '100'
 set_proton_default transparency '1'
 set_proton_default border_radius 'default'
