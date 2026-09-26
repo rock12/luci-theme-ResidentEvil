@@ -1,4 +1,12 @@
 {
+    "admin/status/temperature": {
+        "title": "Temperature",
+        "order": 8,
+        "action": {
+            "type": "view",
+            "path": "status/proton-temperature"
+        }
+    },
     "admin/status/realtime/temperature": {
         "title": "Temperature",
         "order": 45,

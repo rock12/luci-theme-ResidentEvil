@@ -11238,11 +11238,41 @@ body.login-page .login-password-toggle:focus-visible {
     --proton-accent-rgb: 220, 38, 38 !important;
 }
 
-/* 2. Top Header & Umbrella Branding */
+/* 2. Full Page Background in LuCI (Resident Evil theme) */
+body:not(.login-page) {
+    background-color: #06080c !important;
+    background-image: 
+        radial-gradient(circle at 50% 30%, rgba(6, 8, 12, 0.85) 0%, rgba(4, 5, 8, 0.94) 100%),
+        url('../img/re-login-bg.jpg') !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+}
+
+#maincontainer,
+#maincontent {
+    background: transparent !important;
+}
+
+/* 3. Top Header & Navbar Centering */
 #menubar {
     background: rgba(8, 10, 14, 0.96) !important;
     border-bottom: 1px solid rgba(220, 38, 38, 0.3) !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6) !important;
+}
+
+#menubar-inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    position: relative !important;
+}
+
+#menubar-inner .hostname {
+    flex: 0 0 auto !important;
+    z-index: 2 !important;
 }
 
 #menubar-inner .hostname::before {
@@ -11264,21 +11294,34 @@ body.login-page .login-password-toggle:focus-visible {
 }
 
 #menubar-inner .hostname a::after {
-    content: " [UMBRELLA NETWORK]" !important;
-    font-size: 9px !important;
-    font-family: monospace !important;
-    font-weight: 600 !important;
-    color: #ef4444 !important;
-    margin-left: 8px !important;
-    letter-spacing: 1.5px !important;
-    vertical-align: middle !important;
-    background: rgba(220, 38, 38, 0.12) !important;
-    padding: 2px 6px !important;
-    border-radius: 4px !important;
-    border: 1px solid rgba(220, 38, 38, 0.3) !important;
+    display: none !important;
+    content: "" !important;
 }
 
-/* 3. Navigation Menu Tabs */
+/* 4. Centered Navigation Menu Tabs */
+#mainmenu {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+}
+
+#mainmenu .mainmenu.l1 {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+    gap: 12px !important;
+}
+
+#proton-search-container,
+#indicators,
+#menubar-inner > .spinning {
+    flex: 0 0 auto !important;
+    z-index: 2 !important;
+}
+
 #mainmenu .mainmenu.l1>li.selected>a,
 #mainmenu li.selected>a {
     background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%) !important;

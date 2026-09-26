@@ -675,10 +675,71 @@
     );
   }
 
+  function initTemperatureEnhancement() {
+    if (!isOverviewPage() && document.body.dataset.page !== "admin-status-overview") return;
+
+    function tryInjectTemp() {
+      const table = getOverviewSystemTable();
+      if (!table) return false;
+      if (table.querySelector(".proton-temp-row")) return true;
+
+      try {
+        if (window.L && window.L.rpc) {
+          const callTemp = window.L.rpc.declare({
+            object: "luci.proton-temp",
+            method: "getSensors",
+            expect: { sensors: [] },
+          });
+          callTemp().then((data) => {
+            const sensors = data && data.sensors;
+            if (!sensors || !sensors.length) return;
+            if (table.querySelector(".proton-temp-row")) return;
+
+            const cpu = sensors.find((s) => s.name && s.name.includes("cpu")) || sensors[0];
+            const tempC = Math.round(cpu.temp / 1000);
+            const color = tempC < 65 ? "#10b981" : (tempC < 80 ? "#f59e0b" : "#ef4444");
+            const status = tempC < 65 ? "FINE" : (tempC < 80 ? "CAUTION" : "DANGER");
+
+            const tr = document.createElement("tr");
+            tr.className = "tr proton-temp-row";
+            const td1 = document.createElement("td");
+            td1.className = "td left";
+            td1.width = "33%";
+            td1.textContent = window.protonT ? window.protonT("Temperature") : "Температура SoC";
+
+            const td2 = document.createElement("td");
+            td2.className = "td left";
+            td2.innerHTML = '<span style="font-weight:700; color:' + color + ';">' + tempC + ' °C</span> ' +
+              '<span style="font-family:monospace; font-size:10px; padding:2px 6px; border-radius:4px; margin-left:8px; border:1px solid ' + color + '; color:' + color + ';">[' + status + ']</span> ' +
+              '<a href="/cgi-bin/luci/admin/status/temperature" style="font-size:11px; margin-left:12px; color:#ef4444; font-weight:600;">' + (window.protonT ? window.protonT("Details") : "Датчики →") + '</a>';
+
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            table.appendChild(tr);
+          }).catch(() => {});
+        }
+      } catch (e) {}
+
+      return true;
+    }
+
+    if (tryInjectTemp()) return;
+
+    const root = document.getElementById("view") || document.getElementById("maincontent");
+    if (!root) return;
+
+    const observer = new MutationObserver(() => {
+      if (tryInjectTemp()) observer.disconnect();
+    });
+    observer.observe(root, { childList: true, subtree: true });
+    [300, 800, 1500].forEach((d) => setTimeout(tryInjectTemp, d));
+  }
+
   function initOverviewDecorations() {
     initOverviewArchitectureEnhancement();
     initLoadAverageEnhancement();
     initChannelAnalysisEnhancements();
+    initTemperatureEnhancement();
   }
 
   if (document.readyState === "loading") {

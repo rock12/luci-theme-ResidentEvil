@@ -211,6 +211,9 @@ install_from_source() {
         sh /etc/uci-defaults/30_luci-theme-proton2025 >/dev/null 2>&1 || true
     fi
 
+    chmod 644 /usr/share/rpcd/ucode/* /usr/share/rpcd/acl.d/* /usr/share/luci/menu.d/* 2>/dev/null || true
+    chmod 755 /usr/share/rpcd/ucode 2>/dev/null || true
+
     rm -f /tmp/proton-search-prefetch-cache.json /tmp/proton-search-prefetch-cache-meta.json >/dev/null 2>&1 || true
     rm -rf /tmp/proton-search-cache /tmp/proton-search-cache-meta >/dev/null 2>&1 || true
     rm -rf /tmp/luci-indexcache* /tmp/luci-modulecache >/dev/null 2>&1 || true
