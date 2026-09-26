@@ -5,9 +5,9 @@
 # This file stores theme settings that sync across browsers
 
 config theme 'settings'
-option mode 'auto'
-option accent 'blue'
-option accent_custom '#5e9eff'
+option mode 'dark'
+option accent 'red'
+option accent_custom '#dc2626'
 option zoom '100'
 option transparency '1'
 option border_radius 'default'

@@ -208,10 +208,10 @@
     --proton-fg-secondary: #4a5568;
     --proton-muted: #5a6270;
 
-    --proton-accent: #4b5563;
-    --proton-accent-hover: #374151;
-    --proton-accent-glow: rgba(75, 85, 99, 0.22);
-    --proton-accent-rgb: 75, 85, 99;
+    --proton-accent: #dc2626;
+    --proton-accent-hover: #b91c1c;
+    --proton-accent-glow: rgba(220, 38, 38, 0.22);
+    --proton-accent-rgb: 220, 38, 38;
 
     --proton-success: #38a169;
     --proton-warning: #c05621;
@@ -11224,4 +11224,218 @@ body.login-page .login-password-toggle:focus-visible {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
+}
+
+/* ============================================================
+   RESIDENT EVIL: UMBRELLA CORPORATION THEME ENHANCEMENTS
+   ============================================================ */
+
+/* 1. Global Red Accent Force */
+:root, :root[data-theme="dark"], :root[data-theme="light"] {
+    --proton-accent: #dc2626 !important;
+    --proton-accent-hover: #ef4444 !important;
+    --proton-accent-glow: rgba(220, 38, 38, 0.28) !important;
+    --proton-accent-rgb: 220, 38, 38 !important;
+}
+
+/* 2. Top Header & Umbrella Branding */
+#menubar {
+    background: rgba(8, 10, 14, 0.96) !important;
+    border-bottom: 1px solid rgba(220, 38, 38, 0.3) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6) !important;
+}
+
+#menubar-inner .hostname::before {
+    content: "" !important;
+    display: inline-block !important;
+    flex: 0 0 28px !important;
+    width: 28px !important;
+    height: 28px !important;
+    background: url('../img/logo.svg') center / contain no-repeat !important;
+    -webkit-mask: none !important;
+    mask: none !important;
+    filter: drop-shadow(0 0 6px rgba(220, 38, 38, 0.6)) !important;
+}
+
+#menubar-inner .hostname a {
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    color: #f1f5f9 !important;
+}
+
+#menubar-inner .hostname a::after {
+    content: " [UMBRELLA NETWORK]" !important;
+    font-size: 9px !important;
+    font-family: monospace !important;
+    font-weight: 600 !important;
+    color: #ef4444 !important;
+    margin-left: 8px !important;
+    letter-spacing: 1.5px !important;
+    vertical-align: middle !important;
+    background: rgba(220, 38, 38, 0.12) !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+    border: 1px solid rgba(220, 38, 38, 0.3) !important;
+}
+
+/* 3. Navigation Menu Tabs */
+#mainmenu .mainmenu.l1>li.selected>a,
+#mainmenu li.selected>a {
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(239, 68, 68, 0.45) !important;
+    box-shadow: 0 2px 12px rgba(220, 38, 38, 0.4) !important;
+    border-radius: 6px !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+#mainmenu .mainmenu.l1>li>a:hover {
+    color: #ef4444 !important;
+    background: rgba(220, 38, 38, 0.1) !important;
+}
+
+/* 4. Progress Bars (Memory, Storage, System) - Resident Evil Crimson */
+.cbi-progressbar {
+    background: rgba(15, 20, 28, 0.9) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+    border-radius: 6px !important;
+}
+
+.cbi-progressbar>div,
+#view>.controls .cbi-progressbar>div {
+    background: linear-gradient(90deg, #991b1b 0%, #dc2626 60%, #ef4444 100%) !important;
+    box-shadow: 0 0 12px rgba(220, 38, 38, 0.5) !important;
+    border-radius: 6px 0 0 6px !important;
+}
+
+/* 5. Primary Buttons & Modal Actions */
+.btn-primary,
+.btn.primary,
+.cbi-button-action,
+.cbi-button-positive,
+.cbi-button-apply,
+.btn.important,
+button.important,
+#modal_overlay .btn.primary,
+#modal_overlay .btn:first-child,
+.modal-dialog .btn:first-child,
+.modal-dialog .btn.primary {
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%) !important;
+    border: 1px solid rgba(239, 68, 68, 0.5) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4) !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-primary:hover,
+.btn.primary:hover,
+.cbi-button-action:hover,
+.cbi-button-positive:hover,
+.cbi-button-apply:hover,
+.btn.important:hover,
+button.important:hover,
+#modal_overlay .btn.primary:hover,
+#modal_overlay .btn:first-child:hover,
+.modal-dialog .btn:first-child:hover {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.6) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* 6. Neutral & Secondary Buttons */
+.btn,
+.cbi-button,
+.cbi-button-neutral,
+.cbi-button-reset,
+#modal_overlay .btn:not(.primary):not(:first-child),
+.modal-dialog .btn:not(.primary):not(:first-child) {
+    background: rgba(18, 22, 30, 0.85) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #e2e8f0 !important;
+    border-radius: 6px !important;
+}
+
+.btn:hover,
+.cbi-button:hover,
+.cbi-button-neutral:hover,
+.cbi-button-reset:hover,
+#modal_overlay .btn:not(.primary):not(:first-child):hover,
+.modal-dialog .btn:not(.primary):not(:first-child):hover {
+    background: rgba(30, 36, 48, 0.95) !important;
+    border-color: rgba(220, 38, 38, 0.45) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 10px rgba(220, 38, 38, 0.25) !important;
+}
+
+/* 7. Dialogs & Modals Styling */
+#modal_overlay,
+.modal,
+.modal-dialog {
+    background-color: #0b0e14 !important;
+    border: 1px solid rgba(220, 38, 38, 0.35) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 25px rgba(220, 38, 38, 0.2) !important;
+    border-radius: 10px !important;
+}
+
+.modal h4,
+.modal-dialog h4,
+#modal_overlay h4 {
+    color: #f8fafc !important;
+    border-bottom: 1px solid rgba(220, 38, 38, 0.2) !important;
+    padding-bottom: 8px !important;
+}
+
+/* 8. Alert Messages */
+.alert-message.warning {
+    border-left: 4px solid #dc2626 !important;
+    background: rgba(220, 38, 38, 0.08) !important;
+    border-top: 1px solid rgba(220, 38, 38, 0.2) !important;
+    border-right: 1px solid rgba(220, 38, 38, 0.2) !important;
+    border-bottom: 1px solid rgba(220, 38, 38, 0.2) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 12px rgba(220, 38, 38, 0.15) !important;
+}
+
+.alert-message.warning h4 {
+    color: #f87171 !important;
+}
+
+/* 9. Cards & Sections */
+.cbi-section,
+.cbi-map,
+.panel {
+    background: rgba(11, 14, 20, 0.85) !important;
+    border: 1px solid rgba(220, 38, 38, 0.2) !important;
+    border-top: 2px solid #dc2626 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45) !important;
+}
+
+.cbi-section legend,
+.cbi-section h3,
+.cbi-map h2 {
+    color: #f1f5f9 !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* 10. Links and Highlights */
+a, a:visited {
+    color: #f87171 !important;
+}
+
+a:hover, a:focus {
+    color: #ef4444 !important;
+    text-shadow: 0 0 8px rgba(220, 38, 38, 0.4) !important;
+}
+
+table tr.active td,
+table tr:hover td {
+    background: rgba(220, 38, 38, 0.06) !important;
+}
+
+/* Status overview active rows */
+#view table tr td a {
+    color: #fca5a5 !important;
 }

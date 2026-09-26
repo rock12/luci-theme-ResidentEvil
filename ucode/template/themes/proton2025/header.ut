@@ -99,10 +99,14 @@
 		if (!isNaN(ps) && ps >= 50 && ps <= 200 && ps !== 100)
 			document.documentElement.style.setProperty('--proton-pattern-scale', ps / 100);
 	}
-	var a = localStorage.getItem('proton-accent-color') || 'red';
+	var a = localStorage.getItem('proton-accent-color');
+	if (!a || a === 'blue' || a === 'default') {
+		a = 'red';
+		try { localStorage.setItem('proton-accent-color', 'red'); } catch (e) {}
+	}
 	var c = {
-		default: { accent: '#4b5563', hover: '#374151', glow: 'rgba(75, 85, 99, 0.22)', rgb: '75, 85, 99' },
-		blue:    { accent: '#5e9eff', hover: '#7db2ff', glow: 'rgba(94, 158, 255, 0.18)', rgb: '94, 158, 255' },
+		default: { accent: '#dc2626', hover: '#ef4444', glow: 'rgba(220, 38, 38, 0.28)', rgb: '220, 38, 38' },
+		blue:    { accent: '#dc2626', hover: '#ef4444', glow: 'rgba(220, 38, 38, 0.28)', rgb: '220, 38, 38' },
 		purple:  { accent: '#a78bfa', hover: '#c3b4ff', glow: 'rgba(167, 139, 250, 0.22)', rgb: '167, 139, 250' },
 		green:   { accent: '#34d399', hover: '#2fb885', glow: 'rgba(52, 211, 153, 0.18)', rgb: '52, 211, 153' },
 		orange:  { accent: '#fb923c', hover: '#f47c1f', glow: 'rgba(251, 146, 60, 0.20)', rgb: '251, 146, 60' },
