@@ -507,40 +507,40 @@
 
       widget.innerHTML = `
                 <div class="proton-services-header">
-                    <div class="proton-services-title-wrap">
-                        <h3 class="proton-services-title">${this._t(
-                          "Services Monitor",
-                        )}</h3>
+                    <h3 class="proton-services-title">${this._t(
+                      "Services Monitor",
+                    )}</h3>
+                    <div class="proton-services-actions">
                         <button type="button" class="proton-add-service-btn" title="${this._t(
                           "Widget Settings",
                         )}">+ ${this._t("Add") || "Добавить"}</button>
-                    </div>
-                    <div class="proton-services-info">?
-                        <div class="proton-services-tooltip">
-                            <div class="proton-services-tooltip-title">${this._t(
-                              "Services Monitor",
-                            )}</div>
-                            <div class="proton-services-tooltip-text">
-                                ${this._t(
-                                  "Monitor and manage system services. Click on service card to view details and control actions.",
-                                )}
-                            </div>
-                            <div class="proton-services-tooltip-legend">
-                                <div class="proton-services-tooltip-legend-item">
-                                    <span class="proton-services-tooltip-legend-dot running"></span>
-                                    <span>${this._t("Running")}</span>
+                        <div class="proton-services-info">?
+                            <div class="proton-services-tooltip">
+                                <div class="proton-services-tooltip-title">${this._t(
+                                  "Services Monitor",
+                                )}</div>
+                                <div class="proton-services-tooltip-text">
+                                    ${this._t(
+                                      "Monitor and manage system services. Click on service card to view details and control actions.",
+                                    )}
                                 </div>
-                                <div class="proton-services-tooltip-legend-item">
-                                    <span class="proton-services-tooltip-legend-dot stopped"></span>
-                                    <span>${this._t("Stopped")}</span>
-                                </div>
-                                <div class="proton-services-tooltip-legend-item">
-                                    <span class="proton-services-tooltip-legend-dot disabled"></span>
-                                    <span>${this._t("Disabled")}</span>
-                                </div>
-                                <div class="proton-services-tooltip-legend-item">
-                                    <span class="proton-services-tooltip-legend-dot unknown"></span>
-                                    <span>${this._t("Unknown")}</span>
+                                <div class="proton-services-tooltip-legend">
+                                    <div class="proton-services-tooltip-legend-item">
+                                        <span class="proton-services-tooltip-legend-dot running"></span>
+                                        <span>${this._t("Running")}</span>
+                                    </div>
+                                    <div class="proton-services-tooltip-legend-item">
+                                        <span class="proton-services-tooltip-legend-dot stopped"></span>
+                                        <span>${this._t("Stopped")}</span>
+                                    </div>
+                                    <div class="proton-services-tooltip-legend-item">
+                                        <span class="proton-services-tooltip-legend-dot disabled"></span>
+                                        <span>${this._t("Disabled")}</span>
+                                    </div>
+                                    <div class="proton-services-tooltip-legend-item">
+                                        <span class="proton-services-tooltip-legend-dot unknown"></span>
+                                        <span>${this._t("Unknown")}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
