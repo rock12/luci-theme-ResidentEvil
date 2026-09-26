@@ -4302,7 +4302,7 @@ body.login-page .login-password-toggle:focus-visible {
 /* Service Cards in Widget (Visually Identical to Temperature Cards) */
 .proton-services-grid {
     display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
     gap: 8px !important;
     align-items: stretch !important;
 }
@@ -4317,14 +4317,14 @@ body.login-page .login-password-toggle:focus-visible {
     background: rgba(18, 22, 30, 0.65) !important;
     border: 1px solid rgba(255, 255, 255, 0.07) !important;
     border-radius: 6px !important;
-    padding: 6px 6px !important;
+    padding: 7px 10px !important;
     transition: all 0.2s ease !important;
     position: relative !important;
     overflow: hidden !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
-    min-height: 52px !important;
+    min-height: 56px !important;
     min-width: 0 !important;
     box-sizing: border-box !important;
 }
@@ -4373,20 +4373,20 @@ body.login-page .login-password-toggle:focus-visible {
 .proton-service-card-header {
     display: flex !important;
     align-items: center !important;
-    gap: 4px !important;
+    gap: 6px !important;
     width: 100% !important;
     min-width: 0 !important;
     margin-bottom: 2px !important;
 }
 
 .proton-service-icon {
-    font-size: 13px !important;
+    font-size: 15px !important;
     flex-shrink: 0 !important;
     line-height: 1 !important;
 }
 
 .proton-service-name {
-    font-size: 11px !important;
+    font-size: 12.5px !important;
     font-weight: 700 !important;
     color: #f1f5f9 !important;
     margin: 0 !important;
@@ -4436,8 +4436,8 @@ body.login-page .login-password-toggle:focus-visible {
 .proton-service-status {
     display: flex !important;
     align-items: center !important;
-    gap: 3px !important;
-    font-size: 9px !important;
+    gap: 4px !important;
+    font-size: 10px !important;
     letter-spacing: 0.2px !important;
     font-weight: 600 !important;
     margin-top: 1px !important;
@@ -4445,8 +4445,8 @@ body.login-page .login-password-toggle:focus-visible {
 }
 
 .proton-service-status-dot {
-    width: 5px !important;
-    height: 5px !important;
+    width: 6px !important;
+    height: 6px !important;
     border-radius: 50% !important;
     background: #22c55e !important;
     animation: temp-pulse-dot 2s ease-in-out infinite !important;
@@ -4465,7 +4465,7 @@ body.login-page .login-password-toggle:focus-visible {
 }
 
 .proton-service-status-text {
-    font-size: 8.5px !important;
+    font-size: 9.5px !important;
     font-weight: 600 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.2px !important;
@@ -4530,13 +4530,14 @@ a.proton-temp-title-link:focus-visible {
     background: rgba(18, 22, 30, 0.65) !important;
     border: 1px solid rgba(255, 255, 255, 0.07) !important;
     border-radius: 6px !important;
-    padding: 6px 8px !important;
+    padding: 7px 9px !important;
     transition: all 0.2s ease !important;
     position: relative !important;
     overflow: hidden !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
+    min-height: 56px !important;
     min-width: 0 !important;
 }
 
@@ -4586,7 +4587,7 @@ a.proton-temp-title-link:focus-visible {
 }
 
 .proton-temp-value {
-    font-size: 15px !important;
+    font-size: 16px !important;
     font-weight: 700 !important;
     font-variant-numeric: tabular-nums !important;
     line-height: 1 !important;
@@ -4608,13 +4609,13 @@ a.proton-temp-title-link:focus-visible {
 }
 
 .proton-temp-unit {
-    font-size: 10px !important;
+    font-size: 11px !important;
     font-weight: 500 !important;
     color: #94a3b8 !important;
 }
 
 .proton-temp-sensor-name {
-    font-size: 9.5px !important;
+    font-size: 10px !important;
     font-weight: 600 !important;
     color: #94a3b8 !important;
     margin: 0 !important;
@@ -4674,15 +4675,15 @@ a.proton-temp-title-link:focus-visible {
     display: flex !important;
     align-items: center !important;
     gap: 4px !important;
-    font-size: 9.5px !important;
+    font-size: 10px !important;
     letter-spacing: 0.2px !important;
     font-weight: 600 !important;
     margin-top: 1px !important;
 }
 
 .proton-temp-status-dot {
-    width: 5px !important;
-    height: 5px !important;
+    width: 6px !important;
+    height: 6px !important;
     border-radius: 50% !important;
     background: #22c55e !important;
     animation: temp-pulse-dot 2s ease-in-out infinite !important;
@@ -4704,7 +4705,7 @@ a.proton-temp-title-link:focus-visible {
 
 .proton-temp-status-text {
     color: #22c55e !important;
-    font-size: 9.5px !important;
+    font-size: 10px !important;
 }
 
 .proton-temp-card[data-level="warm"] .proton-temp-status-text {
@@ -4720,7 +4721,7 @@ a.proton-temp-title-link:focus-visible {
 }
 
 .proton-temp-peak {
-    font-size: 9px !important;
+    font-size: 9.5px !important;
     color: #64748b !important;
     margin-left: auto !important;
     opacity: 0.9 !important;
