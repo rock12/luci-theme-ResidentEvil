@@ -113,9 +113,8 @@ resolve_asset() {
         tag=$(fetch "$ATOM_URL" | grep -o "releases/tag/[^\"]*" | head -n1 | sed 's|.*/||')
 
         if [ -z "$tag" ]; then
-            err "Could not determine the latest release"
-            err "Download the package manually: https://github.com/${REPO}/releases"
-            exit 1
+            warn "Could not determine the latest release asset from API or atom feed"
+            return 1
         fi
 
         version="${tag#v}"
@@ -129,6 +128,7 @@ resolve_asset() {
 
     ASSET_FILE="${DOWNLOAD_DIR}/$(basename "$ASSET_URL")"
     ok "Release asset: $(basename "$ASSET_URL")"
+    return 0
 }
 
 download_asset() {
@@ -154,24 +154,69 @@ download_asset() {
         attempt=$((attempt + 1))
     done
 
-    err "Download failed: $ASSET_URL"
-    err "On an SSL error install the CA bundle first:"
-    printf "  opkg update && opkg install ca-bundle ca-certificates\n"
-    printf "  apk update && apk add ca-bundle ca-certificates\n"
-    exit 1
+    warn "Package download failed from releases: $ASSET_URL"
+    return 1
 }
 
 install_package() {
     info "Installing ${PKG_NAME}..."
 
     if [ "$PKG_IS_APK" -eq 1 ]; then
-        # Release packages aren't signed by an OpenWrt feed key.
-        apk add --allow-untrusted "$ASSET_FILE"
+        apk add --allow-untrusted "$ASSET_FILE" || return 1
     else
-        opkg install "$ASSET_FILE"
+        opkg install "$ASSET_FILE" || return 1
     fi
 
     ok "Package installed"
+    return 0
+}
+
+install_from_source() {
+    info "Downloading theme files directly from GitHub..."
+    SOURCE_TAR="https://github.com/${REPO}/archive/refs/heads/main.tar.gz"
+    rm -rf "$DOWNLOAD_DIR"
+    mkdir -p "$DOWNLOAD_DIR"
+
+    if [ "$DOWNLOADER" = "curl" ]; then
+        curl -fsSL "$SOURCE_TAR" -o "${DOWNLOAD_DIR}/theme.tar.gz" || true
+    else
+        wget -q -O "${DOWNLOAD_DIR}/theme.tar.gz" "$SOURCE_TAR" || true
+    fi
+
+    if [ ! -s "${DOWNLOAD_DIR}/theme.tar.gz" ]; then
+        err "Failed to download source archive from GitHub"
+        exit 1
+    fi
+
+    tar -xzf "${DOWNLOAD_DIR}/theme.tar.gz" -C "$DOWNLOAD_DIR"
+    SRC_DIR=$(find "$DOWNLOAD_DIR" -mindepth 1 -maxdepth 1 -type d | head -n1)
+
+    if [ -z "$SRC_DIR" ] || [ ! -d "$SRC_DIR" ]; then
+        err "Failed to extract theme source archive"
+        exit 1
+    fi
+
+    info "Deploying theme files to system..."
+    mkdir -p /www/luci-static/proton2025 /www/luci-static/resources
+    cp -rf "$SRC_DIR/htdocs/luci-static/proton2025" /www/luci-static/
+    cp -rf "$SRC_DIR/htdocs/luci-static/resources/"* /www/luci-static/resources/ 2>/dev/null || true
+
+    mkdir -p /etc/config /etc/uci-defaults /usr/share/luci/menu.d /usr/share/rpcd/acl.d /usr/share/rpcd/ucode
+    cp -rf "$SRC_DIR/root/"* / 2>/dev/null || true
+
+    mkdir -p /usr/share/ucode/luci/template/themes/proton2025
+    cp -rf "$SRC_DIR/ucode/template/themes/proton2025/"* /usr/share/ucode/luci/template/themes/proton2025/
+
+    if [ -f /etc/uci-defaults/30_luci-theme-proton2025 ]; then
+        sh /etc/uci-defaults/30_luci-theme-proton2025 >/dev/null 2>&1 || true
+    fi
+
+    rm -f /tmp/proton-search-prefetch-cache.json /tmp/proton-search-prefetch-cache-meta.json >/dev/null 2>&1 || true
+    rm -rf /tmp/proton-search-cache /tmp/proton-search-cache-meta >/dev/null 2>&1 || true
+    rm -rf /tmp/luci-indexcache* /tmp/luci-modulecache >/dev/null 2>&1 || true
+    [ -x /etc/init.d/rpcd ] && /etc/init.d/rpcd restart >/dev/null 2>&1 || true
+
+    ok "Theme deployed successfully from source"
 }
 
 install_dashboard() {
@@ -203,9 +248,12 @@ cleanup() {
 
 main() {
     check_system
-    resolve_asset
-    download_asset
-    install_package
+    if resolve_asset && download_asset && install_package; then
+        ok "Package installation successful"
+    else
+        warn "Release package not found on GitHub, falling back to direct source installation..."
+        install_from_source
+    fi
     activate_theme
     install_dashboard
     cleanup

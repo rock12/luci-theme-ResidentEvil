@@ -320,7 +320,7 @@ body.login-page { background-color: {{ serverTheme === 'light' ? '#ffffff' : '#0
 					<path d="M10 17l5-5-5-5" />
 					<path d="M15 12H3" />
 				</svg>
-				<span>{{ _('Log in') }}</span>
+				<span>Авторизоваться</span>
 			</button>
 		</form>
 
