@@ -1,233 +1,143 @@
-# luci-theme-ResidentEvil (Umbrella Edition)
+# ☣️ luci-theme-ResidentEvil (Umbrella Corporation Edition)
 
-Тёмная тема для LuCI (OpenWrt 23.05+, ucode) в стиле **Resident Evil: Umbrella Corporation / Hive Security Terminal**.
+[![OpenWrt](https://img.shields.io/badge/OpenWrt-23.05%20%7C%2024.10%20%7C%2025.12%2B-blue?style=flat-square&logo=openwrt)](https://openwrt.org/)
+[![LuCI](https://img.shields.io/badge/LuCI-ucode-success?style=flat-square)](https://github.com/openwrt/luci)
+[![Theme](https://img.shields.io/badge/Style-Umbrella%20Corporation-red?style=flat-square)](https://github.com/rock12/luci-theme-ResidentEvil)
+[![Release](https://img.shields.io/github/v/release/rock12/luci-theme-ResidentEvil?style=flat-square&color=crimson)](https://github.com/rock12/luci-theme-ResidentEvil/releases/latest)
+[![License](https://img.shields.io/badge/License-Apache%202.0-orange?style=flat-square)](LICENSE)
 
-> **Основано на проекте:** [**luci-theme-proton2025**](https://github.com/ChesterGoodiny/luci-theme-proton2025) от [**ChesterGoodiny**](https://github.com/ChesterGoodiny).  
-> Выражаем огромную благодарность автору оригинального проекта за современную архитектуру, поддержку ucode, высокую производительность и гибкую систему настроек!
+Тёмная высокотехнологичная тема оформления для веб-интерфейса LuCI (OpenWrt 23.05, 24.10, 25.12+), вдохновлённая серией **Resident Evil** и стилизованная под секретный защищённый терминал безопасности **Umbrella Corporation**.
 
-![OpenWrt](https://img.shields.io/badge/OpenWrt-23.05%2B-blue)
-![LuCI](https://img.shields.io/badge/LuCI-ucode-green)
-![Resident Evil](https://img.shields.io/badge/Style-Umbrella%20Corp-red)
-![License](https://img.shields.io/badge/License-Apache%202.0-orange)
-
-## ☣️ Особенности Resident Evil Edition
-
-* 🧟 **Кинематографичный экран входа:** арт с Леоном Кеннеди (R.P.D.) и Адой Вонг, тёмный туман и логотип Umbrella в центре.
-* 🛡️ **Фирменные векторные логотипы:** оригинальный восьмиугольный красно-белый зонтик Umbrella Corporation (`logo.svg` и `brand.svg`).
-* 🔴 **Цветовая палитра Umbrella:** глубокий графитовый/карбоновый фон (`#080a0e`), неоновый алый акцент Umbrella Red (`#dc2626`).
-* 🩺 **Индикация статусов роутера:** шкала здоровья в стиле Resident Evil (FINE 🟢 / CAUTION 🟡 / DANGER 🔴).
-* ⚡ **Все преимущества Proton2025:** моментальная загрузка без дергания интерфейса, адаптивность для смартфонов, встроенный поиск по меню и страницам, сохранение настроек в UCI.
+> **Основано на:** замечательном проекте [**luci-theme-proton2025**](https://github.com/ChesterGoodiny/luci-theme-proton2025) от [**ChesterGoodiny**](https://github.com/ChesterGoodiny).  
+> Выражаем огромную благодарность автору за превосходную ucode-архитектуру, высокую скорость работы и гибкую систему настроек.
 
 ---
 
-## Требования
+## 📸 Скриншоты интерфейса
 
-- OpenWrt 23.05 или новее с LuCI на ucode (`luci-base`)
-- Пакет не зависит от архитектуры — одна сборка подходит любому устройству
-- Доступ по SSH под root
+### Экран авторизации (Hive Security Terminal)
+*Леон Кеннеди (R.P.D.) и Ада Вонг обрамляют терминал доступа Umbrella Corporation:*
+![Экран входа Resident Evil](docs/login.png)
 
-## Установка одной командой
+---
 
-Выполните команду по SSH на роутере:
+### Панель управления LuCI (Resident Evil Dashboard)
+*Виджеты сервисов, температурных зон процессора/Wi-Fi и системная сводка:*
+![Панель управления Resident Evil](docs/status.png)
+
+---
+
+## ☣️ Что было сделано и особенности темы
+
+### 🧟 1. Кинематографичный экран входа
+- **Детализированный арт героев:** Леон С. Кеннеди в форме R.P.D. слева и Ада Вонг справа. Персонажи расположены точно по краям широкоформатного экрана и не перекрывают форму авторизации.
+- **Стилизация под закрытый терминал:** логотип корпорации, заголовок `UMBRELLA CORPORATION [ LEVEL 8 CLASSIFIED ACCESS ]` и фирменная маркировка безопасности.
+- **Атмосферные эффекты:** динамический тёмный дождь, стелющийся туман и летящие алые искры на фоне эмблемы Umbrella.
+
+### 🛡️ 2. Фирменный стиль Umbrella Corporation
+- **Векторные SVG-логотипы:** оригинальный красно-белый зонтик Umbrella в навигационной панели и на странице логина (`logo.svg` и `brand.svg`).
+- **Цветовая гамма:** глубокий карбоново-графитовый фон (`#080a0e`) с контрастной неоново-алой подсветкой Umbrella Crimson (`#dc2626` / `#ef4444`).
+- **Стеклянный дизайн (Glassmorphism):** полупрозрачные карточки с деликатной тонкой рамкой и мягким размытием заднего плана (`backdrop-filter: blur`).
+- **Интерактивные элементы:**
+  - Предупреждение «Пароль не установлен!» встроено в верхнюю часть страницы с удобной кнопкой быстрого закрытия `×` (запоминается в сессии браузера).
+  - Модальные окна (например, «Сессия истекла») используют мягкое полупрозрачное размытие вместо глухого чёрного экрана.
+  - Контент аккуратно отцентрирован и сбалансирован.
+
+### 📊 3. Встроенные интерактивные виджеты (Status / Обзор)
+- **Мониторинг температуры в реальном времени:**
+  - Опрос всех доступных термозон (`/sys/class/thermal` и `/sys/class/hwmon`): CPU, радиомодули Wi-Fi (MT7915 PHY0, MT7915 PHY1) и др.
+  - Все датчики компактно выстроены в **одну горизонтальную строчку**.
+  - Цветовая дифференциация нагрева в стиле Resident Evil (Зелёный — Норма, Жёлтый — Тепло, Оранжевый — Горячо, Красный — Критично).
+  - Индикация пиковых температур и живые анимированные пульсирующие индикаторы.
+- **Мониторинг сервисов:**
+  - Карточки статуса запущенных служб (Dnsmasq, Dropbear, Uhttpd и др.) с живой проверкой активности.
+  - Визуально и по высоте полностью соответствуют карточкам датчиков температуры.
+  - Кнопка `[+ Добавить]` прямо в шапке блока для быстрого добавления отслеживаемых сервисов.
+- **Центр настроек виджетов:**
+  - Выделенная кнопка `[⚙ Настройки виджетов]` с поиском и тумблерами для удобного включения и отключения необходимых модулей.
+
+---
+
+## 🛠️ Требования
+
+- **OpenWrt:** 23.05, 24.10, 25.12 (снапшоты и релизы)
+- **LuCI:** на базе `ucode` (`luci-base`)
+- **Архитектура:** любая (`all` — пакет не зависит от процессора: MediaTek, Qualcomm, x86_64, ARM, MIPS и др.)
+- Доступ к роутеру по SSH под пользователем `root`.
+
+---
+
+## 🚀 Установка одной командой
+
+Подключитесь к роутеру по SSH и выполните команду:
 
 ```sh
 wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/install.sh | sh
 ```
 
-Скрипт автоматически определит пакетный менеджер вашей прошивки (`apk` или `opkg`), загрузит подходящий пакет из релизов, установит его и переключит тему в LuCI.
+> **Что делает скрипт:**
+> 1. Автоматически определяет тип пакетного менеджера (`apk` для новых версий или `opkg` для классических).
+> 2. Скачивает свежий релизный пакет нужного формата из GitHub Releases.
+> 3. Устанавливает тему, настраивает зависимости и активирует её в LuCI по умолчанию.
 
-После установки обновите страницу LuCI в браузере (Ctrl+F5).
+После установки обновите страницу в браузере с очисткой кэша (**Ctrl + F5**).
 
-## Обновление
+---
 
-Запустите команду установки ещё раз:
+## 🔄 Обновление
+
+Для обновления темы до самой последней версии просто запустите команду установки повторно:
+
 ```sh
 wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/install.sh | sh
 ```
 
-## Удаление
+---
+
+## 🗑️ Удаление
+
+Чтобы вернуть стандартную тему и полностью удалить файлы Resident Evil Edition:
 
 ```sh
 wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/uninstall.sh | sh
 ```
-```
 
-Скрипт возвращает LuCI на штатную тему, удаляет пакет и оставшиеся файлы,
-после чего перезапускает веб-сервер. `/etc/config/proton2025` остаётся на месте,
-так что повторная установка подхватит ваши настройки.
+---
 
-## Настройки темы
+## 📦 Ручная установка из релизов
 
-**System → System → Language and Style**, четыре вкладки:
+Готовые пакеты всегда доступны на странице [**GitHub Releases**](https://github.com/rock12/luci-theme-ResidentEvil/releases/latest):
 
-| Вкладка     | Содержит                                                                                                                                                                                                                                  |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Внешний вид | Режим темы (авто / тёмный / светлый), акцентный цвет (нейтральный, синий, фиолетовый, зелёный, оранжевый или свой hex), скругление углов, обводка вкладок, фоновый узор (нет / сетка / точки / звёзды), анимации, прозрачность и размытие |
-| Макет       | Масштаб фонового узора, масштаб интерфейса, ширина страницы (50–100%), расположение меню на десктопе (верхняя панель или боковая)                                                                                                         |
-| Функции     | Подсветка системного журнала, встроенный шрифт Inter, клиентская навигация (SPA — экспериментальная, по умолчанию выключена)                                                                                                              |
-| Инструменты | Проверка и установка обновлений, индекс поиска (сборка, очистка, размер, журнал активности), резервная копия и восстановление настроек, сброс к значениям по умолчанию                                                                    |
+- **`.apk`** — для OpenWrt 25.12+ (пакетный менеджер `apk`):
+  ```sh
+  apk add /tmp/luci-theme-proton2025-*.apk
+  ```
+- **`.ipk`** — для OpenWrt 23.05 и 24.10 (пакетный менеджер `opkg`):
+  ```sh
+  opkg install /tmp/luci-theme-proton2025_*_all.ipk
+  ```
 
-Настройки пишутся дважды: в `localStorage` — чтобы применяться без мерцания
-нестилизованной страницы, и в UCI (`/etc/config/proton2025`) — чтобы следовать за
-роутером, а не за браузером, и попадать в `sysupgrade -b`.
+---
 
-## Поиск
+## ⚙️ Дополнительные настройки темы
 
-В верхней панели есть поле поиска по страницам, вкладкам и отдельным настройкам
-LuCI. Он терпим к опечаткам, понимает перепутанную раскладку RU/LAT и
-транслитерацию. Индекс страниц собирается по требованию в **Инструменты → Индекс
-поиска** и кэшируется на роутере.
+После установки доступна расширенная панель кастомизации:  
+**Система → Система → Язык и стиль (Language and Style)**:
+- **Внешний вид:** регулировка акцентного оттенка, фонового свечения, анимаций частиц.
+- **Инструменты:** проверка обновлений, пересборка поискового индекса, резервное копирование и сброс параметров.
+- **Горячий поиск:** строка быстрого поиска по меню и страницам LuCI в верхней панели.
 
-## Прочие возможности
+---
 
-- Status → Realtime → **Температура** — страница самой темы, читающая
-  `/sys/class/thermal/` и `/sys/class/hwmon/` через собственный ucode RPC-модуль,
-  без внешних зависимостей
-- Load Average с цветовой индикацией и прогресс-барами на странице состояния
-- Автоматическая стилизация сторонних пакетов и кастомных страниц
-- 10 языков интерфейса: EN, RU, ZH, DE, UK, ES, PT, PL, FR, IT
+## 👥 Благодарности и авторы
 
-Виджеты сервисов, температуры и трафика на Status → Overview больше не входят в
-тему — они переезжают в отдельный пакет `luci-app-proton2025-dashboard`, который
-пока не опубликован. Тема только оформляет их и переносит их настройки через
-резервную копию.
+- **Оригинальный движок темы:** [ChesterGoodiny/luci-theme-proton2025](https://github.com/ChesterGoodiny/luci-theme-proton2025) (Apache-2.0).
+- **Стилизация Resident Evil & Umbrella Corp:** [rock12](https://github.com/rock12/luci-theme-ResidentEvil).
+- **Шрифт Inter:** The Inter Project Authors (SIL Open Font License 1.1).
+- **Элементы анимаций:** Pavel Dobryakov (WebGL Fluid Simulation, MIT).
 
-## Устранение неполадок
+---
 
-**`404 Not Found`, либо `opkg`/`apk` сообщает об отсутствующем файле или
-`no such package`.** В URL, набранном вручную, был `*` — `wget` не раскрывает
-маски, поэтому на GitHub уходит буквальная звёздочка. Используйте команду
-установки выше или точное имя файла со страницы Releases.
+## 📄 Лицензия
 
-**`API rate limit exceeded`.** 60 неавторизованных запросов к API GitHub в час на
-IP. Скрипт переключается на фид релизов, у которого нет лимита; иначе подождите
-или скачайте файл вручную.
-
-**`SSL certificate verification failed` / `wget: bad address`.** На роутере ещё
-нет набора корневых сертификатов:
-
-```sh
-opkg update && opkg install ca-bundle ca-certificates
-```
-
-```sh
-apk update && apk add ca-bundle ca-certificates
-```
-
-**После обновления видны старые стили или иконки.** Это кэш браузера. Жёсткая
-перезагрузка Ctrl+F5 (Cmd+Shift+R на macOS).
-
-**LuCI по-прежнему рисует штатную тему.** Проверьте, куда указывает LuCI и на
-месте ли файлы:
-
-```sh
-uci get luci.main.mediaurlbase   # ожидается: /luci-static/proton2025
-ls -l /www/luci-static/proton2025
-logread | grep -i uhttpd
-```
-
-Если путь неверный, задайте его и перезапустите веб-сервер:
-
-```sh
-uci set luci.main.mediaurlbase=/luci-static/proton2025
-uci commit luci
-/etc/init.d/uhttpd restart
-```
-
-**`/bin/sh^M: bad interpreter`.** Скрипт сохранён с windows-переводами строк
-(CRLF). Исправляется на месте:
-
-```sh
-sed -i 's/\r$//' install.sh
-```
-
-**`apk` не принимает пакет.** Валидны только пакеты, собранные OpenWrt
-SDK/buildroot; `tar.gz`, переименованный в `.apk`, установить нельзя. В релизах
-до 1.1.2 лежали именно такие перепакованные файлы.
-
-**Проверить, что установлено:**
-
-```sh
-opkg list-installed | grep -i proton2025
-```
-
-```sh
-apk info -e luci-theme-proton2025
-```
-
-## Сборка из исходников
-
-```bash
-cd ~/openwrt
-git clone https://github.com/ChesterGoodiny/luci-theme-proton2025 package/luci-theme-proton2025
-./scripts/feeds update -a && ./scripts/feeds install -a
-make menuconfig  # LuCI -> Themes -> luci-theme-proton2025
-make package/luci-theme-proton2025/compile V=s
-```
-
-Пакет появится в `bin/packages/*/` — как `.ipk` при SDK на базе opkg или как
-`.apk` при SDK на базе apk (`CONFIG_USE_APK=y`). `tar.gz`, переименованный в
-`.apk`, валидным пакетом не является.
-
-## Структура проекта
-
-```
-htdocs/luci-static/proton2025/     # ресурсы темы: css/, js/, i18n/, img/, icons/, fonts/
-htdocs/luci-static/resources/      # модули со стороны LuCI: меню, дропдауны, индекс поиска,
-                                   # настройки темы, SPA-роутер,
-                                   # view/status/proton-temperature.js
-ucode/template/themes/proton2025/  # header.ut, footer.ut, sysauth.ut
-root/etc/config/proton2025         # настройки UCI (conffile — сохраняется при обновлении)
-root/usr/share/luci/menu.d/        # пункт меню для страницы Температура
-root/usr/share/rpcd/ucode/         # RPC: proton-search-cache, proton-settings,
-                                   # proton-system, proton-temp
-install.sh / uninstall.sh          # установка и удаление одной командой
-```
-
-## Лицензия
-
-Apache-2.0
-
-Copyright 2025-2026 ChesterGoodiny.
-
-Иконки и встроенные SVG-ассеты проекта являются оригинальными first-party ресурсами и покрываются Apache-2.0.
-
-Подробности по лицензии и атрибуции проекта см. в LICENSE и NOTICE.
-
-### Сторонние ресурсы
-
-Эта тема включает следующие сторонние ресурсы:
-
-- **Шрифт Inter** - Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter)
-  - Лицензия: SIL Open Font License 1.1
-  - Файл лицензии: `htdocs/luci-static/proton2025/fonts/LICENSE.txt`
-  - Используется для единообразной типографики на всех платформах
-
-- **WebGL Fluid** (анимация страницы входа) - адаптация WebGL Fluid Simulation, Pavel Dobryakov, Copyright (c) 2017 (https://github.com/PavelDoGreat/WebGL-Fluid-Simulation)
-  - Лицензия: MIT
-  - Файл лицензии: `LICENSES/MIT-fluid.txt`
-
-### Благодарности
-
-- Опциональный режим SPA (навигация внутри одного документа) заимствует часть
-  идей у [luci-theme-footstrap](https://github.com/VizzleTF/luci-theme-footstrap),
-  который первым реализовал клиентскую навигацию для тем LuCI. К мысли перенести
-  этот подход в свою тему я пришёл, увидев, как его переняли темы Aurora и Shadcn
-  (eamonxg). Роутер proton2025 — независимая реализация на базе браузерного
-  Navigation API.
-- Логика разрешения alias/firstchild портирована из штатного `dispatcher.uc`
-  LuCI (luci-base, Apache-2.0), чтобы клик по ссылке и перезагрузка страницы
-  разрешались в точности в одну и ту же view.
-- Спасибо репозиторию [lastik9/openwrt-luci-theme-proton2025](https://github.com/lastik9/openwrt-luci-theme-proton2025)
-  за помощь в выявлении проблем старых инструкций по установке и создании
-  более простого сценария установки.
-
-## Статистика
-
-<a href="https://www.star-history.com/?repos=ChesterGoodiny%2Fluci-theme-proton2025&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=ChesterGoodiny/luci-theme-proton2025&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=ChesterGoodiny/luci-theme-proton2025&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=ChesterGoodiny/luci-theme-proton2025&type=date&legend=top-left" />
- </picture>
-</a>
+Проект распространяется под лицензией **Apache 2.0**. Подробности в файле [LICENSE](LICENSE).

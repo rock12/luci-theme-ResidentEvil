@@ -1,233 +1,134 @@
-# luci-theme-ResidentEvil (Umbrella Edition)
+# ☣️ luci-theme-ResidentEvil (Umbrella Corporation Edition)
 
-A dark LuCI theme for OpenWrt 23.05+ (ucode) inspired by **Resident Evil: Umbrella Corporation / Hive Security Terminal**.
+[![OpenWrt](https://img.shields.io/badge/OpenWrt-23.05%20%7C%2024.10%20%7C%2025.12%2B-blue?style=flat-square&logo=openwrt)](https://openwrt.org/)
+[![LuCI](https://img.shields.io/badge/LuCI-ucode-success?style=flat-square)](https://github.com/openwrt/luci)
+[![Theme](https://img.shields.io/badge/Style-Umbrella%20Corporation-red?style=flat-square)](https://github.com/rock12/luci-theme-ResidentEvil)
+[![Release](https://img.shields.io/github/v/release/rock12/luci-theme-ResidentEvil?style=flat-square&color=crimson)](https://github.com/rock12/luci-theme-ResidentEvil/releases/latest)
+[![License](https://img.shields.io/badge/License-Apache%202.0-orange?style=flat-square)](LICENSE)
 
-> **Based on:** [**luci-theme-proton2025**](https://github.com/ChesterGoodiny/luci-theme-proton2025) by [**ChesterGoodiny**](https://github.com/ChesterGoodiny).  
-> Huge thanks to ChesterGoodiny for the exceptional foundation, modern ucode architecture, and settings framework!
+A high-tech dark LuCI theme for OpenWrt (23.05, 24.10, 25.12+), inspired by the **Resident Evil** universe and styled after the covert **Umbrella Corporation Hive Security Terminal**.
 
-![OpenWrt](https://img.shields.io/badge/OpenWrt-23.05%2B-blue)
-![LuCI](https://img.shields.io/badge/LuCI-ucode-green)
-![Resident Evil](https://img.shields.io/badge/Style-Umbrella%20Corp-red)
-![License](https://img.shields.io/badge/License-Apache%202.0-orange)
+[**Читать описание на русском языке (README_ru.md)**](README_ru.md)
 
-## ☣️ Features
-
-* 🧟 **Cinematic Login Art:** Atmospheric wallpaper with Leon S. Kennedy (R.P.D.) on the left and Ada Wong on the right, framing the center login card.
-* 🛡️ **Umbrella Corporation SVG Assets:** Authentic 8-segment scalloped red & white Umbrella badge (`logo.svg` and `brand.svg`).
-* 🔴 **Umbrella Crimson Colorway:** Deep carbon stealth background (`#080a0e`) with vibrant red accents (`#dc2626`).
-* 🩺 **Resident Evil Health Status:** Gauges styled after the classic RE health meter (FINE 🟢 / CAUTION 🟡 / DANGER 🔴).
-* ⚡ **All Proton2025 Innovations:** Zero layout shift, full mobile responsiveness, instant menu search, and UCI-backed configuration.
+> **Based on:** the outstanding [**luci-theme-proton2025**](https://github.com/ChesterGoodiny/luci-theme-proton2025) by [**ChesterGoodiny**](https://github.com/ChesterGoodiny).  
+> Sincere gratitude to ChesterGoodiny for the modern ucode foundation, exceptional performance, and comprehensive settings framework.
 
 ---
 
-## Requirements
+## 📸 Screenshots
 
-- OpenWrt 23.05 or newer with the ucode-based LuCI (`luci-base`)
-- Architecture-independent (`all`)
-- Root SSH access
+### Authentication Screen (Hive Security Terminal)
+*Leon S. Kennedy (R.P.D.) and Ada Wong frame the central Umbrella Corporation login terminal:*
+![Resident Evil Login Screen](docs/login.png)
 
-## One-Command Installation
+---
 
-Run over SSH on your OpenWrt router:
+### Dashboard (Resident Evil System Overview)
+*Live service monitoring, multi-zone temperature sensors, and centered status cards:*
+![Resident Evil Dashboard](docs/status.png)
+
+---
+
+## ☣️ Features & Modifications
+
+### 🧟 1. Cinematic Login Interface
+- **High-definition character art:** Leon S. Kennedy on the left and Ada Wong on the right, perfectly framing wide desktop displays without encroaching on login inputs.
+- **Umbrella Security Terminal:** Styled login card featuring `UMBRELLA CORPORATION [ LEVEL 8 CLASSIFIED ACCESS ]`.
+- **Atmospheric effects:** Dark rolling fog, rain particles, and crimson embers floating around the Umbrella emblem.
+
+### 🛡️ 2. Umbrella Corporation Aesthetic
+- **Vector SVG Assets:** Authentic 8-segment scalloped red & white Umbrella badges in navigation and login (`logo.svg`, `brand.svg`).
+- **Color Palette:** Stealth carbon background (`#080a0e`) accented by Umbrella Crimson (`#dc2626` / `#ef4444`).
+- **Glassmorphism:** Translucent UI cards with subtle borders and smooth backdrop blur (`backdrop-filter`).
+- **Refined UX:**
+  - "No password set!" banner repositioned neatly at the top with an interactive dismiss button (`×`).
+  - Translucent modal backdrops (no more opaque black screens when sessions expire).
+  - Centered, well-aligned system status tables.
+
+### 📊 3. Integrated Interactive Widgets (Overview)
+- **Real-time Temperature Widget:**
+  - Live readings from CPU thermal zones and Wi-Fi chips (MT7915 PHY0/PHY1).
+  - All 4 sensor cards organized in a sleek single horizontal row.
+  - Color-coded levels (FINE / CAUTION / DANGER) with peak temperature tracking and animated pulse dots.
+- **Service Monitoring Widget:**
+  - Real-time status for essential daemons (Dnsmasq, Dropbear, Uhttpd).
+  - Cards matching the exact height and visual layout of temperature cards.
+  - Direct `[+ Add]` action button in the widget header.
+- **Widget Configuration Modal:**
+  - Dedicated `[⚙ Widget Settings]` button with instant toggles and search filter.
+
+---
+
+## 🛠️ Requirements
+
+- **OpenWrt:** 23.05, 24.10, 25.12+ (snapshots and release builds)
+- **LuCI:** ucode-based (`luci-base`)
+- **Architecture:** `all` (architecture-independent, compatible with ARM, MediaTek, x86_64, Qualcomm, MIPS, etc.)
+- Root SSH access to your router.
+
+---
+
+## 🚀 One-Command Installation
+
+Connect to your router via SSH and run:
 
 ```sh
 wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/install.sh | sh
 ```
 
-## Removal
+> **The installer automatically:**
+> 1. Detects your package manager (`apk` for newer releases or `opkg` for standard builds).
+> 2. Fetches the latest matching package from GitHub Releases.
+> 3. Installs and switches LuCI to the theme immediately.
+
+After installation, refresh your browser with cache clearing (**Ctrl + F5**).
+
+---
+
+## 🔄 Updating
+
+To update to the latest version, run the install command again:
+
+```sh
+wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/install.sh | sh
+```
+
+---
+
+## 🗑️ Removal
+
+To revert to the default LuCI theme and uninstall:
 
 ```sh
 wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/uninstall.sh | sh
 ```
 
-The widgets on Status → Overview are no longer part of the theme; they are being
-split out into a separate package, `luci-app-proton2025-dashboard`. That package
-is not published yet, so the second command currently installs the theme only and
-tells you so. Once the package is released, the same command will pull it in.
+---
 
-Reload LuCI in the browser afterwards (Ctrl+F5). If you prefer to install the
-package by hand, take the exact file name from the
-[Releases page](https://github.com/ChesterGoodiny/luci-theme-proton2025/releases) —
-`.apk` if `command -v apk` prints a path, `.ipk` otherwise.
+## 📦 Manual Installation from Releases
 
-## Updating
+Pre-built packages are published on [**GitHub Releases**](https://github.com/rock12/luci-theme-ResidentEvil/releases/latest):
 
-Re-run the install command, or let the theme update itself from **System →
-System → Language and Style → Tools → Check for updates**.
+- **`.apk`** — for OpenWrt 25.12+ (`apk` package manager):
+  ```sh
+  apk add /tmp/luci-theme-proton2025-*.apk
+  ```
+- **`.ipk`** — for OpenWrt 23.05 / 24.10 (`opkg` package manager):
+  ```sh
+  opkg install /tmp/luci-theme-proton2025_*_all.ipk
+  ```
 
-Settings live in `/etc/config/proton2025` and survive an upgrade.
+---
 
-## Removal
+## 👥 Credits
 
-```sh
-wget -qO- https://raw.githubusercontent.com/ChesterGoodiny/luci-theme-proton2025/main/uninstall.sh | sh
-```
+- **Original theme base:** [ChesterGoodiny/luci-theme-proton2025](https://github.com/ChesterGoodiny/luci-theme-proton2025) (Apache-2.0).
+- **Resident Evil & Umbrella Corp Styling:** [rock12](https://github.com/rock12/luci-theme-ResidentEvil).
+- **Inter Font:** The Inter Project Authors (SIL Open Font License 1.1).
+- **Animation Components:** Pavel Dobryakov (WebGL Fluid Simulation, MIT).
 
-Switches LuCI back to the stock theme, removes the package and anything left
-behind, and restarts the web server. `/etc/config/proton2025` is kept, so a
-later reinstall picks your settings back up.
+---
 
-## Theme settings
+## 📄 License
 
-**System → System → Language and Style**, in four tabs:
-
-| Tab        | Contains                                                                                                                                                                                                                      |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Appearance | Theme mode (auto / dark / light), accent colour (Neutral, Blue, Purple, Green, Orange or a custom hex value), corner radius, tab outlines, background pattern (none / grid / dots / stars), animations, transparency and blur |
-| Layout     | Background pattern scale, interface zoom, page width (50–100%), desktop menu placement (top bar or sidebar)                                                                                                                   |
-| Features   | System log highlighting, bundled Inter font, client-side navigation (SPA — experimental, off by default)                                                                                                                      |
-| Tools      | Update check and install, search index (build, clear, size, activity log), settings backup and restore, reset to defaults                                                                                                     |
-
-Settings are written twice: to `localStorage`, so they apply without a flash of
-unstyled page, and to UCI (`/etc/config/proton2025`), so they follow the router
-rather than the browser and are captured by `sysupgrade -b`.
-
-## Search
-
-The top bar carries a search field covering LuCI pages, tabs and individual
-settings. It tolerates typos, swaps between RU and LAT keyboard layouts and
-transliterates. The page index is built on demand from **Tools → Search index**
-and cached on the router.
-
-## Other features
-
-- Status → Realtime → **Temperature** — a theme-provided page reading
-  `/sys/class/thermal/` and `/sys/class/hwmon/` through its own ucode RPC
-  module, with no external dependencies
-- Colour-coded Load Average bars on the status page
-- Automatic styling for third-party packages and custom pages
-- 10 interface languages: EN, RU, ZH, DE, UK, ES, PT, PL, FR, IT
-
-The service, temperature and throughput widgets on Status → Overview are no
-longer part of this theme — they are moving to a separate package,
-`luci-app-proton2025-dashboard`, which is not published yet. The theme only
-styles them and carries their settings through backup and restore.
-
-## Troubleshooting
-
-**`404 Not Found`, or `opkg`/`apk` reporting a missing file or `no such
-package`.** A hand-written URL contained a `*` — `wget` does not expand
-wildcards, so the literal `*` reaches GitHub. Use the install command above, or
-the exact asset name from the Releases page.
-
-**`API rate limit exceeded`.** 60 unauthenticated GitHub API requests per hour
-per IP. The script falls back to the releases feed, which is not rate limited;
-otherwise wait or download the file manually.
-
-**`SSL certificate verification failed` / `wget: bad address`.** The router has
-no CA bundle yet:
-
-```sh
-opkg update && opkg install ca-bundle ca-certificates
-```
-
-```sh
-apk update && apk add ca-bundle ca-certificates
-```
-
-**The old style or old icons still show after an update.** Browser cache.
-Hard-reload with Ctrl+F5 (Cmd+Shift+R on macOS).
-
-**LuCI still renders the stock theme.** Check what LuCI points at and that the
-files landed:
-
-```sh
-uci get luci.main.mediaurlbase   # expected: /luci-static/proton2025
-ls -l /www/luci-static/proton2025
-logread | grep -i uhttpd
-```
-
-If the path is wrong, set it and restart the web server:
-
-```sh
-uci set luci.main.mediaurlbase=/luci-static/proton2025
-uci commit luci
-/etc/init.d/uhttpd restart
-```
-
-**`/bin/sh^M: bad interpreter`.** A script saved with Windows CRLF line endings.
-Fix it in place:
-
-```sh
-sed -i 's/\r$//' install.sh
-```
-
-**`apk` refuses the package.** Only packages produced by the OpenWrt
-SDK/buildroot are valid; a `tar.gz` renamed to `.apk` will never install.
-Releases before 1.1.2 contained such repacked files.
-
-**Checking what is installed:**
-
-```sh
-opkg list-installed | grep -i proton2025
-```
-
-```sh
-apk info -e luci-theme-proton2025
-```
-
-## Building from source
-
-```sh
-cd ~/openwrt
-git clone https://github.com/ChesterGoodiny/luci-theme-proton2025 package/luci-theme-proton2025
-./scripts/feeds update -a && ./scripts/feeds install -a
-make menuconfig   # LuCI -> Themes -> luci-theme-proton2025
-make package/luci-theme-proton2025/compile V=s
-```
-
-The package lands in `bin/packages/*/` — as `.ipk` with an opkg-based SDK, or as
-`.apk` with an apk-based SDK (`CONFIG_USE_APK=y`).
-
-## Project layout
-
-```
-htdocs/luci-static/proton2025/     # theme assets: css/, js/, i18n/, img/, icons/, fonts/
-htdocs/luci-static/resources/      # LuCI-side modules: menu, dropdowns, search index,
-                                   # theme settings, SPA router,
-                                   # view/status/proton-temperature.js
-ucode/template/themes/proton2025/  # header.ut, footer.ut, sysauth.ut
-root/etc/config/proton2025         # UCI settings (a conffile — kept on upgrade)
-root/usr/share/luci/menu.d/        # menu entry for the Temperature page
-root/usr/share/rpcd/ucode/         # RPC: proton-search-cache, proton-settings,
-                                   # proton-system, proton-temp
-install.sh / uninstall.sh          # one-command install and removal
-```
-
-## License
-
-Apache-2.0. Copyright 2025-2026 ChesterGoodiny. Project icons and bundled SVG
-assets are original first-party assets covered by Apache-2.0. See LICENSE and
-NOTICE for attribution details.
-
-Third-party assets: the **Inter** font, Copyright 2020 The Inter Project Authors
-(https://github.com/rsms/inter), under SIL Open Font License 1.1 — license file
-at `htdocs/luci-static/proton2025/fonts/LICENSE.txt`; the **WebGL Fluid**
-login animation, adapted from WebGL Fluid Simulation by Pavel Dobryakov,
-Copyright (c) 2017 (https://github.com/PavelDoGreat/WebGL-Fluid-Simulation),
-under the MIT License — license file at `LICENSES/MIT-fluid.txt`.
-
-## Acknowledgements
-
-- The optional SPA (same-document navigation) mode borrows some of its ideas
-  from [luci-theme-footstrap](https://github.com/VizzleTF/luci-theme-footstrap),
-  which pioneered client-side navigation for LuCI themes. The idea to bring this
-  approach into this theme came from seeing it adopted by the Aurora and Shadcn
-  themes (eamonxg). proton2025's router is an independent implementation built on
-  the browser Navigation API.
-- The alias/firstchild resolution logic is ported from LuCI's own
-  `dispatcher.uc` (luci-base, Apache-2.0), so that a clicked link and a page
-  reload resolve to exactly the same view.
-- Thanks to [lastik9/openwrt-luci-theme-proton2025](https://github.com/lastik9/openwrt-luci-theme-proton2025)
-  for helping identify the installation documentation issues that prompted this
-  simpler installer flow.
-
-## Star history
-
-<a href="https://www.star-history.com/?repos=ChesterGoodiny%2Fluci-theme-proton2025&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=ChesterGoodiny/luci-theme-proton2025&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=ChesterGoodiny/luci-theme-proton2025&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=ChesterGoodiny/luci-theme-proton2025&type=date&legend=top-left" />
- </picture>
-</a>
+Licensed under **Apache 2.0**. See [LICENSE](LICENSE) for details.
