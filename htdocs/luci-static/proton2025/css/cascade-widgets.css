@@ -1,0 +1,4100 @@
+.proton-widgets-section {
+    margin: 24px 0;
+}
+
+.proton-widgets-section-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.proton-widgets-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Общий заголовок "Виджеты" над контейнером */
+.proton-widgets-section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--proton-fg);
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+/* Кнопка настроек виджетов в заголовке секции */
+.proton-widgets-settings-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: var(--proton-radius);
+    background: var(--proton-accent-glow);
+    color: var(--proton-accent);
+    opacity: 0.6;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: var(--proton-transition);
+    line-height: 1;
+    padding: 0;
+}
+
+.proton-widgets-settings-btn .proton-widgets-settings-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+.proton-widgets-settings-btn:hover {
+    background: var(--proton-accent-glow);
+    transform: scale(1.1);
+}
+
+/* =====================================================
+   Services Widget - Main Page
+   ===================================================== */
+.proton-services-widget {
+    margin: 0;
+    background: var(--proton-bg-secondary);
+    border: 1px solid var(--proton-border);
+    border-radius: var(--proton-radius);
+    padding: 14px 16px;
+    /*backdrop-filter: blur(10px);*/
+    /*box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);*/
+}
+
+.proton-services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 12px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--proton-border);
+}
+
+.proton-services-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--proton-fg);
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.proton-add-service-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--proton-accent-glow);
+    color: var(--proton-accent);
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: var(--proton-transition);
+    line-height: 1;
+    padding: 0;
+}
+
+.proton-add-service-btn:hover {
+    background: var(--proton-accent-glow);
+    transform: scale(1.1);
+}
+
+
+
+.proton-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+/* Empty state placeholder for services widget */
+.proton-services-empty {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0;
+    color: var(--proton-muted);
+    font-size: 0.85rem;
+}
+
+.proton-services-empty-hint {
+    opacity: 0.7;
+}
+
+/* Log area under services widget */
+.proton-services-log {
+    margin-top: 10px;
+    padding: 6px 10px;
+    background: var(--proton-bg-tertiary);
+    border: 1px solid var(--proton-border-light);
+    border-radius: var(--proton-radius-sm);
+    color: var(--proton-fg-secondary);
+    font-size: 11px;
+    line-height: 1.3;
+    min-height: 14px;
+}
+
+.proton-services-log-line {
+    display: flex;
+    gap: 6px;
+}
+
+.proton-services-log-time {
+    color: var(--proton-muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.proton-services-log-text {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Category headers in widget */
+.proton-services-category-header {
+    grid-column: 1 / -1;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--proton-muted);
+    padding: 6px 0 3px 0;
+    border-bottom: 1px solid var(--proton-border-light, var(--proton-border));
+    margin-top: 6px;
+}
+
+.proton-services-category-header:first-child {
+    margin-top: 0;
+}
+
+.proton-service-card {
+    background: var(--proton-bg-tertiary);
+    border: 1px solid var(--proton-border);
+    border-radius: var(--proton-radius-sm);
+    padding: 10px 12px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.proton-service-card:hover {
+    background: var(--proton-bg-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.proton-service-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    flex: 1;
+}
+
+.proton-service-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.proton-service-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--proton-fg);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.proton-service-remove {
+    display: none;
+}
+
+.proton-service-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.proton-service-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.proton-service-status-dot.running {
+    background: var(--proton-success);
+    box-shadow: 0 0 6px var(--proton-success);
+}
+
+.proton-service-status-dot.stopped {
+    background: var(--proton-muted);
+}
+
+.proton-service-status-dot.error {
+    background: var(--proton-danger);
+    box-shadow: 0 0 6px var(--proton-danger);
+}
+
+.proton-service-status-dot.unknown {
+    background: #ffc107;
+    box-shadow: 0 0 6px rgba(255, 193, 7, 0.4);
+}
+
+.proton-service-status-dot.not-installed {
+    background: var(--proton-muted);
+    opacity: 0.5;
+}
+
+.proton-service-status-text {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.proton-service-status-text.running {
+    color: var(--proton-success);
+}
+
+.proton-service-status-text.stopped {
+    color: var(--proton-muted);
+}
+
+.proton-service-status-text.error {
+    color: var(--proton-danger);
+}
+
+.proton-service-status-text.unknown {
+    color: #ffc107;
+}
+
+.proton-service-status-text.not-installed {
+    color: var(--proton-muted);
+    opacity: 0.6;
+    font-style: italic;
+}
+
+.proton-service-description {
+    display: none;
+    /* Скрыто для компактности */
+}
+
+/* Modal for adding services */
+.proton-service-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--proton-transition);
+}
+
+.proton-service-modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.proton-service-modal-content {
+    background: var(--proton-bg-solid);
+    border: 1px solid var(--proton-border);
+    border-radius: var(--proton-radius);
+    padding: 24px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--proton-shadow-lg);
+    transform: scale(0.9);
+    transition: var(--proton-transition);
+    box-sizing: border-box;
+}
+
+.proton-service-modal.active .proton-service-modal-content {
+    transform: scale(1);
+}
+
+.proton-service-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.proton-service-modal-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--proton-fg);
+    margin: 0;
+}
+
+.proton-service-modal-close {
+    background: transparent;
+    border: none;
+    color: var(--proton-muted);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--proton-transition);
+}
+
+.proton-service-modal-close:hover {
+    background: var(--proton-bg-hover);
+    color: var(--proton-fg);
+}
+
+/* Widget toggles section */
+.proton-widget-toggles {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--proton-border);
+}
+
+.proton-widget-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: var(--proton-bg-tertiary);
+    border: 1px solid var(--proton-border);
+    border-radius: var(--proton-radius-sm);
+    cursor: pointer;
+    transition: var(--proton-transition);
+}
+
+.proton-widget-toggle:hover {
+    background: var(--proton-bg-hover);
+    border-color: var(--proton-border-hover, var(--proton-border));
+}
+
+.proton-widget-toggle-info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 2px 12px;
+}
+
+.proton-widget-toggle-icon {
+    font-size: 20px;
+    grid-row: 1 / -1;
+}
+
+.proton-widget-toggle-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--proton-fg);
+}
+
+.proton-widget-toggle-desc {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--proton-fg-muted, rgba(255, 255, 255, 0.45));
+    margin-top: 2px;
+    line-height: 1.3;
+}
+
+.proton-widget-toggle input[type="checkbox"] {
+    display: none;
+}
+
+.proton-widget-toggle-slider {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background: var(--proton-muted);
+    border-radius: 12px;
+    transition: var(--proton-transition);
+    flex-shrink: 0;
+}
+
+.proton-widget-toggle-slider::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    transition: var(--proton-transition);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.proton-widget-toggle input[type="checkbox"]:checked+.proton-widget-toggle-slider {
+    background: var(--proton-accent);
+}
+
+.proton-widget-toggle input[type="checkbox"]:checked+.proton-widget-toggle-slider::after {
+    transform: translateX(20px);
+}
+
+/* Section title in modal */
+.proton-service-modal-section-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--proton-muted);
+    margin-bottom: 12px;
+}
+
+/* Search in modal */
+.proton-service-search {
+    margin-bottom: 16px;
+}
+
+.proton-service-search input {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--proton-bg-tertiary);
+    border: 1px solid var(--proton-border);
+    border-radius: var(--proton-radius-sm);
+    color: var(--proton-fg);
+    font-size: 14px;
+    outline: none;
+    transition: var(--proton-transition);
+    box-sizing: border-box;
+}
+
+.proton-service-search input:focus {
+    border-color: var(--proton-accent);
+    box-shadow: 0 0 0 3px var(--proton-accent-glow);
+}
+
+.proton-service-search input::placeholder {
+    color: var(--proton-muted);
+}
+
+.proton-service-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    position: relative;
+    mask-image: linear-gradient(to bottom,
+            transparent 0,
+            black 8px,
+            black calc(100% - 8px),
+            transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom,
+            transparent 0,
+            black 8px,
+            black calc(100% - 8px),
+            transparent 100%);
+    padding: 8px 0;
+}
+
+/* Loading indicator */
+.proton-service-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 40px 20px;
+    color: var(--proton-muted);
+    font-size: 14px;
+}
+
+.proton-service-loading-spinner {
+    width: 28px;
+    height: 28px;
+    border: 3px solid var(--proton-border);
+    border-top-color: var(--proton-accent);
+    border-radius: 50%;
+    animation: proton-spin 0.8s linear infinite;
+}
+
+@keyframes proton-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Category headers in list */
+.proton-service-list-category {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--proton-muted);
+    padding: 12px 0 6px 0;
+    border-bottom: 1px solid var(--proton-border);
+    margin-top: 8px;
+}
+
+.proton-service-list-category:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.proton-service-item {
+    background: var(--proton-bg-secondary);
+    border: 1px solid var(--proton-border);
+    border-radius: var(--proton-radius-sm);
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: var(--proton-transition);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.proton-service-item-add.not-installed {
+    background: transparent;
+    border: 1px solid var(--proton-border);
+    color: var(--proton-muted);
+    cursor: default;
+    opacity: 0.7;
+}
+
+.proton-service-item-add.not-installed:hover {
+    background: transparent;
+}
+
+/* Кнопка удаления для сервисов, добавленных в виджет, но удалённых с роутера */
+.proton-service-item-add.not-installed-remove {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.proton-service-item-add.not-installed-remove:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+}
+
+.proton-service-item:hover {
+    background: var(--proton-bg-hover);
+    border-color: var(--proton-accent);
+}
+
+.proton-service-item-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.proton-service-item-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.proton-service-item-info h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--proton-fg);
+    margin: 0 0 2px 0;
+}
+
+.proton-service-item-info p {
+    font-size: 12px;
+    color: var(--proton-fg-secondary);
+    margin: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.proton-service-item-add {
+    background: var(--proton-accent);
+    color: white;
+    border: none;
+    border-radius: var(--proton-radius-sm);
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--proton-transition);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.proton-service-item-add:hover {
+    background: var(--proton-accent-hover);
+    transform: translateY(-1px);
+}
+
+.proton-service-item-add.added {
+    background: var(--proton-danger, #ef4444);
+}
+
+.proton-service-item-add.added:hover {
+    background: var(--proton-danger-hover, #dc2626);
+}
+
+/* Custom service badge */
+.proton-custom-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 2px 6px;
+    background: var(--proton-accent-glow, rgba(94, 158, 255, 0.15));
+    color: var(--proton-accent);
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.proton-service-item-custom {
+    border-color: var(--proton-accent-glow, rgba(94, 158, 255, 0.3));
+    background: var(--proton-accent-glow, rgba(94, 158, 255, 0.05));
+}
+
+.proton-service-empty {
+    text-align: center;
+    padding: 32px;
+    color: var(--proton-muted);
+    font-size: 14px;
+}
+
+/* Empty state with custom service suggestion */
+.proton-service-empty-custom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.proton-service-empty-icon {
+    font-size: 32px;
+    opacity: 0.7;
+}
+
+.proton-service-empty-text {
+    font-size: 14px;
+    color: var(--proton-fg-secondary);
+}
+
+.proton-service-empty-hint {
+    font-size: 12px;
+    color: var(--proton-muted);
+}
+
+.proton-service-add-custom-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background: var(--proton-accent);
+    color: white;
+    border: none;
+    border-radius: var(--proton-radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--proton-transition);
+    margin-top: 4px;
+}
+
+.proton-service-add-custom-btn:hover {
+    background: var(--proton-accent-hover);
+    transform: translateY(-1px);
+}
+
+/* Disable animations if user prefers */
+.proton-no-animations .proton-service-status-dot.running,
+.proton-no-animations .proton-service-status-dot.running::before {
+    animation: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .proton-service-modal-content {
+        width: calc(100% - 32px);
+        max-width: 100%;
+        padding: 16px;
+        max-height: 85vh;
+        margin: 0 16px;
+    }
+
+    .proton-service-modal-title {
+        font-size: 1.1rem;
+    }
+
+    .proton-service-item {
+        flex-wrap: wrap;
+        padding: 12px;
+        gap: 8px;
+    }
+
+    .proton-service-item-info {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+
+    .proton-service-item-add {
+        flex: 1 1 100%;
+        text-align: center;
+        padding: 10px 12px;
+    }
+
+    .proton-service-item-info p {
+        white-space: normal;
+        overflow: visible;
+    }
+
+    .proton-service-search input {
+        padding: 14px 16px;
+        font-size: 16px;
+        /* Предотвращает зум на iOS */
+    }
+
+    .proton-service-add-custom-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .proton-widget-toggle {
+        padding: 10px 14px;
+    }
+
+    .proton-widget-toggle-name {
+        font-size: 0.9rem;
+    }
+
+    .proton-widget-toggle-slider {
+        width: 40px;
+        height: 22px;
+    }
+
+    .proton-widget-toggle-slider::after {
+        width: 18px;
+        height: 18px;
+    }
+
+    .proton-widget-toggle input[type="checkbox"]:checked+.proton-widget-toggle-slider::after {
+        transform: translateX(18px);
+    }
+}
+
+/* =====================================================
+   Login Page (sysauth) Styles
+   ===================================================== */
+body.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 20px;
+    background: var(--proton-bg-solid);
+    transition: background 0.3s ease;
+    scroll-padding-bottom: 40vh;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    animation: loginSlideIn 0.6s ease-out;
+    margin: auto;
+}
+
+/* Mobile keyboard stability */
+@media (max-width: 768px) {
+    body.login-page {
+        /* visualViewport-driven height (set by sysauth.ut). Fallback keeps old behavior. */
+        height: var(--proton-vv-height, 100dvh);
+        min-height: var(--proton-vv-height, 100dvh);
+        overflow: hidden;
+        padding: 12px;
+    }
+
+    body.login-page.proton-kb-open {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .login-container {
+        max-height: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 auto;
+        padding-bottom: 12px;
+    }
+
+    body.login-page:not(.proton-kb-open) .login-container {
+        margin: auto;
+        padding-bottom: 0;
+    }
+}
+
+@keyframes loginSlideIn {
+    from {
+        transform: translateY(20px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.login-card {
+    background: var(--proton-bg-secondary);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--proton-border);
+    border-radius: var(--proton-radius-lg);
+    padding: 40px 36px;
+    box-shadow: var(--proton-shadow-lg);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="light"] .login-card {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--proton-shadow-lg);
+}
+
+.login-header {
+    text-align: center;
+}
+
+.login-header .login-logo {
+    height: 56px;
+    width: auto;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.login-header img {
+    height: 56px;
+    margin-bottom: 20px;
+    transition: filter 0.3s ease;
+}
+
+:root[data-theme="light"] .login-header img {
+    filter: brightness(0.25);
+}
+
+.login-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: var(--proton-fg);
+    letter-spacing: -0.02em;
+}
+
+.login-header .hostname {
+    color: var(--proton-accent);
+    font-weight: 600;
+}
+
+.login-header p {
+    color: var(--proton-muted);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Custom login branding (router name + optional uploaded logo) —
+   logo and name on one line, like the default Proton2025 lockup. */
+.login-header-branded {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.login-header-branded .login-brand-logo {
+    height: 48px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+    margin: 0 !important;
+    display: inline-block;
+    flex: 0 0 auto;
+}
+
+/* Logo-only mode: the logo is the sole child, so make it a bit larger
+   and let the flex container keep it centered. */
+.login-header-branded .login-brand-logo:only-child {
+    height: 64px;
+    max-width: 220px;
+}
+
+/* Don't auto-darken a user-supplied logo in the light theme. */
+:root[data-theme="light"] .login-header-branded .login-brand-logo {
+    filter: none !important;
+}
+
+/* Pin the login name input's line-height to match the segmented picker's
+   options (both 14px / line-height 1.2 / padding 10px 14px / 1px border),
+   so the two controls are pixel-identical in height and the block doesn't
+   shift when the name field is shown/hidden. */
+#proton-login-name-input {
+    line-height: 1.2;
+}
+
+/* Segmented control for the login display-mode picker (Logo & name / Logo
+   only) in the theme settings panel. */
+.proton-seg {
+    display: inline-flex;
+    align-self: flex-start;
+    border: 1px solid var(--proton-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.proton-seg .proton-seg-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    /* Match the theme text input (padding 10px 14px, font-size 14px, 1px
+       border) so the picker and the name field are exactly the same
+       height — otherwise the block shifts a few px when the name field
+       appears/disappears on toggle. */
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--proton-fg-secondary);
+    user-select: none;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.proton-seg .proton-seg-option+.proton-seg-option {
+    border-left: 1px solid var(--proton-border);
+}
+
+.proton-seg .proton-seg-option:hover {
+    background: var(--proton-bg-secondary);
+}
+
+.proton-seg .proton-seg-option.proton-seg-active {
+    background: var(--proton-accent);
+    color: #fff;
+}
+
+/* The radio itself is the state holder, not a visible control. */
+.proton-seg .proton-seg-option input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+    margin: 0;
+}
+
+.login-header-branded .login-brand-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--proton-fg);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+.login-form .form-group {
+    margin-bottom: 22px;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--proton-fg-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+.login-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.login-input-icon,
+.login-password-toggle {
+    position: absolute;
+    top: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--proton-muted);
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.login-input-icon {
+    left: 14px;
+}
+
+.login-input-icon svg,
+.login-password-toggle svg {
+    width: 18px;
+    height: 18px;
+    fill: none !important;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.login-input-icon svg *,
+.login-password-toggle svg * {
+    fill: none !important;
+}
+
+.login-form input {
+    width: 100%;
+    max-width: 100%;
+    padding: 13px 16px 13px 44px;
+    font-size: 0.95rem;
+    background: var(--proton-bg-tertiary);
+    border: 1px solid var(--proton-border);
+    border-radius: var(--proton-radius-sm);
+    color: var(--proton-fg);
+    transition: var(--proton-transition);
+}
+
+.login-password-wrap input {
+    padding-right: 44px;
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: var(--proton-accent);
+    background: var(--proton-bg-secondary);
+    box-shadow: 0 0 0 3px var(--proton-accent-glow);
+}
+
+.login-input-wrap:focus-within .login-input-icon,
+.login-input-wrap:focus-within .login-password-toggle {
+    color: var(--proton-accent);
+}
+
+.login-form>button[type="submit"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--proton-accent);
+    color: #fff;
+    border: 1px solid var(--proton-accent);
+    border-radius: var(--proton-radius-sm);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 8px;
+}
+
+.login-submit-icon {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+}
+
+.login-form>button[type="submit"]:hover {
+    background: transparent;
+    color: var(--proton-accent);
+    border-color: var(--proton-accent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+:root[data-theme="light"] .login-form>button[type="submit"]:hover {
+    background: transparent;
+    color: var(--proton-accent);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-form>button[type="submit"]:active {
+    transform: translateY(0);
+    background: transparent;
+    color: var(--proton-accent);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.login-password-toggle {
+    right: 12px;
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+    min-height: 32px;
+    padding: 0;
+    margin: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: 0 !important;
+    border-radius: 999px;
+    box-shadow: none !important;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    transform: translateY(-50%) !important;
+    pointer-events: auto;
+}
+
+.login-password-toggle:hover,
+.login-password-toggle:focus,
+.login-password-toggle:active,
+.login-password-toggle[aria-pressed="true"] {
+    color: var(--proton-accent);
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    transform: translateY(-50%) !important;
+}
+
+.login-password-toggle:focus-visible {
+    outline: 2px solid var(--proton-accent);
+    outline-offset: 2px;
+}
+
+.login-password-toggle[aria-pressed="false"] .login-eye-slash {
+    display: none;
+}
+
+.login-powered {
+    margin-top: 10px;
+    padding-top: 12px;
+    text-align: center;
+    color: var(--proton-muted);
+    font-size: 0.78rem;
+    line-height: 1.4;
+}
+
+.login-powered::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin: 0 0 12px;
+    border-radius: 999px;
+    background: var(--proton-border);
+}
+
+.login-powered span {
+    color: inherit;
+    font-weight: 500;
+}
+
+.login-error {
+    background: rgba(248, 113, 113, 0.12);
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    border-left: 3px solid var(--proton-danger);
+    color: var(--proton-danger);
+    padding: 14px 16px;
+    border-radius: var(--proton-radius-sm);
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+:root[data-theme="light"] .login-error {
+    background: rgba(220, 38, 38, 0.08);
+    border-color: rgba(220, 38, 38, 0.25);
+    border-left-color: #dc2626;
+    color: #991b1b;
+}
+
+/* =====================================================
+   Realtime Graphs (Load, Bandwidth, etc) - SVG Chart Styling
+   ===================================================== */
+/* Override inline background color for dark theme */
+body[data-page="admin-status-realtime-load"] .cbi-section>div[style*="background:#fff"],
+body[data-page="admin-status-realtime-bandwidth"] .cbi-section>div[style*="background:#fff"],
+body[data-page="admin-status-realtime-wireless"] .cbi-section>div[style*="background:#fff"],
+body[data-page="admin-status-realtime-connections"] .cbi-section>div[style*="background:#fff"],
+body[data-page="admin-status-realtime-temperature"] .cbi-section>div[style*="background:#fff"] {
+    background: var(--proton-bg-secondary) !important;
+}
+
+/* Light theme */
+:root[data-theme="light"] body[data-page="admin-status-realtime-load"] .cbi-section>div[style*="background:#fff"],
+:root[data-theme="light"] body[data-page="admin-status-realtime-bandwidth"] .cbi-section>div[style*="background:#fff"],
+:root[data-theme="light"] body[data-page="admin-status-realtime-wireless"] .cbi-section>div[style*="background:#fff"],
+:root[data-theme="light"] body[data-page="admin-status-realtime-connections"] .cbi-section>div[style*="background:#fff"],
+:root[data-theme="light"] body[data-page="admin-status-realtime-temperature"] .cbi-section>div[style*="background:#fff"] {
+    background: #ffffff !important;
+}
+
+/* SVG grid lines and labels color adaptation */
+body[data-page^="admin-status-realtime"] .cbi-section svg line {
+    stroke: var(--proton-border) !important;
+}
+
+body[data-page^="admin-status-realtime"] .cbi-section svg text {
+    fill: var(--proton-fg-secondary) !important;
+}
+
+:root[data-theme="light"] body[data-page^="admin-status-realtime"] .cbi-section svg line {
+    stroke: rgba(0, 0, 0, 0.15) !important;
+}
+
+:root[data-theme="light"] body[data-page^="admin-status-realtime"] .cbi-section svg text {
+    fill: #4a5568 !important;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-realtime-page {
+    display: grid;
+    gap: 18px;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-window-selector {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-window-btn {
+    appearance: none;
+    border: 1px solid var(--proton-border);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--proton-bg-tertiary) 88%, transparent);
+    color: var(--proton-fg-secondary);
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--proton-transition);
+    white-space: nowrap;
+    line-height: 1.4;
+    text-align: center;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-window-btn:hover {
+    border-color: var(--proton-fg-secondary);
+    color: var(--proton-fg);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-window-btn[data-active="true"] {
+    border-color: var(--proton-accent);
+    color: var(--proton-accent);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-section,
+body[data-page="admin-status-realtime-temperature"] .proton-temp-table-section {
+    background: var(--proton-bg-secondary);
+    border: 1px solid var(--proton-border);
+    border-radius: var(--proton-radius);
+    padding: 16px;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-title-wrap {
+    min-width: 0;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-toolbar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 6px 8px 6px 12px;
+    border: 1px solid var(--proton-border);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--proton-bg-tertiary) 76%, transparent);
+    flex: 0 0 auto;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-toolbar-label {
+    color: var(--proton-muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-selector-chip {
+    --sensor-color: var(--proton-accent);
+    appearance: none;
+    border: 1px solid var(--proton-border);
+    border-radius: 999px;
+    background: var(--proton-bg-tertiary);
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: var(--proton-transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: inset 0 0 0 1px transparent;
+    max-width: 100%;
+    min-height: 34px;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-selector-chip::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--sensor-color);
+    flex: 0 0 auto;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-selector-chip:hover,
+body[data-page="admin-status-realtime-temperature"] .proton-temp-selector-chip:focus-visible,
+body[data-page="admin-status-realtime-temperature"] .proton-temp-selector-chip[data-active="true"] {
+    border-color: var(--sensor-color);
+    background: var(--proton-bg-hover);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-selector-chip[data-active="true"] {
+    color: var(--proton-fg);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+        0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-selector-label {
+    color: var(--proton-fg);
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-selector-meta {
+    color: var(--proton-fg-secondary);
+    font-size: 11px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    margin-left: auto;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-summary-card {
+    background: var(--proton-bg-tertiary);
+    border: 1px solid var(--proton-border);
+    border-radius: var(--proton-radius-sm);
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-summary-card.is-status .proton-temp-summary-value {
+    font-size: 1rem;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-summary-label {
+    color: var(--proton-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-summary-value {
+    color: var(--proton-fg);
+    font-size: 1.08rem;
+    font-variant-numeric: tabular-nums;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-title {
+    margin: 0;
+    font-size: 1.06rem;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-realtime-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-legend-item {
+    --sensor-color: var(--proton-accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border: 1px solid var(--proton-border);
+    border-radius: 999px;
+    background: var(--proton-bg-tertiary);
+    font-size: 12px;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--sensor-color);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-legend-name {
+    color: var(--proton-fg-secondary);
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-legend-value {
+    color: var(--proton-fg);
+    font-variant-numeric: tabular-nums;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-wrap {
+    position: relative;
+    min-height: 340px;
+    border-radius: var(--proton-radius-sm);
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top left, rgba(107, 207, 127, 0.12), transparent 28%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+    border: 1px solid var(--proton-border);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-svg {
+    display: block;
+    width: 100%;
+    height: 340px;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-bg {
+    fill: transparent;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-grid-line {
+    stroke: rgba(255, 255, 255, 0.12);
+    stroke-dasharray: 4 6;
+    stroke-width: 1;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-axis-label {
+    font-size: 12px;
+    fill: var(--proton-fg-secondary);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-threshold-label {
+    font-size: 11px;
+    font-weight: 600;
+    fill: var(--proton-fg);
+    paint-order: stroke fill;
+    stroke: var(--proton-bg-secondary);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-series-label {
+    font-size: 11px;
+    fill: var(--proton-fg);
+    opacity: 0.85;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-threshold {
+    stroke-width: 1.5;
+    stroke-dasharray: 8 8;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-threshold-warm {
+    stroke: rgba(251, 191, 36, 0.8);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-threshold-hot {
+    stroke: rgba(249, 115, 22, 0.8);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-threshold-critical {
+    stroke: rgba(239, 68, 68, 0.8);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-average-line {
+    stroke: rgba(255, 255, 255, 0.24);
+    stroke-dasharray: 6 6;
+    stroke-width: 1.5;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-average-label {
+    font-size: 12px;
+    fill: var(--proton-fg-secondary);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-area {
+    opacity: 0.18;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-line {
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-point {
+    stroke: rgba(255, 255, 255, 0.6);
+    stroke-width: 1.5;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-hover-layer {
+    fill: transparent;
+    pointer-events: all;
+    touch-action: none;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-hover-guide {
+    stroke: var(--proton-chart-guide);
+    stroke-dasharray: 4 6;
+    stroke-width: 1;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-hover-point {
+    stroke: var(--proton-chart-point-ring);
+    stroke-width: 1.8;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-tooltip {
+    position: absolute;
+    z-index: 2;
+    min-width: 176px;
+    max-width: min(280px, calc(100% - 16px));
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--proton-tooltip-border);
+    background: var(--proton-tooltip-bg);
+    box-shadow: var(--proton-tooltip-shadow);
+    backdrop-filter: blur(10px);
+    pointer-events: none;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-tooltip[data-placement="top"] {
+    transform: translateY(-100%);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-tooltip-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-tooltip-title {
+    color: var(--proton-fg);
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-tooltip-time {
+    color: var(--proton-muted);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-tooltip-body {
+    display: grid;
+    gap: 6px;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-tooltip-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-tooltip-key {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-tooltip-swatch {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sensor-color);
+    flex: 0 0 auto;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-tooltip-label {
+    color: var(--proton-fg-secondary);
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-tooltip-value {
+    color: var(--proton-fg);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-empty {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--proton-muted);
+    font-size: 14px;
+    backdrop-filter: blur(4px);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-realtime-status {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: var(--proton-radius-sm);
+    font-size: 13px;
+    display: none;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-realtime-status[data-state="warning"] {
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.08);
+    border: 1px solid rgba(251, 191, 36, 0.18);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-table-title {
+    margin: 0 0 12px;
+    font-size: 1.02rem;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-table {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--proton-radius-sm);
+    overflow: hidden;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-table thead th {
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--proton-fg-secondary);
+    font-size: 12px;
+    letter-spacing: 0.03em;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-table th,
+body[data-page="admin-status-realtime-temperature"] .proton-temp-table td {
+    padding: 10px 12px;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-table tbody tr {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-sensor-cell {
+    min-width: 180px;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-sensor-chip {
+    --sensor-color: var(--proton-accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--proton-fg);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-sensor-chip::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--sensor-color);
+    flex: 0 0 auto;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-sensor-path {
+    margin-top: 4px;
+    color: var(--proton-muted);
+    font-size: 12px;
+    word-break: break-all;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-metric-value {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-state-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 76px;
+    padding: 5px 9px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-state-badge[data-level="normal"] {
+    color: var(--proton-success);
+    background: rgba(107, 207, 127, 0.1);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-state-badge[data-level="warm"] {
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.12);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-state-badge[data-level="hot"] {
+    color: #f97316;
+    background: rgba(249, 115, 22, 0.12);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-state-badge[data-level="critical"] {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.12);
+}
+
+body[data-page="admin-status-realtime-temperature"] .proton-temp-table-empty {
+    text-align: center;
+    color: var(--proton-muted);
+    padding: 24px 12px;
+}
+
+@media (max-width: 900px) {
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-head {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-toolbar {
+        width: fit-content;
+        max-width: 100%;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    body[data-page="admin-status-realtime-temperature"] .cbi-map>h2 {
+        font-size: 1.9rem;
+        line-height: 1.08;
+        margin-bottom: 14px;
+        overflow-wrap: anywhere;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .cbi-map>.cbi-map-descr {
+        font-size: 14px;
+        line-height: 1.55;
+        margin-bottom: 14px;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-section,
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-table-section {
+        padding: 12px;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-toolbar {
+        width: 100%;
+        justify-content: space-between;
+        padding: 8px 10px;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-window-selector {
+        justify-content: flex-end;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-selector {
+        gap: 8px;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-selector-chip {
+        width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 8px 10px;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-selector-label {
+        flex: 1 1 auto;
+        white-space: normal;
+        line-height: 1.25;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-selector-meta {
+        flex: 0 0 auto;
+        padding-left: 10px;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-summary {
+        grid-template-columns: 1fr;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-wrap,
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-svg {
+        min-height: 260px;
+        height: 260px;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-axis-label,
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-threshold-label {
+        font-size: 10px;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-series-label {
+        display: none;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-chart-tooltip {
+        min-width: 160px;
+        max-width: calc(100% - 12px);
+        padding: 9px 10px;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-tooltip-head {
+        gap: 8px;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-table {
+        overflow: visible;
+        border: 0;
+        background: transparent;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-table table,
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-table tbody,
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-table tr,
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-table td {
+        display: block;
+        width: 100%;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-table thead {
+        display: none;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-table tbody {
+        display: grid;
+        gap: 12px;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-table tbody tr {
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: var(--proton-radius-sm);
+        background: var(--proton-bg-tertiary);
+        padding: 12px;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-table td {
+        padding: 0;
+        border: 0;
+        background: transparent;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-sensor-cell {
+        min-width: 0;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-metric-value,
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-status-cell {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 7px 0;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-metric-value::before,
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-status-cell::before {
+        content: attr(data-label);
+        color: var(--proton-muted);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-status-cell {
+        padding-top: 10px;
+        margin-top: 4px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    body[data-page="admin-status-realtime-temperature"] .proton-temp-state-badge {
+        min-width: 0;
+    }
+}
+
+
+/* =====================================================
+ * Custom Pages - Bootstrap Table Styles Override
+ * ===================================================== */
+
+/* Apply bootstrap-style table formatting for custom package pages */
+body.proton-custom-page .table {
+    display: table;
+    width: 100%;
+    margin-bottom: 18px;
+    padding: 0;
+    font-size: 13px;
+    border-collapse: collapse;
+    position: relative;
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+}
+
+body.proton-custom-page .table .tr {
+    display: table-row;
+}
+
+body.proton-custom-page .table .th,
+body.proton-custom-page .table .td {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 10px 10px 9px;
+    line-height: 18px;
+    text-align: left;
+}
+
+body.proton-custom-page .table .tr:first-child .th {
+    padding-top: 9px;
+    font-weight: bold;
+    vertical-align: top;
+}
+
+body.proton-custom-page .table .td,
+body.proton-custom-page .table .th {
+    border-top: 1px solid var(--border-color-medium);
+}
+
+body.proton-custom-page .cbi-value-field {
+    margin-left: 20px;
+    flex: 1;
+    min-width: auto;
+}
+
+body.proton-custom-page td {
+    padding: 10px 10px 9px;
+    border-bottom: none;
+    color: var(--text-color-high);
+}
+
+body.proton-custom-page table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+    margin-bottom: 18px;
+}
+
+
+/* =====================================================
+ * Custom Pages - Text Wrapping for Long Labels
+ * ===================================================== */
+
+/* Разрешаем перенос текста в labels для длинных переводов (RU, DE и т.д.) */
+body.proton-custom-page .cbi-value-title {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+body.proton-custom-page .cbi-tabmenu li a,
+body.proton-custom-page .tabs li a {
+    white-space: normal;
+    word-wrap: break-word;
+    text-align: center;
+    line-height: 1.3;
+    padding: 8px 12px;
+}
+
+body.proton-custom-page .cbi-value-description {
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+body.proton-custom-page .btn,
+body.proton-custom-page .cbi-button {
+    white-space: normal;
+    word-wrap: break-word;
+    min-height: auto;
+    height: auto;
+    line-height: 1.3;
+    padding: 6px 12px;
+}
+
+body.proton-custom-page select.cbi-input-select {
+    white-space: normal;
+    /*max-width: 100%;*/
+}
+
+
+/* Custom Pages - Smaller font-size for tables */
+body.proton-custom-page .table,
+body.proton-custom-page table,
+body.proton-custom-page .cbi-section-table {
+    font-size: 12px;
+}
+
+body.proton-custom-page .table .th,
+body.proton-custom-page .table .td,
+body.proton-custom-page table th,
+body.proton-custom-page table td {
+    font-size: 12px;
+    padding: 8px 10px;
+}
+
+/* Псевдо-ячейки имени named-таблиц (upstream LuCI, см. блок "LuCI named
+   tables" выше) должны ужиматься вместе с настоящими th/td, иначе первая
+   колонка становится выше и шире остальных. */
+body.proton-custom-page .cbi-section-table .cbi-section-table-titles.named::before,
+body.proton-custom-page .cbi-section-table .cbi-section-table-descr.named::before,
+body.proton-custom-page .cbi-section-table .cbi-section-table-row[data-title]::before {
+    font-size: 12px;
+    padding: 8px 10px;
+}
+
+/* Бутстрап-оверрайд выше даёт .th/.td кастомных страниц border-top — в
+   section-table он рисует лишнюю линию над полосой шапки (а над псевдо-
+   ячейкой имени её нет, линия обрывается). Внутри карточки шапке верхняя
+   граница не нужна вовсе. */
+body.proton-custom-page .cbi-section-table .cbi-section-table-titles th,
+body.proton-custom-page .cbi-section-table .cbi-section-table-titles .th {
+    border-top: none;
+}
+
+/* Collapse empty cbi-section-table-descr rows on custom pages.
+   Do NOT use display:none — some apps render their column-title row
+   with this class, so hiding it would drop the entire header. */
+body.proton-custom-page .cbi-section-table-descr th:empty,
+body.proton-custom-page .cbi-section-table-descr .th:empty {
+    padding: 0;
+    line-height: 0;
+    font-size: 0;
+    border: none;
+}
+
+
+/* =====================================================
+   Log Viewer - Syntax Highlighting
+   ===================================================== */
+
+/* Hide log textareas instantly on log pages to prevent FOUC */
+/* Skip textareas marked visible (when log highlighting is disabled) */
+[data-page*="logs"] textarea[readonly]:not([data-proton-visible]),
+[data-page*="syslog"] textarea[readonly]:not([data-proton-visible]),
+[data-page*="dmesg"] textarea[readonly]:not([data-proton-visible]) {
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+}
+
+/* Обёртка: toolbar + viewer */
+.proton-log-wrapper {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--proton-border);
+    border-radius: var(--proton-radius-sm);
+    overflow: hidden;
+    background: var(--proton-bg-secondary);
+}
+
+/* ── Toolbar ──────────────────────────────────────── */
+
+.proton-log-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid var(--proton-border);
+    flex-shrink: 0;
+    min-height: 38px;
+    user-select: none;
+}
+
+/* Stats row */
+.proton-log-stats {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.proton-log-stat-total {
+    color: var(--proton-muted);
+    font-weight: 500;
+}
+
+.proton-log-stat-sep {
+    color: var(--proton-border);
+    margin: 0 2px;
+}
+
+/* Clickable severity badges */
+.proton-log-stat {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+}
+
+.proton-log-stat:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.15);
+}
+
+.proton-log-stat.active {
+    border-color: currentColor;
+    box-shadow: 0 0 6px currentColor;
+}
+
+.proton-log-stat-critical {
+    color: #ff4757;
+    background: rgba(255, 71, 87, 0.12);
+}
+
+.proton-log-stat-error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.12);
+}
+
+.proton-log-stat-warning {
+    color: #ffd93d;
+    background: rgba(255, 217, 61, 0.10);
+}
+
+.proton-log-stat-denied {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.10);
+}
+
+.proton-log-stat-disconnected {
+    color: #ff9671;
+    background: rgba(255, 150, 113, 0.10);
+}
+
+.proton-log-stat-success {
+    color: #6bcf7f;
+    background: rgba(107, 207, 127, 0.10);
+}
+
+.proton-log-stat-notice {
+    color: #5e9eff;
+    background: rgba(94, 158, 255, 0.10);
+}
+
+/* Action buttons */
+.proton-log-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.proton-log-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--proton-border);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--proton-muted);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    padding: 0;
+    line-height: 1;
+}
+
+.proton-log-btn:hover {
+    color: var(--proton-fg);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--proton-accent);
+}
+
+.proton-log-btn.active {
+    color: var(--proton-accent);
+    background: var(--proton-accent-glow);
+    border-color: var(--proton-accent);
+}
+
+/* Brief success feedback on copy/download */
+.proton-log-btn-ok {
+    color: #6bcf7f !important;
+    border-color: #6bcf7f !important;
+}
+
+/* Button group separator */
+.proton-log-btn-sep {
+    display: inline-block;
+    width: 1px;
+    height: 20px;
+    background: var(--proton-border);
+    margin: 0 4px;
+    opacity: 0.5;
+}
+
+/* Pulse animation for "new content below" indicator */
+.proton-log-btn-pulse {
+    animation: protonLogPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes protonLogPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    80% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ── Hide Timestamps Mode ─────────────────────────── */
+
+.proton-log-hide-ts .proton-log-timestamp {
+    display: none;
+}
+
+/* ── Fullscreen Mode ──────────────────────────────── */
+
+.proton-log-fullscreen {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    border-radius: 0 !important;
+    border: none !important;
+    margin: 0 !important;
+    background: var(--proton-bg-solid) !important;
+}
+
+.proton-log-fullscreen .proton-log-viewer {
+    max-height: none !important;
+    flex: 1;
+}
+
+body.proton-log-fs-active {
+    overflow: hidden !important;
+}
+
+/* Hide page chrome in fullscreen — prevents stacking context conflicts */
+body.proton-log-fs-active #menubar,
+body.proton-log-fs-active #modemenu,
+body.proton-log-fs-active #mainmenu,
+body.proton-log-fs-active #tabmenu {
+    display: none !important;
+}
+
+/* Remove animation stacking context so position:fixed escapes properly */
+body.proton-log-fs-active #maincontent {
+    animation: none !important;
+    padding: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    overflow: visible !important;
+}
+
+body.proton-log-fs-active #maincontainer {
+    display: block !important;
+}
+
+/* ── Log Viewer (scroll area) ─────────────────────── */
+
+.proton-log-viewer {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--proton-fg);
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: calc(100vh - 260px);
+    min-height: 200px;
+    scroll-behavior: smooth;
+    position: relative;
+    contain: style paint;
+}
+
+.proton-log-viewer:focus {
+    outline: none;
+}
+
+.proton-log-viewer:focus-visible {
+    box-shadow: inset 0 0 0 2px var(--proton-accent-glow);
+}
+
+/* Word wrap mode */
+.proton-log-wrapped {
+    overflow-x: hidden;
+}
+
+.proton-log-wrapped .proton-log-content {
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* ── Log Line ─────────────────────────────────────── */
+
+.proton-log-line {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.015);
+    border-left: 3px solid transparent;
+    transition: background 0.1s ease;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 28px;
+    min-width: max-content;
+}
+
+/* Zebra striping */
+.proton-log-line:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.008);
+}
+
+.proton-log-line:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Severity left-border gutter */
+.proton-log-line[data-severity="critical"] {
+    border-left-color: #ff4757;
+    background: rgba(255, 71, 87, 0.04);
+}
+
+.proton-log-line[data-severity="error"] {
+    border-left-color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.03);
+}
+
+.proton-log-line[data-severity="warning"] {
+    border-left-color: #ffd93d;
+}
+
+.proton-log-line[data-severity="denied"] {
+    border-left-color: #ff6b6b;
+}
+
+.proton-log-line[data-severity="disconnected"] {
+    border-left-color: #ff9671;
+}
+
+.proton-log-line[data-severity="notice"] {
+    border-left-color: #5e9eff;
+}
+
+.proton-log-line[data-severity="success"] {
+    border-left-color: #6bcf7f;
+}
+
+.proton-log-line[data-severity="started"] {
+    border-left-color: #6bcf7f;
+}
+
+.proton-log-line[data-severity="stopped"] {
+    border-left-color: #ff9671;
+}
+
+.proton-log-line[data-severity="debug"] {
+    border-left-color: #b19cd9;
+}
+
+/* ── Severity Filter Dimming ──────────────────────── */
+
+.proton-log-viewer[data-active-filter] .proton-log-line {
+    opacity: 0.2;
+    transition: opacity 0.2s ease;
+}
+
+.proton-log-viewer[data-active-filter="critical"] .proton-log-line[data-severity="critical"],
+.proton-log-viewer[data-active-filter="error"] .proton-log-line[data-severity="error"],
+.proton-log-viewer[data-active-filter="warning"] .proton-log-line[data-severity="warning"],
+.proton-log-viewer[data-active-filter="denied"] .proton-log-line[data-severity="denied"],
+.proton-log-viewer[data-active-filter="disconnected"] .proton-log-line[data-severity="disconnected"],
+.proton-log-viewer[data-active-filter="notice"] .proton-log-line[data-severity="notice"],
+.proton-log-viewer[data-active-filter="success"] .proton-log-line[data-severity="success"],
+.proton-log-viewer[data-active-filter="debug"] .proton-log-line[data-severity="debug"] {
+    opacity: 1;
+}
+
+/* ── Line Number Gutter ───────────────────────────── */
+
+.proton-log-gutter {
+    display: inline-block;
+    min-width: 44px;
+    padding: 4px 10px 4px 8px;
+    text-align: right;
+    color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.01);
+    border-right: 1px solid rgba(255, 255, 255, 0.04);
+    user-select: none;
+    flex-shrink: 0;
+    font-size: 11px;
+    line-height: 1.6;
+    font-variant-numeric: tabular-nums;
+}
+
+.proton-log-line:hover .proton-log-gutter {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Line Content ─────────────────────────────────── */
+
+.proton-log-content {
+    flex: 1;
+    padding: 4px 12px;
+    white-space: pre;
+    min-width: 0;
+    line-height: 1.6;
+}
+
+/* ── Token Styles ─────────────────────────────────── */
+
+/* Временные метки */
+.proton-log-timestamp {
+    color: var(--proton-muted);
+    opacity: 0.65;
+}
+
+/* Префиксы уровня лога */
+.proton-log-prefix {
+    font-weight: 600;
+    padding: 0 4px;
+    border-radius: 3px;
+    margin-right: 2px;
+}
+
+/* Prefix badges with subtle backgrounds */
+.proton-log-level-emerg,
+.proton-log-level-alert,
+.proton-log-level-crit {
+    color: #ff4757;
+    background: rgba(255, 71, 87, 0.12);
+    font-weight: 700;
+}
+
+.proton-log-level-err {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.10);
+}
+
+.proton-log-level-warn {
+    color: #ffd93d;
+    background: rgba(255, 217, 61, 0.08);
+}
+
+.proton-log-level-notice {
+    color: #5e9eff;
+    background: rgba(94, 158, 255, 0.08);
+}
+
+.proton-log-level-info {
+    color: #a8dadc;
+    background: rgba(168, 218, 220, 0.06);
+}
+
+.proton-log-level-debug {
+    color: #b19cd9;
+    background: rgba(177, 156, 217, 0.06);
+}
+
+/* Keyword styles */
+.proton-log-keyword-critical {
+    color: #ff4757;
+    font-weight: 700;
+    text-shadow: 0 0 6px rgba(255, 71, 87, 0.35);
+}
+
+.proton-log-keyword-error {
+    color: #ff6b6b;
+    font-weight: 600;
+}
+
+.proton-log-keyword-warning {
+    color: #ffd93d;
+    font-weight: 600;
+}
+
+.proton-log-keyword-notice {
+    color: #5e9eff;
+}
+
+.proton-log-keyword-info {
+    color: #a8dadc;
+}
+
+.proton-log-keyword-debug {
+    color: #b19cd9;
+}
+
+.proton-log-keyword-success {
+    color: #6bcf7f;
+    font-weight: 600;
+}
+
+.proton-log-keyword-disconnected {
+    color: #ff9671;
+    font-weight: 600;
+}
+
+.proton-log-keyword-denied {
+    color: #ff6b6b;
+    font-weight: 600;
+}
+
+.proton-log-keyword-started {
+    color: #6bcf7f;
+}
+
+.proton-log-keyword-stopped {
+    color: #ff9671;
+}
+
+/* IP адреса */
+.proton-log-ip {
+    color: #74c0fc;
+    font-weight: 500;
+}
+
+/* MAC адреса */
+.proton-log-mac {
+    color: #b197fc;
+    font-weight: 500;
+}
+
+/* Процессы и сервисы */
+.proton-log-process {
+    color: #ffa94d;
+    font-weight: 500;
+}
+
+/* ── LuCI Native Filter Controls (restyled) ──────── */
+
+.proton-log-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-bottom: 1px solid var(--proton-border);
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.proton-log-filter-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+}
+
+.proton-log-filter-row+.proton-log-filter-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.proton-log-filter-label {
+    color: var(--proton-muted);
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    user-select: none;
+    cursor: pointer;
+}
+
+/* "Не" labels (invert checkboxes) — они перед чекбоксами */
+.proton-log-filter-label[for*="invert"] {
+    color: var(--proton-muted);
+    opacity: 0.7;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.proton-log-filter-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--proton-border);
+    border-radius: var(--proton-radius-sm);
+    color: var(--proton-fg);
+    font-size: 13px;
+    font-family: inherit;
+    padding: 8px 32px 8px 12px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238b92a8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    min-width: 120px;
+    max-width: 280px;
+}
+
+.proton-log-filter-select:hover {
+    border-color: var(--proton-accent);
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.proton-log-filter-select:focus {
+    outline: none;
+    border-color: var(--proton-accent);
+    box-shadow: 0 0 0 2px var(--proton-accent-glow);
+}
+
+.proton-log-filter-select option {
+    background: #1a1d29;
+    color: var(--proton-fg);
+    padding: 4px 8px;
+}
+
+.proton-log-filter-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--proton-border);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    position: relative;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+
+.proton-log-filter-checkbox:checked {
+    background: var(--proton-accent);
+    border-color: var(--proton-accent);
+}
+
+.proton-log-filter-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 4px;
+    height: 8px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.proton-log-filter-checkbox:hover {
+    border-color: var(--proton-accent);
+}
+
+.proton-log-filter-checkbox:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--proton-accent-glow);
+}
+
+.proton-log-filter-input {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--proton-border);
+    border-radius: var(--proton-radius-sm);
+    color: var(--proton-fg);
+    font-size: 13px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    padding: 8px 12px;
+    transition: all 0.15s ease;
+    min-width: 160px;
+    flex: 1;
+    max-width: 400px;
+}
+
+.proton-log-filter-input::placeholder {
+    color: var(--proton-muted);
+    opacity: 0.5;
+}
+
+.proton-log-filter-input:hover {
+    border-color: var(--proton-accent);
+}
+
+.proton-log-filter-input:focus {
+    outline: none;
+    border-color: var(--proton-accent);
+    box-shadow: 0 0 0 2px var(--proton-accent-glow);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Responsive ───────────────────────────────────── */
+
+@media screen and (max-width: 800px) {
+
+    /* Wrapper: убираем внешние отступы */
+    .proton-log-wrapper {
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+
+    /* Toolbar: stats сверху, кнопки снизу */
+    .proton-log-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 10px;
+        min-height: auto;
+    }
+
+    /* Stats: горизонтальная прокрутка вместо переноса */
+    .proton-log-stats {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        gap: 6px;
+        padding-bottom: 4px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--proton-border) transparent;
+        justify-content: flex-start;
+    }
+
+    .proton-log-stats::-webkit-scrollbar {
+        height: 3px;
+    }
+
+    .proton-log-stats::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .proton-log-stats::-webkit-scrollbar-thumb {
+        background: var(--proton-border);
+        border-radius: 2px;
+    }
+
+    /* Кнопки: на всю ширину, по центру */
+    .proton-log-actions {
+        justify-content: space-between;
+        gap: 4px;
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+
+    .proton-log-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+        border-radius: 8px;
+        flex: 1;
+        min-width: 36px;
+        max-width: 48px;
+    }
+
+    .proton-log-btn-sep {
+        height: 20px;
+        margin: 0 2px;
+        flex: 0 0 auto;
+    }
+
+    /* Viewer: больше места на экране */
+    .proton-log-viewer {
+        font-size: 10.5px;
+        max-height: calc(100vh - 220px);
+        line-height: 1.5;
+    }
+
+    /* Gutter: компактнее */
+    .proton-log-gutter {
+        min-width: 28px;
+        padding: 2px 4px 2px 3px;
+        font-size: 9px;
+    }
+
+    /* Content: минимальные паддинги */
+    .proton-log-content {
+        padding: 2px 6px;
+    }
+
+    /* Badges: поменьше для мобилки */
+    .proton-log-stat {
+        font-size: 9px;
+        padding: 2px 6px;
+        border-radius: 8px;
+        white-space: nowrap;
+    }
+
+    .proton-log-stat-total {
+        font-size: 10px;
+    }
+
+    .proton-log-stat-sep {
+        margin: 0 1px;
+    }
+
+    /* Фильтры: вертикальная компоновка */
+    .proton-log-filter-row {
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 6px 10px;
+    }
+
+    .proton-log-filter-select {
+        min-width: 0;
+        flex: 1;
+        max-width: 100%;
+        font-size: 12px;
+        padding: 6px 28px 6px 10px;
+    }
+
+    .proton-log-filter-input {
+        min-width: 0;
+        flex: 1 1 100%;
+        max-width: 100%;
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .proton-log-filter-label {
+        font-size: 12px;
+    }
+
+    .proton-log-filter-checkbox {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Fullscreen: без скругления */
+    .proton-log-fullscreen {
+        border-radius: 0;
+    }
+
+    .proton-log-fullscreen .proton-log-viewer {
+        max-height: calc(100vh - 130px);
+    }
+}
+
+/* ── Light Theme Improvements ─────────────────────── */
+
+:root[data-theme="light"] .proton-log-wrapper {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+:root[data-theme="light"] .proton-log-toolbar {
+    background: rgba(0, 0, 0, 0.02);
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="light"] .proton-log-viewer {
+    background: #ffffff;
+    color: #1a1d29;
+}
+
+:root[data-theme="light"] .proton-log-line {
+    border-bottom-color: rgba(0, 0, 0, 0.04);
+}
+
+:root[data-theme="light"] .proton-log-line:nth-child(odd) {
+    background: rgba(0, 0, 0, 0.015);
+}
+
+:root[data-theme="light"] .proton-log-line:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+:root[data-theme="light"] .proton-log-gutter {
+    color: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.02);
+    border-right-color: rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="light"] .proton-log-line:hover .proton-log-gutter {
+    color: rgba(0, 0, 0, 0.55);
+}
+
+:root[data-theme="light"] .proton-log-timestamp {
+    color: #6b7280;
+    opacity: 0.8;
+}
+
+:root[data-theme="light"] .proton-log-btn {
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #4a5568;
+}
+
+:root[data-theme="light"] .proton-log-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: var(--proton-accent);
+    color: var(--proton-accent);
+}
+
+:root[data-theme="light"] .proton-log-btn.active {
+    background: rgba(75, 85, 99, 0.12);
+    border-color: var(--proton-accent);
+}
+
+:root[data-theme="light"] .proton-log-btn-sep {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+:root[data-theme="light"] .proton-log-stat-total {
+    color: #4a5568;
+}
+
+:root[data-theme="light"] .proton-log-stat-sep {
+    color: rgba(0, 0, 0, 0.2);
+}
+
+/* Light theme severity colors - darker for better contrast */
+:root[data-theme="light"] .proton-log-stat-critical {
+    color: #dc2626;
+    background: rgba(220, 38, 38, 0.12);
+}
+
+:root[data-theme="light"] .proton-log-stat-error {
+    color: #e53e3e;
+    background: rgba(229, 62, 62, 0.12);
+}
+
+:root[data-theme="light"] .proton-log-stat-warning {
+    color: #d97706;
+    background: rgba(217, 119, 6, 0.12);
+}
+
+:root[data-theme="light"] .proton-log-stat-denied {
+    color: #e53e3e;
+    background: rgba(229, 62, 62, 0.10);
+}
+
+:root[data-theme="light"] .proton-log-stat-disconnected {
+    color: #ea580c;
+    background: rgba(234, 88, 12, 0.10);
+}
+
+:root[data-theme="light"] .proton-log-stat-success {
+    color: #16a34a;
+    background: rgba(22, 163, 74, 0.12);
+}
+
+:root[data-theme="light"] .proton-log-stat-notice {
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.12);
+}
+
+:root[data-theme="light"] .proton-log-line[data-severity="critical"] {
+    border-left-color: #dc2626;
+    background: rgba(220, 38, 38, 0.05);
+}
+
+:root[data-theme="light"] .proton-log-line[data-severity="error"] {
+    border-left-color: #e53e3e;
+    background: rgba(229, 62, 62, 0.04);
+}
+
+:root[data-theme="light"] .proton-log-line[data-severity="warning"] {
+    border-left-color: #d97706;
+    background: rgba(217, 119, 6, 0.03);
+}
+
+:root[data-theme="light"] .proton-log-line[data-severity="denied"] {
+    border-left-color: #e53e3e;
+}
+
+:root[data-theme="light"] .proton-log-line[data-severity="disconnected"] {
+    border-left-color: #ea580c;
+}
+
+:root[data-theme="light"] .proton-log-line[data-severity="notice"] {
+    border-left-color: #2563eb;
+}
+
+:root[data-theme="light"] .proton-log-line[data-severity="success"] {
+    border-left-color: #16a34a;
+}
+
+/* Light theme keyword colors */
+:root[data-theme="light"] .proton-log-keyword-critical {
+    color: #dc2626;
+}
+
+:root[data-theme="light"] .proton-log-keyword-error {
+    color: #e53e3e;
+}
+
+:root[data-theme="light"] .proton-log-keyword-warning {
+    color: #d97706;
+}
+
+:root[data-theme="light"] .proton-log-keyword-notice {
+    color: #2563eb;
+}
+
+:root[data-theme="light"] .proton-log-keyword-success {
+    color: #16a34a;
+}
+
+:root[data-theme="light"] .proton-log-keyword-disconnected {
+    color: #ea580c;
+}
+
+:root[data-theme="light"] .proton-log-keyword-denied {
+    color: #e53e3e;
+}
+
+:root[data-theme="light"] .proton-log-ip {
+    color: #0284c7;
+}
+
+:root[data-theme="light"] .proton-log-mac {
+    color: #7c3aed;
+}
+
+:root[data-theme="light"] .proton-log-process {
+    color: #ea580c;
+}
+
+/* Light theme prefix badges */
+:root[data-theme="light"] .proton-log-level-emerg,
+:root[data-theme="light"] .proton-log-level-alert,
+:root[data-theme="light"] .proton-log-level-crit {
+    color: #dc2626;
+    background: rgba(220, 38, 38, 0.15);
+}
+
+:root[data-theme="light"] .proton-log-level-err {
+    color: #e53e3e;
+    background: rgba(229, 62, 62, 0.12);
+}
+
+:root[data-theme="light"] .proton-log-level-warn {
+    color: #d97706;
+    background: rgba(217, 119, 6, 0.12);
+}
+
+:root[data-theme="light"] .proton-log-level-notice {
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.12);
+}
+
+:root[data-theme="light"] .proton-log-level-info {
+    color: #0891b2;
+    background: rgba(8, 145, 178, 0.10);
+}
+
+:root[data-theme="light"] .proton-log-level-debug {
+    color: #7c3aed;
+    background: rgba(124, 58, 237, 0.10);
+}
+
+:root[data-theme="light"] .proton-log-filters {
+    background: rgba(0, 0, 0, 0.02);
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="light"] .proton-log-filter-row+.proton-log-filter-row {
+    border-top-color: rgba(0, 0, 0, 0.05);
+}
+
+:root[data-theme="light"] .proton-log-filter-label {
+    color: #4a5568;
+}
+
+:root[data-theme="light"] .proton-log-filter-select,
+:root[data-theme="light"] .proton-log-filter-input {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #1a1d29;
+}
+
+:root[data-theme="light"] .proton-log-filter-select:hover,
+:root[data-theme="light"] .proton-log-filter-input:hover {
+    border-color: var(--proton-accent);
+    background: #ffffff;
+}
+
+:root[data-theme="light"] .proton-log-filter-select:focus,
+:root[data-theme="light"] .proton-log-filter-input:focus {
+    background: #ffffff;
+    box-shadow: 0 0 0 2px rgba(75, 85, 99, 0.15);
+}
+
+:root[data-theme="light"] .proton-log-filter-checkbox {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+:root[data-theme="light"] .proton-log-filter-checkbox:hover {
+    border-color: var(--proton-accent);
+}
+
+/* =====================================================
+   Repo Public Keys Page
+   [data-page="admin-system-admin-repokeys"]
+   ===================================================== */
+
+/* Override LuCI inline max-width: 800px — use full available width */
+[data-page="admin-system-admin-repokeys"] .cbi-dynlist {
+    max-width: 100% !important;
+}
+
+/* Key items contain <strong> + <br> + <code> — flex-row breaks them into columns.
+   Switch to block layout so content flows naturally. */
+[data-page="admin-system-admin-repokeys"] .cbi-dynlist>.item {
+    display: block;
+    min-height: unset;
+    height: auto;
+    overflow: visible;
+    padding: 12px 52px 12px 16px;
+    /* right space for × button */
+    line-height: 1.7;
+    cursor: default;
+    word-break: break-all;
+}
+
+/* Delete button stays top-right */
+[data-page="admin-system-admin-repokeys"] .cbi-dynlist>.item::after {
+    content: "−";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 2.4rem;
+    height: 100%;
+    border-radius: 0 var(--proton-radius-sm) var(--proton-radius-sm) 0;
+}
+
+[data-page="admin-system-admin-repokeys"] .cbi-dynlist>.item strong {
+    font-family: "SF Mono", Monaco, "Consolas", monospace;
+    color: var(--proton-accent);
+    font-size: 0.88rem;
+    display: block;
+    margin-bottom: 2px;
+}
+
+[data-page="admin-system-admin-repokeys"] .cbi-dynlist>.item code {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--proton-fg-secondary);
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
+[data-page="admin-system-admin-repokeys"] .cbi-dynlist>.item br {
+    display: none;
+    /* margin on block elements is enough */
+}
+
+/* Add-item area: stack textarea and button vertically */
+[data-page="admin-system-admin-repokeys"] .cbi-dynlist>.add-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    min-height: unset;
+    padding: 14px;
+    background: var(--proton-bg-tertiary);
+    border: 1px solid var(--proton-border);
+    border-radius: var(--proton-radius-sm);
+}
+
+/* Override LuCI inline width: 300px */
+[data-page="admin-system-admin-repokeys"] .cbi-dynlist>.add-item>textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: 100px;
+    resize: vertical;
+    border-radius: var(--proton-radius-sm);
+    padding: 10px 14px;
+    font-family: "SF Mono", Monaco, "Consolas", monospace;
+    font-size: 0.82rem;
+    background: var(--proton-bg-secondary);
+    border: 1px solid var(--proton-border);
+    color: var(--proton-fg);
+    transition: var(--proton-transition);
+}
+
+[data-page="admin-system-admin-repokeys"] .cbi-dynlist>.add-item>textarea:focus {
+    outline: none;
+    border-color: var(--proton-accent);
+    box-shadow: 0 0 0 3px var(--proton-accent-glow);
+}
+
+/* "Add key" button — restore full-width readable size */
+[data-page="admin-system-admin-repokeys"] .cbi-dynlist>.add-item>.cbi-button,
+[data-page="admin-system-admin-repokeys"] .cbi-dynlist>.add-item>button {
+    width: auto !important;
+    min-width: unset !important;
+    height: auto !important;
+    flex: 0 0 auto !important;
+    align-self: flex-end;
+    padding: 10px 28px !important;
+    border-radius: var(--proton-radius-sm) !important;
+    font-weight: 600;
+    font-size: 0.9rem;
+    background: var(--proton-accent) !important;
+    color: #fff !important;
+    border-color: var(--proton-accent) !important;
+}
+
+/* =====================================================
+   luci-mod-dashboard — card background fix
+   luci-mod-dashboard renders cards as .Dashboard .dashboard-bg
+   using --background-color-medium (#1a1f2e, hardcoded dark).
+   Override to use an accent-aware semi-transparent background
+   consistent with the rest of the theme.
+   ===================================================== */
+body[data-page^="admin-dashboard"] .Dashboard .dashboard-bg {
+    background: rgba(var(--proton-accent-rgb), 0.07) !important;
+    border: 1px solid var(--proton-border) !important;
+    box-shadow: var(--proton-shadow-sm) !important;
+}
+
+:root[data-theme="light"] body[data-page^="admin-dashboard"] .Dashboard .dashboard-bg {
+    background: rgba(0, 0, 0, 0.025) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+body[data-page^="admin-dashboard"] .cbi-section {
+    background: var(--proton-bg-secondary) !important;
+    border-color: var(--proton-border) !important;
+}
+
+:root[data-theme="light"] body[data-page^="admin-dashboard"] .cbi-section {
+    background: var(--proton-bg-secondary) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* While a pattern is active, give the dashboard cards the same panel
+   gradient as .cbi-section (translucent accent tint on top → opaque card at
+   the bottom). Needs !important + the [data-theme="light"] variant to
+   out-specify the dashboard overrides just above. */
+html[class*="proton-pattern-"] body[data-page^="admin-dashboard"] .Dashboard .dashboard-bg,
+:root[data-theme="light"][class*="proton-pattern-"] body[data-page^="admin-dashboard"] .Dashboard .dashboard-bg {
+    background:
+        linear-gradient(180deg, rgba(var(--proton-accent-rgb), 0.06) 0%, rgba(var(--proton-accent-rgb), 0.12) 100%),
+        linear-gradient(180deg, rgba(var(--proton-card-rgb), 0.65) 0%, var(--proton-card-solid) 50%) !important;
+}
+
+/* =====================================================
+   luci-mod-dashboard — SVG icon theme fix
+   Dashboard icons (router.svg, wireless.svg, devices.svg,
+   not-internet.svg) have hardcoded stroke="#000".
+   The dashboard's own custom.css uses [data-darkmode="true"]
+   which our theme never sets — so icons stay black in dark mode.
+   Mirror the invert logic using our data-theme attribute.
+   ===================================================== */
+body[data-page^="admin-dashboard"] .Dashboard .svgmonotone {
+    filter: invert(1);
+}
+
+:root[data-theme="light"] body[data-page^="admin-dashboard"] .Dashboard .svgmonotone {
+    filter: none;
+}
+
+
+/* =====================================================
+   SSClash / Mihomo — Dark theme adaptation
+   settings.js and config.js build all UI with hardcoded
+   inline light-palette styles. CSS [style*] selectors
+   with !important override inline styles in the cascade.
+   ===================================================== */
+
+/* ── Common containers: white / near-white backgrounds ── */
+body[data-page*="ssclash"] [style*="background: white"],
+body[data-page*="ssclash"] [style*="background: #fff"],
+body[data-page*="ssclash"] [style*="background: #f9f9f9"],
+body[data-page*="ssclash"] [style*="background: #f8f9fa"],
+body[data-page*="ssclash"] [style*="background: #f8f8f8"],
+body[data-page*="ssclash"] [style*="background-color: white"],
+body[data-page*="ssclash"] [style*="background-color: #fff"],
+body[data-page*="ssclash"] [style*="background-color: #f9f9f9"],
+body[data-page*="mihomo"] [style*="background: white"],
+body[data-page*="mihomo"] [style*="background: #fff"],
+body[data-page*="mihomo"] [style*="background: #f9f9f9"],
+body[data-page*="mihomo"] [style*="background: #f8f9fa"],
+body[data-page*="mihomo"] [style*="background-color: white"],
+body[data-page*="mihomo"] [style*="background-color: #fff"],
+body[data-page*="mihomo"] [style*="background-color: #f9f9f9"] {
+    background-color: var(--proton-bg-secondary) !important;
+}
+
+/* ── Info / hint panels (light blue, green, yellow tints) ── */
+body[data-page*="ssclash"] [style*="background: #e6f3ff"],
+body[data-page*="ssclash"] [style*="background: #f0f8ff"],
+body[data-page*="ssclash"] [style*="background-color: #f0f8ff"],
+body[data-page*="mihomo"] [style*="background: #e6f3ff"],
+body[data-page*="mihomo"] [style*="background: #f0f8ff"],
+body[data-page*="mihomo"] [style*="background-color: #f0f8ff"] {
+    background-color: rgba(var(--proton-accent-rgb), 0.08) !important;
+}
+
+body[data-page*="ssclash"] [style*="background: #e8f5e8"],
+body[data-page*="ssclash"] [style*="background: #f8fff8"],
+body[data-page*="mihomo"] [style*="background: #e8f5e8"],
+body[data-page*="mihomo"] [style*="background: #f8fff8"] {
+    background-color: rgba(40, 167, 69, 0.12) !important;
+}
+
+body[data-page*="ssclash"] [style*="background: #fff3cd"],
+body[data-page*="mihomo"] [style*="background: #fff3cd"] {
+    background-color: rgba(255, 193, 7, 0.12) !important;
+}
+
+/* ── Text: dark text on light background → proton fg ── */
+body[data-page*="ssclash"] [style*="color: #1f2937"],
+body[data-page*="ssclash"] [style*="color: #4b5563"],
+body[data-page*="ssclash"] [style*="color: #374151"],
+body[data-page*="mihomo"] [style*="color: #1f2937"],
+body[data-page*="mihomo"] [style*="color: #4b5563"],
+body[data-page*="mihomo"] [style*="color: #374151"] {
+    color: var(--proton-fg) !important;
+}
+
+body[data-page*="ssclash"] [style*="color: #856404"],
+body[data-page*="mihomo"] [style*="color: #856404"] {
+    color: #e9c46a !important;
+}
+
+body[data-page*="ssclash"] [style*="color: #155724"],
+body[data-page*="mihomo"] [style*="color: #155724"] {
+    color: #6fcf97 !important;
+}
+
+/* ── Borders: light grey → proton border ── */
+body[data-page*="ssclash"] [style*="border: 1px solid #ddd"],
+body[data-page*="ssclash"] [style*="border: 2px solid #ddd"],
+body[data-page*="ssclash"] [style*="border: 1px solid #ccc"],
+body[data-page*="ssclash"] [style*="border-color: #ddd"],
+body[data-page*="ssclash"] [style*="border-color: #ccc"],
+body[data-page*="mihomo"] [style*="border: 1px solid #ddd"],
+body[data-page*="mihomo"] [style*="border: 2px solid #ddd"],
+body[data-page*="mihomo"] [style*="border: 1px solid #ccc"],
+body[data-page*="mihomo"] [style*="border-color: #ddd"],
+body[data-page*="mihomo"] [style*="border-color: #ccc"] {
+    border-color: var(--proton-border) !important;
+}
+
+/* ── Split-button save dropdown ── */
+body[data-page*="ssclash"] .ssclash-split-menu,
+body[data-page*="mihomo"] .ssclash-split-menu {
+    background: var(--proton-bg-secondary) !important;
+    color: var(--proton-fg) !important;
+    border-color: var(--proton-border) !important;
+    box-shadow: var(--proton-shadow-lg) !important;
+}
+
+body[data-page*="ssclash"] .ssclash-split-menu button,
+body[data-page*="mihomo"] .ssclash-split-menu button {
+    color: var(--proton-fg) !important;
+}
+
+body[data-page*="ssclash"] .ssclash-split-menu button:hover,
+body[data-page*="mihomo"] .ssclash-split-menu button:hover {
+    background: var(--proton-bg-hover) !important;
+}
+
+/* ── Footer version line ── */
+body[data-page*="ssclash"] #ssclash-version-footer,
+body[data-page*="mihomo"] #ssclash-version-footer {
+    color: var(--proton-muted) !important;
+    border-top-color: var(--proton-border) !important;
+}
+
+/* ── Status label (running / stopped) ── */
+body[data-page*="ssclash"] [style*="background-color: #5cb85c"],
+body[data-page*="mihomo"] [style*="background-color: #5cb85c"] {
+    background-color: #2d8a4e !important;
+}
+
+body[data-page*="ssclash"] [style*="background-color: #d9534f"],
+body[data-page*="mihomo"] [style*="background-color: #d9534f"] {
+    background-color: #a63030 !important;
+}
+
+/* ── Accent blue #0066cc: active options (settings), technical list, status panel (rulesets) ── */
+body[data-page*="ssclash"] [style*="background: #0066cc"],
+body[data-page*="mihomo"] [style*="background: #0066cc"] {
+    background-color: var(--proton-accent) !important;
+}
+
+/* rgba(0,102,204,…) — set via JS DOM (with spaces) or via setAttribute string (no spaces) */
+body[data-page*="ssclash"] [style*="background-color: rgba(0,102,204"],
+body[data-page*="ssclash"] [style*="background-color: rgba(0, 102, 204"],
+body[data-page*="ssclash"] [style*="background: rgba(0,102,204"],
+body[data-page*="ssclash"] [style*="background: rgba(0, 102, 204"],
+body[data-page*="mihomo"] [style*="background-color: rgba(0,102,204"],
+body[data-page*="mihomo"] [style*="background-color: rgba(0, 102, 204"],
+body[data-page*="mihomo"] [style*="background: rgba(0,102,204"],
+body[data-page*="mihomo"] [style*="background: rgba(0, 102, 204"] {
+    background-color: rgba(var(--proton-accent-rgb), 0.15) !important;
+}
+
+/* border #0066cc — set via setAttribute string or via JS DOM (normalised to rgb()) */
+body[data-page*="ssclash"] [style*="border: 2px solid #0066cc"],
+body[data-page*="ssclash"] [style*="border-left: 4px solid #0066cc"],
+body[data-page*="ssclash"] [style*="border-color: #0066cc"],
+body[data-page*="ssclash"] [style*="border-color: rgb(0, 102, 204"],
+body[data-page*="mihomo"] [style*="border: 2px solid #0066cc"],
+body[data-page*="mihomo"] [style*="border-left: 4px solid #0066cc"],
+body[data-page*="mihomo"] [style*="border-color: #0066cc"],
+body[data-page*="mihomo"] [style*="border-color: rgb(0, 102, 204"] {
+    border-color: var(--proton-accent) !important;
+}
+
+/* text color #0066cc */
+body[data-page*="ssclash"] [style*="color: #0066cc"],
+body[data-page*="mihomo"] [style*="color: #0066cc"] {
+    color: var(--proton-accent) !important;
+}
+
+/* ── Technical list: description paragraphs — brighter, accent-tinted ── */
+body[data-page*="ssclash"] [style*="border: 2px solid #0066cc"] .cbi-section-descr,
+body[data-page*="mihomo"] [style*="border: 2px solid #0066cc"] .cbi-section-descr {
+    color: rgba(var(--proton-accent-rgb), 0.65) !important;
+}
+
+/* ── Light theme: SSClash pages look fine with their own styles ── */
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background: white"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background: #fff"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background: #f9f9f9"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background: #f8f9fa"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background-color: white"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background-color: #fff"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background-color: #f9f9f9"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="color: #1f2937"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="color: #4b5563"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="border: 1px solid #ddd"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="border: 2px solid #ddd"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background: #e6f3ff"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background: #e8f5e8"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background: #fff3cd"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="color: #856404"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="color: #155724"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background-color: #5cb85c"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background-color: #d9534f"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background-color: #f0f8ff"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background: #0066cc"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background-color: rgba(0,102,204"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background-color: rgba(0, 102, 204"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background: rgba(0,102,204"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="background: rgba(0, 102, 204"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="border: 2px solid #0066cc"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="border-left: 4px solid #0066cc"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="border-color: #0066cc"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="border-color: rgb(0, 102, 204"],
+:root[data-theme="light"] body[data-page*="ssclash"] [style*="color: #0066cc"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="background: white"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="background: #fff"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="background: #f9f9f9"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="background: #f8f9fa"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="background-color: #f9f9f9"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="color: #1f2937"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="background: #e6f3ff"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="background: #e8f5e8"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="background: #fff3cd"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="color: #856404"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="color: #155724"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="background-color: #5cb85c"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="background-color: #d9534f"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="background-color: #f0f8ff"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="background: #0066cc"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="background-color: rgba(0,102,204"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="background-color: rgba(0, 102, 204"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="background: rgba(0,102,204"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="background: rgba(0, 102, 204"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="border: 2px solid #0066cc"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="border-left: 4px solid #0066cc"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="border-color: #0066cc"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="border-color: rgb(0, 102, 204"],
+:root[data-theme="light"] body[data-page*="mihomo"] [style*="color: #0066cc"] {
+    all: revert;
+}
+
+/* ── Ace editor light theme (SSClash / Mihomo config page) ──────────────
+   SSClash hardcodes the tomorrow_night_bright Ace theme (black bg).
+   In light mode we remap it to the Tomorrow Light palette so the editor
+   background matches the rest of the page.
+   ──────────────────────────────────────────────────────────────────── */
+
+/* Base: background + default text */
+:root[data-theme="light"] .ace-tomorrow-night-bright {
+    background-color: #f5f7fa !important;
+    color: #4d4d4c !important;
+}
+
+/* Gutter (line numbers) */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_gutter {
+    background: #eaedf1 !important;
+    color: #888a8c !important;
+}
+
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_print-margin {
+    background: #d6d9de !important;
+}
+
+/* Cursor */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_cursor {
+    color: #4d4d4c !important;
+}
+
+/* Selection / active line */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_marker-layer .ace_selection {
+    background: rgba(59, 130, 246, 0.22) !important;
+}
+
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_marker-layer .ace_active-line {
+    background: rgba(0, 0, 0, 0.055) !important;
+}
+
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_gutter-active-line {
+    background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_marker-layer .ace_selected-word {
+    background: rgba(59, 130, 246, 0.1) !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+/* Bracket match / highlight */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_marker-layer .ace_bracket {
+    border-color: #aaaaaa !important;
+}
+
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_marker-layer .ace_highlight {
+    background: rgba(255, 220, 0, 0.18) !important;
+    border-color: #c8b900 !important;
+    box-shadow: inset 0 -1px #c8b900 !important;
+}
+
+/* Invisible characters */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_invisible {
+    color: #c5c8c6 !important;
+}
+
+/* Indent guides */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_indent-guide {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWNgYGBgYHB3d/8HAAOEAXnkT3ERAAAAAElFTkSuQmCC") right repeat-y !important;
+}
+
+/* ── Syntax tokens (Tomorrow Light palette) ── */
+
+/* Keywords, storage, meta */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_keyword,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_meta,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_storage,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_storage.ace_type,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_support.ace_type {
+    color: #8959a8 !important;
+    /* purple */
+}
+
+/* Operators */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_keyword.ace_operator {
+    color: #3e999f !important;
+    /* teal */
+}
+
+/* Numbers, constants, units */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_constant.ace_character,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_constant.ace_language,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_constant.ace_numeric,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_keyword.ace_other.ace_unit,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_support.ace_constant,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_variable.ace_parameter {
+    color: #f5871f !important;
+    /* orange */
+}
+
+/* Other constants */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_constant.ace_other {
+    color: #4d4d4c !important;
+}
+
+/* Functions, variables (generic) */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_entity.ace_name.ace_function,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_support.ace_function {
+    color: #4271ae !important;
+    /* blue */
+}
+
+/* Types / support classes */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_support.ace_class,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_support.ace_type {
+    color: #b58900 !important;
+    /* gold */
+}
+
+/* Strings, headings */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_heading,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_markup.ace_heading,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_string {
+    color: #718c00 !important;
+    /* green */
+}
+
+/* Tags, attribute names, variables, regexp — YAML keys fall here */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_entity.ace_name.ace_tag,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_entity.ace_other.ace_attribute-name,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_meta.ace_tag,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_string.ace_regexp,
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_variable {
+    color: #c82829 !important;
+    /* red */
+}
+
+/* Comments */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_comment {
+    color: #8e908c !important;
+    /* gray */
+}
+
+/* Fold marker */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_fold {
+    background-color: #4271ae !important;
+    border-color: #4d4d4c !important;
+}
+
+/* Invalid */
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_invalid {
+    color: #ffffff !important;
+    background-color: #c82829 !important;
+}
+
+:root[data-theme="light"] .ace-tomorrow-night-bright .ace_invalid.ace_deprecated {
+    color: #ffffff !important;
+    background-color: #8959a8 !important;
+}
+
+/* =====================================================
+   Issue #38: UI overlap fixes
+   ===================================================== */
+
+/* Long DHCPv6 identifiers (DUID / Client ID / IAID) must not bleed into the
+   next CBI row. Use border-box sizing and clip the inline value inside the
+   control instead of allowing it to paint outside the form field. */
+#modal_overlay input[id*=".clientid"],
+#modal_overlay input[id*=".duid"],
+#modal_overlay input[id*=".iaid"],
+body[data-page="admin-network-network"] input[id*=".clientid"],
+body[data-page="admin-network-network"] input[id*=".duid"],
+body[data-page="admin-network-network"] input[id*=".iaid"] {
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+}
+
+#modal_overlay .cbi-value-field:has(input[id*=".clientid"]),
+#modal_overlay .cbi-value-field:has(input[id*=".duid"]),
+#modal_overlay .cbi-value-field:has(input[id*=".iaid"]),
+body[data-page="admin-network-network"] .cbi-value-field:has(input[id*=".clientid"]),
+body[data-page="admin-network-network"] .cbi-value-field:has(input[id*=".duid"]),
+body[data-page="admin-network-network"] .cbi-value-field:has(input[id*=".iaid"]) {
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* Port status cards use overflow:hidden globally for rounded card corners;
+   that clips LuCI .cbi-tooltip and can place it under adjacent cards. On the
+   status overview page, allow tooltips to escape and lift the hovered card
+   above neighbouring stacking contexts. */
+body[data-page="admin-status-overview"] .cbi-section>div>div[style*="display:grid"] {
+    overflow: visible !important;
+}
+
+body[data-page="admin-status-overview"] .cbi-section>div>div[style*="display:grid"]>.ifacebox {
+    position: relative;
+    overflow: visible !important;
+    z-index: 1;
+}
+
+/* These boxes are overflow:visible (so the hover tooltips can escape),
+   which means the coloured header background isn't clipped to the box's
+   rounded corners and pokes out past them. Round the header's own top
+   corners to match the box radius (which tracks the radius setting). */
+body[data-page="admin-status-overview"] .cbi-section>div>div[style*="display:grid"]>.ifacebox>.ifacebox-head:first-child {
+    border-radius: var(--proton-radius-sm) var(--proton-radius-sm) 0 0;
+}
+
+body[data-page="admin-status-overview"] .cbi-section>div>div[style*="display:grid"]>.ifacebox:hover,
+body[data-page="admin-status-overview"] .cbi-section>div>div[style*="display:grid"]>.ifacebox:focus-within {
+    z-index: 10020;
+}
+
+body[data-page="admin-status-overview"] .cbi-section>div>div[style*="display:grid"]>.ifacebox .cbi-tooltip-container {
+    position: relative;
+    z-index: 10021;
+}
+
+body[data-page="admin-status-overview"] .cbi-section>div>div[style*="display:grid"]>.ifacebox .cbi-tooltip {
+    z-index: 10022;
+}
+
+/* =====================================================
+   luci-app-passwall2 — Modal popups
+   The app ships these dialogs with a hard-coded `background: white`
+   and light-grey borders, which renders as a see-through / mismatched
+   box on the Proton theme. Give them the theme's tinted gradient
+   surface (same navy/violet shade as the page) so they sit opaque and
+   on-brand instead of looking flat near-black.
+   (Node List → "Add the node via the link" / "Reassign Group",
+    Global → backup upload dialog.)
+   ===================================================== */
+#add_link_div,
+#reassign_group_div,
+.up-modal-content {
+    background: var(--proton-bg) !important;
+    color: var(--proton-fg);
+    border: 1px solid var(--proton-border) !important;
+    border-radius: var(--proton-radius) !important;
+    box-shadow: var(--proton-shadow-lg) !important;
+}
+
+#add_link_div h3,
+#reassign_group_div h3,
+.up-modal-content h3 {
+    color: var(--proton-fg);
+    background: transparent !important;
+}
+
+#nodes_link {
+    background: var(--proton-bg-secondary) !important;
+    color: var(--proton-fg);
+    border: 1px solid var(--proton-border) !important;
+    border-radius: var(--proton-radius-sm) !important;
+}
+
+#nodes_link_text {
+    color: var(--proton-danger) !important;
+}
+
+/* =====================================================
+   luci-app-passwall2 — Tame the bright reds
+   The app scatters hard-coded bright `red` / `#fb6340` accents via
+   legacy <font color="red">, inline `style="color:red"`, the `.red`
+   status class and the `.dl-remove` (×) button. Remap them all to the
+   theme's softer danger colour so they match the rest of the UI
+   (same colour the "Add the node via the link" hint already uses).
+   Scoped to passwall2 pages so other apps are untouched.
+   ===================================================== */
+body[data-page^="admin-services-passwall2"] font[color="red"],
+body[data-page^="admin-services-passwall2"] [style*="color: red"],
+body[data-page^="admin-services-passwall2"] [style*="color:red"],
+body[data-page^="admin-services-passwall2"] .red,
+body[data-page^="admin-services-passwall2"] .dl-remove {
+    color: var(--proton-danger) !important;
+}
+
+/* =====================================================
+   luci-app-passwall2 — Node List table frame
+   The nodes section renders as a standard `.cbi-section` card, so its
+   1px border + shadow draws a redundant frame around the whole table
+   area inside each group tab (Default, …). The table already has its
+   own rounded surface, so drop the outer card chrome and let it stand
+   alone.
+   ===================================================== */
+#cbi-passwall2-nodes {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+/* Port/Network status (overview): each box holds two sibling
+   .cbi-tooltip-container elements (the zone-badge strip and the
+   ▲/▼ TX/RX byte counters), both pinned to the same z-index. The
+   hovered popup is dropped below its trigger and lands over the
+   sibling counters, which — being later in the DOM at an equal
+   z-index — bleed on top of it. Lift the actively-hovered trigger
+   above its siblings so its popup wins, and make the popup fully
+   opaque so nothing shows through. */
+body[data-page="admin-status-overview"] .cbi-section>div>div[style*="display:grid"]>.ifacebox .cbi-tooltip-container:hover {
+    z-index: 10030;
+}
+
+body[data-page="admin-status-overview"] .cbi-section>div>div[style*="display:grid"]>.ifacebox .cbi-tooltip {
+    background: rgb(20, 25, 35);
+}
+
+:root[data-theme="light"] body[data-page="admin-status-overview"] .cbi-section>div>div[style*="display:grid"]>.ifacebox .cbi-tooltip {
+    background: rgb(255, 255, 255);
+}
+
+/* =====================================================
+   Accent "Custom" colour picker — full-bleed swatch
+   The native <input type="color"> renders the colour well with inner
+   padding and a border. Strip the chrome so the chosen colour fills
+   the whole rounded square edge-to-edge.
+   ===================================================== */
+.proton-accent-color-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+    border: none;
+    overflow: hidden;
+    background: transparent;
+}
+
+.proton-accent-color-input::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.proton-accent-color-input::-webkit-color-swatch {
+    border: none;
+    border-radius: var(--proton-radius-sm);
+}
+
+.proton-accent-color-input::-moz-color-swatch {
+    border: none;
+    border-radius: var(--proton-radius-sm);
+}
+
+/* Widen modal dialogs containing LuCI CBI tables, e.g. WireGuard peer lists */
+.modal:has(.cbi-section-table),
+.modal:has(.table) {
+    width: min(1180px, calc(100vw - 48px)) !important;
+    max-width: calc(100vw - 48px) !important;
+}
+
+/* Let wide table content use the enlarged dialog instead of leaking outside */
+.modal:has(.cbi-section-table) .cbi-section,
+.modal:has(.table) .cbi-section {
+    max-width: 100%;
+    overflow: visible;
+}
+
+/* On smaller screens, keep table scroll inside the modal */
+.modal:has(.cbi-section-table) .cbi-section-node,
+.modal:has(.table) .cbi-section-node,
+.modal:has(.cbi-section-table) .table,
+.modal:has(.table) .table {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
+/* Keep row action buttons on one line */
+.modal .cbi-section-actions,
+.modal .td.cbi-section-actions,
+.modal td.cbi-section-actions {
+    white-space: nowrap;
+}
+
+/* Avoid oversized action buttons stretching modal rows */
+.modal .cbi-section-actions .cbi-button,
+.modal .td.cbi-section-actions .cbi-button,
+.modal td.cbi-section-actions .cbi-button {
+    margin-left: 6px;
+}
+
+/* Mobile fallback: use almost full viewport width */
+@media screen and (max-width: 900px) {
+
+    .modal:has(.cbi-section-table),
+    .modal:has(.table) {
+        width: calc(100vw - 24px) !important;
+        max-width: calc(100vw - 24px) !important;
+    }
+}
+
+/* Login password eye: keep it icon-only and override global button styles. */
+body.login-page .login-password-toggle,
+body.login-page .login-password-toggle:hover,
+body.login-page .login-password-toggle:focus,
+body.login-page .login-password-toggle:active,
+body.login-page .login-password-toggle[aria-pressed="true"] {
+    background: none !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: none;
+    transform: translateY(-50%) !important;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body.login-page .login-password-toggle:focus-visible {
+    outline: 2px solid var(--proton-accent);
+    outline-offset: 2px;
+}
+
+/* ============================================================
+   RESIDENT EVIL: UMBRELLA CORPORATION WIDGET OVERRIDES
+   ============================================================ */
+.proton-widgets-section {
+    margin: 20px auto 30px auto !important;
+    max-width: var(--proton-page-max-width, 1200px) !important;
+}
+
+.proton-widgets-container {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+    gap: 16px !important;
+}
+
+.proton-services-widget,
+.proton-temp-widget {
+    background: rgba(10, 13, 18, 0.88) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border: 1px solid rgba(220, 38, 38, 0.25) !important;
+    border-top: 2px solid #dc2626 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.65) !important;
+    padding: 16px !important;
+}
+
+.proton-widgets-section-title {
+    color: #f1f5f9 !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    font-size: 1.1rem !important;
+}
+
+.proton-service-card,
+.proton-temp-sensor-card {
+    background: rgba(18, 22, 30, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+}
+
+.proton-service-card:hover,
+.proton-temp-sensor-card:hover {
+    border-color: rgba(220, 38, 38, 0.5) !important;
+    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.25) !important;
+}
