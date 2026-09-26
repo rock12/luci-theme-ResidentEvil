@@ -470,6 +470,7 @@
 
         const settingsBtn = document.createElement("button");
         settingsBtn.className = "proton-widgets-settings-btn";
+        settingsBtn.type = "button";
         settingsBtn.title = this._t("Widget Settings");
         settingsBtn.innerHTML = `
           <svg class="proton-widgets-settings-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"
@@ -481,6 +482,7 @@
             <line x1="4" y1="18" x2="20" y2="18"></line>
             <circle cx="7" cy="18" r="2"></circle>
           </svg>
+          <span class="proton-widgets-settings-label">${this._t("Widget Settings")}</span>
         `;
         settingsBtn.addEventListener("click", () => this.showAddServiceModal());
 
@@ -505,9 +507,14 @@
 
       widget.innerHTML = `
                 <div class="proton-services-header">
-                    <h3 class="proton-services-title">${this._t(
-                      "Services Monitor",
-                    )}</h3>
+                    <div class="proton-services-title-wrap">
+                        <h3 class="proton-services-title">${this._t(
+                          "Services Monitor",
+                        )}</h3>
+                        <button type="button" class="proton-add-service-btn" title="${this._t(
+                          "Widget Settings",
+                        )}">+ ${this._t("Add") || "Добавить"}</button>
+                    </div>
                     <div class="proton-services-info">?
                         <div class="proton-services-tooltip">
                             <div class="proton-services-tooltip-title">${this._t(
@@ -546,6 +553,14 @@
             `;
 
       widgetsContainer.appendChild(widget);
+
+      const addBtn = widget.querySelector(".proton-add-service-btn");
+      if (addBtn) {
+        addBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          this.showAddServiceModal();
+        });
+      }
 
       this._mounted = true;
 
@@ -2127,6 +2142,29 @@
                 sectionTitle.className = "proton-widgets-section-title";
                 sectionTitle.textContent = this._t("Widgets");
                 sectionHeader.appendChild(sectionTitle);
+
+                const settingsBtn = document.createElement("button");
+                settingsBtn.className = "proton-widgets-settings-btn";
+                settingsBtn.type = "button";
+                settingsBtn.title = this._t("Widget Settings");
+                settingsBtn.innerHTML = `
+                  <svg class="proton-widgets-settings-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <circle cx="9" cy="6" r="2"></circle>
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <circle cx="15" cy="12" r="2"></circle>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                    <circle cx="7" cy="18" r="2"></circle>
+                  </svg>
+                  <span class="proton-widgets-settings-label">${this._t("Widget Settings")}</span>
+                `;
+                settingsBtn.addEventListener("click", () => {
+                  if (window.protonServicesWidget) {
+                    window.protonServicesWidget.showAddServiceModal();
+                  }
+                });
+                sectionHeader.appendChild(settingsBtn);
 
                 widgetsSection.appendChild(sectionHeader);
 

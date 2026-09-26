@@ -4059,23 +4059,12 @@ body.login-page .login-password-toggle:focus-visible {
     max-width: var(--proton-page-max-width, 1200px) !important;
 }
 
-.proton-widgets-container {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+.proton-widgets-section-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 14px !important;
     gap: 16px !important;
-}
-
-.proton-services-widget,
-.proton-temp-widget {
-    background: rgba(10, 13, 18, 0.88) !important;
-    backdrop-filter: blur(14px) !important;
-    -webkit-backdrop-filter: blur(14px) !important;
-    border: 1px solid rgba(220, 38, 38, 0.25) !important;
-    border-top: 2px solid #dc2626 !important;
-    border-radius: 8px !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.65) !important;
-    padding: 16px !important;
-    position: relative !important;
 }
 
 .proton-widgets-section-title {
@@ -4084,6 +4073,85 @@ body.login-page .login-password-toggle:focus-visible {
     letter-spacing: 1px !important;
     text-transform: uppercase !important;
     font-size: 1.1rem !important;
+    margin: 0 !important;
+}
+
+.proton-widgets-settings-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 6px 14px !important;
+    height: auto !important;
+    width: auto !important;
+    border-radius: 6px !important;
+    background: rgba(220, 38, 38, 0.18) !important;
+    border: 1px solid rgba(220, 38, 38, 0.45) !important;
+    color: #fca5a5 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.3px !important;
+    cursor: pointer !important;
+    opacity: 1 !important;
+    transition: all 0.2s ease !important;
+}
+
+.proton-widgets-settings-btn:hover {
+    background: #dc2626 !important;
+    border-color: #ef4444 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 16px rgba(220, 38, 38, 0.5) !important;
+    transform: translateY(-1px) !important;
+}
+
+.proton-widgets-settings-btn .proton-widgets-settings-icon {
+    width: 14px !important;
+    height: 14px !important;
+    flex-shrink: 0 !important;
+}
+
+.proton-widgets-container {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+    gap: 16px !important;
+}
+
+/* Services Header with Add button */
+.proton-services-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin: 0 0 12px 0 !important;
+    padding-bottom: 10px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.proton-services-title-wrap {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.proton-add-service-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    padding: 3px 8px !important;
+    border-radius: 4px !important;
+    background: rgba(220, 38, 38, 0.15) !important;
+    border: 1px solid rgba(220, 38, 38, 0.35) !important;
+    color: #fca5a5 !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.15s ease !important;
+    line-height: 1.3 !important;
+}
+
+.proton-add-service-btn:hover {
+    background: #dc2626 !important;
+    border-color: #ef4444 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 8px rgba(220, 38, 38, 0.4) !important;
 }
 
 /* Tooltip Buttons (? icon) */
@@ -4479,5 +4547,90 @@ body.login-page .login-password-toggle:focus-visible {
     100% {
         left: 200%;
     }
+}
+
+/* ============================================================
+   WIDGET SETTINGS MODAL & TOGGLES (RESIDENT EVIL UMBRELLA)
+   ============================================================ */
+.proton-service-modal {
+    background: rgba(4, 6, 10, 0.75) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    z-index: 10000 !important;
+}
+
+.proton-service-modal-content {
+    background: rgba(13, 17, 24, 0.98) !important;
+    border: 1px solid rgba(220, 38, 38, 0.4) !important;
+    border-top: 3px solid #dc2626 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 25px rgba(220, 38, 38, 0.25) !important;
+    color: #f1f5f9 !important;
+}
+
+.proton-service-modal-title {
+    color: #f1f5f9 !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+}
+
+.proton-service-modal-close {
+    color: #94a3b8 !important;
+}
+
+.proton-service-modal-close:hover {
+    background: rgba(220, 38, 38, 0.2) !important;
+    color: #ef4444 !important;
+}
+
+.proton-widget-toggle {
+    background: rgba(18, 22, 30, 0.85) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+    margin-bottom: 8px !important;
+}
+
+.proton-widget-toggle:hover {
+    background: rgba(26, 32, 44, 0.95) !important;
+    border-color: rgba(220, 38, 38, 0.4) !important;
+}
+
+.proton-widget-toggle input[type="checkbox"]:checked + .proton-widget-toggle-slider {
+    background: #dc2626 !important;
+    box-shadow: 0 0 10px rgba(220, 38, 38, 0.5) !important;
+}
+
+.proton-service-search input {
+    background: rgba(18, 22, 30, 0.9) !important;
+    border: 1px solid rgba(220, 38, 38, 0.35) !important;
+    color: #f1f5f9 !important;
+    border-radius: 6px !important;
+    padding: 8px 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.proton-service-search input:focus {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 10px rgba(220, 38, 38, 0.4) !important;
+    outline: none !important;
+}
+
+.proton-service-select-item {
+    background: rgba(18, 22, 30, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+}
+
+.proton-service-select-item:hover {
+    background: rgba(26, 32, 44, 0.95) !important;
+    border-color: rgba(220, 38, 38, 0.4) !important;
+}
+
+.proton-service-select-item.selected {
+    border-color: rgba(220, 38, 38, 0.6) !important;
+    background: rgba(220, 38, 38, 0.12) !important;
 }
 
