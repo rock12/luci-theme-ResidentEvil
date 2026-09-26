@@ -4302,7 +4302,7 @@ body.login-page .login-password-toggle:focus-visible {
 /* Service Cards in Widget (Visually Identical to Temperature Cards) */
 .proton-services-grid {
     display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
     gap: 8px !important;
     align-items: stretch !important;
 }
@@ -4317,7 +4317,7 @@ body.login-page .login-password-toggle:focus-visible {
     background: rgba(18, 22, 30, 0.65) !important;
     border: 1px solid rgba(255, 255, 255, 0.07) !important;
     border-radius: 6px !important;
-    padding: 6px 8px !important;
+    padding: 6px 6px !important;
     transition: all 0.2s ease !important;
     position: relative !important;
     overflow: hidden !important;
@@ -4325,6 +4325,7 @@ body.login-page .login-password-toggle:focus-visible {
     flex-direction: column !important;
     justify-content: space-between !important;
     min-height: 52px !important;
+    min-width: 0 !important;
     box-sizing: border-box !important;
 }
 
@@ -4372,20 +4373,20 @@ body.login-page .login-password-toggle:focus-visible {
 .proton-service-card-header {
     display: flex !important;
     align-items: center !important;
-    gap: 6px !important;
+    gap: 4px !important;
     width: 100% !important;
     min-width: 0 !important;
     margin-bottom: 2px !important;
 }
 
 .proton-service-icon {
-    font-size: 14px !important;
+    font-size: 13px !important;
     flex-shrink: 0 !important;
     line-height: 1 !important;
 }
 
 .proton-service-name {
-    font-size: 12.5px !important;
+    font-size: 11px !important;
     font-weight: 700 !important;
     color: #f1f5f9 !important;
     margin: 0 !important;
@@ -4435,11 +4436,12 @@ body.login-page .login-password-toggle:focus-visible {
 .proton-service-status {
     display: flex !important;
     align-items: center !important;
-    gap: 4px !important;
-    font-size: 9.5px !important;
+    gap: 3px !important;
+    font-size: 9px !important;
     letter-spacing: 0.2px !important;
     font-weight: 600 !important;
     margin-top: 1px !important;
+    white-space: nowrap !important;
 }
 
 .proton-service-status-dot {
@@ -4463,11 +4465,12 @@ body.login-page .login-password-toggle:focus-visible {
 }
 
 .proton-service-status-text {
-    font-size: 9.5px !important;
+    font-size: 8.5px !important;
     font-weight: 600 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.2px !important;
     color: #22c55e !important;
+    white-space: nowrap !important;
 }
 
 .proton-service-status-text.stopped {

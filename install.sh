@@ -22,7 +22,7 @@
 
 set -e
 
-PKG_NAME="luci-theme-proton2025"
+PKG_NAME="luci-theme-residentevil"
 THEME_NAME="proton2025"
 REPO="rock12/luci-theme-ResidentEvil"
 API_URL="https://api.github.com/repos/${REPO}/releases/latest"

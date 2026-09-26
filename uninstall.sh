@@ -21,7 +21,7 @@
 
 set -e
 
-PKG_NAME="luci-theme-proton2025"
+PKG_NAME="luci-theme-residentevil"
 THEME_NAME="proton2025"
 
 PKG_IS_APK=0
@@ -79,9 +79,9 @@ fi
 if pkg_is_installed; then
     info "Removing package ${PKG_NAME}..."
     if [ "$PKG_IS_APK" -eq 1 ]; then
-        apk del "$PKG_NAME" >/dev/null 2>&1 || true
+        apk del "$PKG_NAME" "luci-theme-proton2025" >/dev/null 2>&1 || true
     else
-        opkg remove "$PKG_NAME" >/dev/null 2>&1 || true
+        opkg remove "$PKG_NAME" "luci-theme-proton2025" >/dev/null 2>&1 || true
     fi
     ok "Package removed"
 fi

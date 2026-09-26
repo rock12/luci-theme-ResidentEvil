@@ -94,8 +94,8 @@ wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/
 ## 📦 Ссылки на готовые пакеты
 
 Собранные файлы доступны на странице [**GitHub Releases**](https://github.com/rock12/luci-theme-ResidentEvil/releases/latest):
-* **`.apk`** — для OpenWrt 25.12+ (пакетный менеджер `apk`)
-* **`.ipk`** — для OpenWrt 23.05 и 24.10 (пакетный менеджер `opkg`)
+* **`.apk`** — `luci-theme-residentevil-1.0.0-r1.apk` (для OpenWrt 25.12+, пакетный менеджер `apk`)
+* **`.ipk`** — `luci-theme-residentevil_1.0.0_all.ipk` (для OpenWrt 23.05 и 24.10, пакетный менеджер `opkg`)
 
 ---
 
