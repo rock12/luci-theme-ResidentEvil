@@ -7029,10 +7029,10 @@ body.modal-overlay-active #modal_overlay {
 }
 
 #view>.controls .cbi-button-action {
-    background: linear-gradient(135deg, var(--proton-accent) 0%, #5e9eff 100%) !important;
-    border-color: var(--proton-accent) !important;
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%) !important;
+    border-color: rgba(239, 68, 68, 0.5) !important;
     color: #fff !important;
-    box-shadow: 0 2px 8px rgba(74, 143, 231, 0.3);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.4);
     position: relative;
     overflow: hidden;
 }
@@ -7045,7 +7045,7 @@ body.modal-overlay-active #modal_overlay {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: rgba(140, 190, 255, 0.55);
+    background: rgba(255, 100, 100, 0.55);
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
 }
@@ -7056,10 +7056,10 @@ body.modal-overlay-active #modal_overlay {
 }
 
 #view>.controls .cbi-button-action:hover {
-    background: linear-gradient(135deg, var(--proton-accent) 0%, #5e9eff 100%) !important;
-    border-color: var(--proton-accent) !important;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+    border-color: #ef4444 !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 6px 20px rgba(74, 143, 231, 0.5) !important;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.6) !important;
 }
 
 #view>.controls:has(.cbi-progressbar)>div:nth-child(5)>label:first-child {
@@ -7415,11 +7415,11 @@ body.modal-overlay-active #modal_overlay {
 .controls .pager button:hover:not([disabled]),
 .controls .pager .btn:hover:not([disabled]),
 .pager button:hover:not([disabled]) {
-    background: linear-gradient(135deg, var(--proton-accent) 0%, #5e9eff 100%) !important;
-    border-color: var(--proton-accent) !important;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+    border-color: rgba(239, 68, 68, 0.5) !important;
     color: #fff !important;
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 16px rgba(74, 143, 231, 0.4);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.5);
 }
 
 .controls .pager button[disabled],

@@ -287,7 +287,7 @@ body {
 	}
 }
 </style>
-{% let __pv = "1.5.1"; %}
+{% let __pv = "1.5.2"; %}
 <link rel="stylesheet" media="screen" fetchpriority="high" href="{{ media }}/css/cascade.css?v={{ __pv }}" />
 {#
    Фаза 2B-3: пофайловый per-page CSS. cascade.css содержит только общие
@@ -372,6 +372,7 @@ body {
 <script src="{{ media }}/js/settings-sync.js?v={{ __pv }}" defer></script>
 <script src="{{ media }}/js/mobile-settings-fallback.js?v={{ __pv }}" defer></script>
 <script src="{{ media }}/js/overview-decorations.js?v={{ __pv }}" defer></script>
+<script src="{{ media }}/js/services-widget.js?v={{ __pv }}" defer></script>
 <script src="{{ media }}/js/custom-pages.js?v={{ __pv }}" defer></script>
 {# translations-search.js: семантические переводы поиска, вынесены из
    translations.js. defer сохраняет порядок → protonGetLang доступен. #}
