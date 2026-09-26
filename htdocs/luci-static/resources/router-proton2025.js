@@ -186,7 +186,7 @@
     ["cascade-startup.css", [["=", "admin-system-startup"]]],
     ["cascade-status.css", [["^", "admin-status"]]],
     ["cascade-system.css", [["=", "admin-system-system"]]],
-    ["cascade-temperature.css", [["=", "admin-status-realtime-temperature"]]],
+    ["cascade-temperature.css", [["=", "admin-status-realtime-temperature"], ["=", "admin-status-temperature"], ["*", "temperature"]]],
     ["cascade-wifihistory.css", [["=", "admin-status-wifihistory"]]],
   ];
 

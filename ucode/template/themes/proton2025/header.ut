@@ -265,29 +265,8 @@ body {
 	top: auto;
 	margin-top: 0;
 }
-
-/* Critical: server-rendered managed alerts must not flash inline before cascade.css */
-.alert-message.proton-alert-floating[data-proton-managed="true"] {
-	position: fixed;
-	top: 84px;
-	right: 24px;
-	z-index: 2200;
-	width: min(420px, calc(100vw - 48px));
-	margin-bottom: 0;
-	opacity: 0;
-	transform: translateY(-10px);
-	pointer-events: none;
-}
-
-@media (max-width: 800px) {
-	.alert-message.proton-alert-floating[data-proton-managed="true"] {
-		top: 72px;
-		right: 12px;
-		width: calc(100vw - 24px);
-	}
-}
 </style>
-{% let __pv = "1.5.3"; %}
+{% let __pv = "1.5.4"; %}
 <link rel="stylesheet" media="screen" fetchpriority="high" href="{{ media }}/css/cascade.css?v={{ __pv }}" />
 <link rel="stylesheet" media="screen" href="{{ media }}/css/cascade-widgets.css?v={{ __pv }}" />
 {#
@@ -319,7 +298,7 @@ body {
 		['cascade-startup.css',     [['=', 'admin-system-startup']]],
 		['cascade-status.css',      [['^', 'admin-status']]],
 		['cascade-system.css',      [['=', 'admin-system-system']]],
-		['cascade-temperature.css', [['=', 'admin-status-realtime-temperature']]],
+		['cascade-temperature.css', [['=', 'admin-status-realtime-temperature'], ['=', 'admin-status-temperature'], ['*', 'temperature']]],
 		['cascade-wifihistory.css', [['=', 'admin-status-wifihistory']]]
 	];
 
@@ -670,29 +649,6 @@ body {
 
 <div id="modemenu" style="display:none"></div>
 
-{# Плавающие уведомления вне #maincontent: его animation/transform делает его
-   containing block для position:fixed, из-за чего уведомление ехало вместе с
-   fade-in страницы и прыгало на своё место в конце анимации. #}
-{% if (getuid() == 0 && getspnam('root')?.pwdp === '' && join('-', ctx.request_path) != 'admin-system-admin'): %}
-<div class="alert-message warning proton-alert-floating" data-proton-managed="true">
-	<h4>{{ _('No password set!') }}</h4>
-	<p>{{ _('There is no password set on this router. Please configure a root password to protect the web interface.') }}</p>
-	{% if (dispatcher.lookup("admin/system/admin")): %}
-		<div class="right"><a class="btn" href="{{ dispatcher.build_url("admin/system/admin") }}">{{ _('Go to password configuration...') }}</a></div>
-	{% endif %}
-</div>
-{% endif %}
-
-{% if (boardinfo.rootfs_type == "initramfs"): %}
-<div class="alert-message warning proton-alert-floating" data-proton-managed="true">
-	<h4>{{ _('System running in recovery (initramfs) mode.') }}</h4>
-	<p>{{ _('No changes to settings will be stored and are lost after rebooting. This mode should only be used to install a firmware upgrade') }}</p>
-	{% if (dispatcher.lookup("admin/system/flash")): %}
-	  <div class="right"><a class="btn" href="{{ dispatcher.build_url("admin/system/flash") }}">{{ _('Go to firmware upgrade...') }}</a></div>
-	{% endif %}
-</div>
-{% endif %}
-
 <div id="maincontainer">
 {# Боковую колонку переставляем уже на этапе парсинга. Если ждать
    menu-proton2025.js (~250 мс), пустой #mainmenu остаётся в шапке, но
@@ -712,3 +668,34 @@ body {
 	</script>
 	<div id="maincontent">
 		<div id="tabmenu" style="display:none"></div>
+		{% if (getuid() == 0 && getspnam('root')?.pwdp === '' && join('-', ctx.request_path) != 'admin-system-admin'): %}
+		<div class="alert-message warning">
+			<div class="alert-message-content">
+				<div class="alert-message-header">
+					<h4>{{ _('No password set!') }}</h4>
+				</div>
+				<p>{{ _('There is no password set on this router. Please configure a root password to protect the web interface.') }}</p>
+				{% if (dispatcher.lookup("admin/system/admin")): %}
+					<div class="alert-message-footer">
+						<a class="btn" href="{{ dispatcher.build_url("admin/system/admin") }}">{{ _('Go to password configuration...') }}</a>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+		{% endif %}
+
+		{% if (boardinfo.rootfs_type == "initramfs"): %}
+		<div class="alert-message warning">
+			<div class="alert-message-content">
+				<div class="alert-message-header">
+					<h4>{{ _('System running in recovery (initramfs) mode.') }}</h4>
+				</div>
+				<p>{{ _('No changes to settings will be stored and are lost after rebooting. This mode should only be used to install a firmware upgrade') }}</p>
+				{% if (dispatcher.lookup("admin/system/flash")): %}
+					<div class="alert-message-footer">
+						<a class="btn" href="{{ dispatcher.build_url("admin/system/flash") }}">{{ _('Go to firmware upgrade...') }}</a>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+		{% endif %}

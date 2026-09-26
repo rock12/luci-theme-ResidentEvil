@@ -4034,28 +4034,29 @@ html.proton-tabs-proton #packages .cbi-tabmenu li.active a {
 }
 
 .alert-message.proton-alert-floating {
-    position: fixed;
-    top: 84px;
-    right: 24px;
-    z-index: 2200;
-    width: min(420px, calc(100vw - 48px));
-    margin-bottom: 0;
-    opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
-    transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.2s ease;
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    z-index: 10 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 16px 0 !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    transition: opacity 0.25s ease !important;
 }
 
 .alert-message.proton-alert-floating.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
 }
 
 .alert-message.proton-alert-floating.is-hidden {
-    opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
+    opacity: 0 !important;
+    transform: none !important;
+    pointer-events: none !important;
 }
 
 .alert-message.proton-alert-native {
@@ -4276,11 +4277,6 @@ html.proton-tabs-proton #packages .cbi-tabmenu li.active a {
         padding: 0.85rem 0.9rem;
     }
 
-    .alert-message.proton-alert-floating {
-        top: 72px;
-        right: 12px;
-        width: calc(100vw - 24px);
-    }
 
     .alert-message h4 {
         font-size: 0.9rem;
