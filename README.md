@@ -2,6 +2,9 @@
 
 Тёмная тема оформления веб-интерфейса LuCI для роутеров OpenWrt (23.05, 24.10, 25.12+), стилизованная под секретный защищённый терминал безопасности **Umbrella Corporation** по мотивам культовой вселенной **Resident Evil**.
 
+> 💡 **Основано на проекте:** [**luci-theme-proton2025**](https://github.com/ChesterGoodiny/luci-theme-proton2025) от [**ChesterGoodiny**](https://github.com/ChesterGoodiny).  
+> Выражаем огромную благодарность автору оригинального проекта за современную архитектуру, поддержку ucode, высокую производительность и продуманную систему настроек!
+
 ---
 
 ## 📸 Скриншоты
@@ -93,3 +96,10 @@ wget -qO- https://raw.githubusercontent.com/rock12/luci-theme-ResidentEvil/main/
 Собранные файлы доступны на странице [**GitHub Releases**](https://github.com/rock12/luci-theme-ResidentEvil/releases/latest):
 * **`.apk`** — для OpenWrt 25.12+ (пакетный менеджер `apk`)
 * **`.ipk`** — для OpenWrt 23.05 и 24.10 (пакетный менеджер `opkg`)
+
+---
+
+## 🙏 Благодарности и первоисточник
+
+* **Оригинальная тема и движок:** [**luci-theme-proton2025**](https://github.com/ChesterGoodiny/luci-theme-proton2025) от [**ChesterGoodiny**](https://github.com/ChesterGoodiny). Огромное спасибо автору за великолепную ucode-базу, производительность и современный подход к темам LuCI!
+* **Модификация Resident Evil (Umbrella Corporation Edition):** [rock12](https://github.com/rock12/luci-theme-ResidentEvil).
