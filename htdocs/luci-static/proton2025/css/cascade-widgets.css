@@ -4299,24 +4299,183 @@ body.login-page .login-password-toggle:focus-visible {
 .proton-temp-tooltip-legend-dot.hot { background: #f97316 !important; }
 .proton-temp-tooltip-legend-dot.critical { background: #ef4444 !important; }
 
-/* Service Cards in Widget */
+/* Service Cards in Widget (Visually Identical to Temperature Cards) */
 .proton-services-grid {
     display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
     gap: 8px !important;
+    align-items: stretch !important;
+}
+
+@media (max-width: 700px) {
+    .proton-services-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
 }
 
 .proton-service-card {
     background: rgba(18, 22, 30, 0.65) !important;
     border: 1px solid rgba(255, 255, 255, 0.07) !important;
     border-radius: 6px !important;
-    padding: 6px 10px !important;
+    padding: 6px 8px !important;
     transition: all 0.2s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    min-height: 52px !important;
+    box-sizing: border-box !important;
 }
 
 .proton-service-card:hover {
+    background: rgba(26, 32, 44, 0.85) !important;
     border-color: rgba(220, 38, 38, 0.45) !important;
     box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Green/status top accent bar matching temperature card */
+.proton-service-card::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 2px !important;
+    background: #22c55e !important;
+    transition: background 0.3s ease !important;
+}
+
+.proton-service-card[data-status="running"]::before,
+.proton-service-card:has(.running)::before {
+    background: #22c55e !important;
+}
+
+.proton-service-card[data-status="checking"]::before,
+.proton-service-card:has([data-status="checking"])::before {
+    background: #fbbf24 !important;
+}
+
+.proton-service-card[data-status="stopped"]::before,
+.proton-service-card[data-status="not-installed"]::before,
+.proton-service-card:has(.stopped)::before,
+.proton-service-card:has(.not-installed)::before {
+    background: #64748b !important;
+}
+
+.proton-service-card[data-status="error"]::before,
+.proton-service-card:has(.error)::before {
+    background: #ef4444 !important;
+}
+
+.proton-service-card-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin-bottom: 2px !important;
+}
+
+.proton-service-icon {
+    font-size: 14px !important;
+    flex-shrink: 0 !important;
+    line-height: 1 !important;
+}
+
+.proton-service-name {
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    color: #f1f5f9 !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.2px !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+}
+
+.proton-service-bar-container {
+    width: 100% !important;
+    height: 3px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-radius: 2px !important;
+    overflow: hidden !important;
+    margin-bottom: 4px !important;
+}
+
+.proton-service-bar {
+    height: 100% !important;
+    width: 100% !important;
+    border-radius: 2px !important;
+    background: linear-gradient(90deg, #22c55e, rgba(34, 197, 94, 0.6)) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.proton-service-card[data-status="checking"] .proton-service-bar,
+.proton-service-card:has([data-status="checking"]) .proton-service-bar {
+    background: linear-gradient(90deg, #fbbf24, rgba(251, 191, 36, 0.6)) !important;
+}
+
+.proton-service-card[data-status="stopped"] .proton-service-bar,
+.proton-service-card:has(.stopped) .proton-service-bar {
+    background: #64748b !important;
+    width: 30% !important;
+}
+
+.proton-service-card[data-status="error"] .proton-service-bar,
+.proton-service-card:has(.error) .proton-service-bar {
+    background: linear-gradient(90deg, #ef4444, rgba(239, 68, 68, 0.6)) !important;
+}
+
+.proton-service-status {
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    font-size: 9.5px !important;
+    letter-spacing: 0.2px !important;
+    font-weight: 600 !important;
+    margin-top: 1px !important;
+}
+
+.proton-service-status-dot {
+    width: 5px !important;
+    height: 5px !important;
+    border-radius: 50% !important;
+    background: #22c55e !important;
+    animation: temp-pulse-dot 2s ease-in-out infinite !important;
+    flex-shrink: 0 !important;
+}
+
+.proton-service-status-dot.stopped {
+    background: #64748b !important;
+    animation: none !important;
+    box-shadow: none !important;
+}
+
+.proton-service-status-dot.error {
+    background: #ef4444 !important;
+    animation: temp-pulse-dot 1s ease-in-out infinite !important;
+}
+
+.proton-service-status-text {
+    font-size: 9.5px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.2px !important;
+    color: #22c55e !important;
+}
+
+.proton-service-status-text.stopped {
+    color: #94a3b8 !important;
+}
+
+.proton-service-status-text.error {
+    color: #ef4444 !important;
 }
 
 /* ============================================================
@@ -4331,25 +4490,24 @@ body.login-page .login-password-toggle:focus-visible {
     border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
 
-.proton-temp-title {
+.proton-services-title,
+.proton-temp-title,
+.proton-temp-title-link,
+a.proton-temp-title-link {
     font-size: 0.95rem !important;
     font-weight: 600 !important;
     color: #f1f5f9 !important;
     margin: 0 !important;
     letter-spacing: -0.01em !important;
-}
-
-.proton-temp-title-link {
-    color: inherit !important;
     text-decoration: none !important;
-    border-bottom: 1px solid transparent !important;
-    transition: all 0.2s ease !important;
 }
 
+.proton-services-title:hover,
 .proton-temp-title-link:hover,
-.proton-temp-title-link:focus-visible {
+a.proton-temp-title-link:hover,
+a.proton-temp-title-link:focus-visible {
     color: #ef4444 !important;
-    border-bottom-color: #ef4444 !important;
+    border-bottom: none !important;
 }
 
 .proton-temp-grid {

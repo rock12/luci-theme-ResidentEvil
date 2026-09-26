@@ -631,6 +631,7 @@
         .replace(/[^a-zA-Z0-9_-]+/g, "-")}`;
       card.dataset.service = info.serviceName;
       card.dataset.category = info.category;
+      card.dataset.status = "checking";
 
       const safeDisplayName = this.escapeHtml(info.displayName);
       const safeDescription = this.escapeHtml(info.description);
@@ -643,6 +644,9 @@
                     <button class="proton-service-remove" title="${this._t(
                       "Remove",
                     )}">×</button>
+                </div>
+                <div class="proton-service-bar-container">
+                    <div class="proton-service-bar"></div>
                 </div>
                 <div class="proton-service-status">
                     <span class="proton-service-status-dot" data-status="checking"></span>
@@ -1778,8 +1782,9 @@
       const cached = this._serviceElements.get(serviceName);
       if (!cached || !cached.card) return;
 
-      const { dot, text } = cached;
+      const { dot, text, card } = cached;
 
+      card.dataset.status = status;
       dot.className = "proton-service-status-dot " + status;
       text.className = "proton-service-status-text " + status;
 
