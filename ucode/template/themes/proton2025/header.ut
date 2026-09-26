@@ -266,7 +266,7 @@ body {
 	margin-top: 0;
 }
 </style>
-{% let __pv = "1.5.5"; %}
+{% let __pv = "1.5.6"; %}
 <link rel="stylesheet" media="screen" fetchpriority="high" href="{{ media }}/css/cascade.css?v={{ __pv }}" />
 <link rel="stylesheet" media="screen" href="{{ media }}/css/cascade-widgets.css?v={{ __pv }}" />
 {#
@@ -669,10 +669,11 @@ body {
 	<div id="maincontent">
 		<div id="tabmenu" style="display:none"></div>
 		{% if (getuid() == 0 && getspnam('root')?.pwdp === '' && join('-', ctx.request_path) != 'admin-system-admin'): %}
-		<div class="alert-message warning">
+		<div class="alert-message warning" id="proton-alert-nopassword">
 			<div class="alert-message-content">
 				<div class="alert-message-header">
 					<h4>{{ _('No password set!') }}</h4>
+					<button class="alert-message-close" type="button" aria-label="Close" title="{{ _('Dismiss') }}" onclick="this.closest('.alert-message').remove(); try { sessionStorage.setItem('proton-alert-dismissed-nopassword', 'true'); } catch(e){}">×</button>
 				</div>
 				<p>{{ _('There is no password set on this router. Please configure a root password to protect the web interface.') }}</p>
 				{% if (dispatcher.lookup("admin/system/admin")): %}
@@ -682,13 +683,20 @@ body {
 				{% endif %}
 			</div>
 		</div>
+		<script>
+		if (sessionStorage.getItem('proton-alert-dismissed-nopassword') === 'true') {
+			var __el = document.getElementById('proton-alert-nopassword');
+			if (__el) __el.remove();
+		}
+		</script>
 		{% endif %}
 
 		{% if (boardinfo.rootfs_type == "initramfs"): %}
-		<div class="alert-message warning">
+		<div class="alert-message warning" id="proton-alert-recovery">
 			<div class="alert-message-content">
 				<div class="alert-message-header">
 					<h4>{{ _('System running in recovery (initramfs) mode.') }}</h4>
+					<button class="alert-message-close" type="button" aria-label="Close" title="{{ _('Dismiss') }}" onclick="this.closest('.alert-message').remove(); try { sessionStorage.setItem('proton-alert-dismissed-recovery', 'true'); } catch(e){}">×</button>
 				</div>
 				<p>{{ _('No changes to settings will be stored and are lost after rebooting. This mode should only be used to install a firmware upgrade') }}</p>
 				{% if (dispatcher.lookup("admin/system/flash")): %}
@@ -698,4 +706,10 @@ body {
 				{% endif %}
 			</div>
 		</div>
+		<script>
+		if (sessionStorage.getItem('proton-alert-dismissed-recovery') === 'true') {
+			var __el = document.getElementById('proton-alert-recovery');
+			if (__el) __el.remove();
+		}
+		</script>
 		{% endif %}

@@ -4093,29 +4093,31 @@ html.proton-tabs-proton #packages .cbi-tabmenu li.active a {
 .alert-message-close {
     flex-shrink: 0;
     margin-left: auto;
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
-    border: none;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 6px;
-    color: var(--proton-fg-secondary);
+    color: #cbd5e1;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.15rem;
     line-height: 1;
     padding: 0;
-    transition: background 0.15s ease, color 0.15s ease;
+    transition: all 0.2s ease;
 }
 
 .alert-message-close:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--proton-fg);
+    background: #dc2626 !important;
+    border-color: #ef4444 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 10px rgba(220, 38, 38, 0.6) !important;
 }
 
 .alert-message-close:active {
-    transform: scale(0.95);
+    transform: scale(0.92);
 }
 
 .alert-message-close:focus-visible {
