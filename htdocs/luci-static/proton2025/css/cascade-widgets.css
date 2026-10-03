@@ -4308,8 +4308,19 @@ body.login-page .login-password-toggle:focus-visible {
 }
 
 @media (max-width: 700px) {
+    .proton-widgets-container {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+
+    .proton-services-widget,
+    .proton-temp-widget {
+        padding: 8px 8px !important;
+    }
+
     .proton-services-grid {
         grid-template-columns: repeat(2, 1fr) !important;
+        gap: 6px !important;
     }
 }
 

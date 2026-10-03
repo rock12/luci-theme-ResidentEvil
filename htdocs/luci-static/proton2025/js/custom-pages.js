@@ -1637,6 +1637,120 @@
   );
 })();
 
+/* Factory Reset ("Сброс до заводских настроек") Fallback & Styling */
+(function () {
+  "use strict";
+
+  function initFlashReset() {
+    const isFlashPage =
+      document.body.dataset.page === "admin-system-flash" ||
+      window.location.pathname.includes("/admin/system/flash");
+    if (!isFlashPage) return;
+
+    function checkAndRestoreResetButton() {
+      // 1. Check if reset button exists
+      const existingReset = document.querySelector(
+        '[data-name="reset"] button, [data-name="reset"] input, .proton-factory-reset-btn'
+      );
+      if (existingReset) {
+        if (existingReset.hasAttribute("disabled")) {
+          existingReset.removeAttribute("disabled");
+        }
+        return;
+      }
+
+      // 2. Look for the "restore" action (Upload archive...)
+      const restoreSection = document.querySelector(
+        '[data-name="restore"], .cbi-value[data-name="restore"]'
+      );
+      if (!restoreSection || !restoreSection.parentNode) return;
+
+      const parent = restoreSection.parentNode;
+      if (parent.querySelector(".proton-factory-reset-row")) return;
+
+      // 3. Create the missing "Reset to defaults" row
+      const resetRow = document.createElement("div");
+      resetRow.className = "cbi-value proton-factory-reset-row";
+      resetRow.setAttribute("data-name", "reset");
+
+      const titleEl = document.createElement("label");
+      titleEl.className = "cbi-value-title";
+      const isRu = (document.documentElement.lang || navigator.language || "").startsWith("ru");
+      titleEl.textContent = isRu ? "Сброс к настройкам по умолчанию" : "Reset to defaults";
+
+      const fieldEl = document.createElement("div");
+      fieldEl.className = "cbi-value-field";
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "btn cbi-button cbi-button-negative important proton-factory-reset-btn";
+      btn.textContent = isRu ? "Выполнить сброс" : "Perform reset";
+      btn.style.cssText = "background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%) !important; color: #fff !important; font-weight: 600 !important; border: 1px solid rgba(239, 68, 68, 0.5) !important;";
+
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const confirmMsg = isRu
+          ? "Вы действительно хотите стереть все настройки и сбросить роутер к заводским?"
+          : "Do you really want to erase all settings and reset to defaults?";
+        if (!confirm(confirmMsg)) return;
+
+        if (window.L && L.require) {
+          Promise.all([L.require("ui"), L.require("fs")]).then(function (mods) {
+            const ui = mods[0];
+            const fs = mods[1];
+            const erasingTitle = isRu ? "Стирание настроек…" : "Erasing...";
+            const erasingMsg = isRu
+              ? "Система стирает раздел настроек и перезагрузится после завершения."
+              : "The system is erasing the configuration partition now and will reboot itself when finished.";
+
+            ui.showModal(erasingTitle, [
+              (window.E ? E("p", { class: "spinning" }, erasingMsg) : document.createTextNode(erasingMsg))
+            ]);
+
+            fs.exec("/sbin/firstboot", ["-r", "-y"]);
+            ui.awaitReconnect("192.168.1.1", "openwrt.lan");
+          }).catch(function (err) {
+            console.error("[ResidentEvil] firstboot error", err);
+          });
+        }
+      });
+
+      fieldEl.appendChild(btn);
+      resetRow.appendChild(titleEl);
+      resetRow.appendChild(fieldEl);
+
+      parent.insertBefore(resetRow, restoreSection);
+    }
+
+    checkAndRestoreResetButton();
+
+    const flashObs = new MutationObserver(function () {
+      checkAndRestoreResetButton();
+    });
+    flashObs.observe(document.body, { childList: true, subtree: true });
+    setTimeout(function () { flashObs.disconnect(); }, 8000);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initFlashReset);
+  } else {
+    initFlashReset();
+  }
+
+  const flashNavObs = new MutationObserver(function (mutations) {
+    for (let i = 0; i < mutations.length; i++) {
+      if (mutations[i].attributeName === "data-page") {
+        setTimeout(initFlashReset, 50);
+        break;
+      }
+    }
+  });
+  flashNavObs.observe(document.body, {
+    attributes: true,
+    attributeFilter: ["data-page"],
+  });
+})();
+
 (function () {
   "use strict";
 

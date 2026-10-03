@@ -20,7 +20,7 @@ var defined_E =
       };
 var E = defined_E;
 
-return baseclass.extend({
+var ThemeSettings = baseclass.extend({
   protonMixin: {
     initThemeSettings() {
       if (!document.body.dataset.page?.includes("admin-system-system")) return;
@@ -1268,7 +1268,10 @@ return baseclass.extend({
         });
 
         searchIndexClearButton?.addEventListener("click", async () => {
-          const confirmed = await this.protonConfirm({
+          const confirmFn = typeof this.protonConfirm === "function"
+            ? this.protonConfirm.bind(this)
+            : (window.protonConfirm || ((o) => Promise.resolve(window.confirm(o.message || o.title || "Confirm?"))));
+          const confirmed = await confirmFn({
             title: t("Clear Indexed Data"),
             message: t(
               "Clear indexed search data? This removes cached search pages on the router until the next indexing run.",
@@ -1400,7 +1403,10 @@ return baseclass.extend({
         document
           .getElementById("proton-reset-settings")
           ?.addEventListener("click", async () => {
-            const confirmed = await this.protonConfirm({
+            const confirmFn = typeof this.protonConfirm === "function"
+              ? this.protonConfirm.bind(this)
+              : (window.protonConfirm || ((o) => Promise.resolve(window.confirm(o.message || o.title || "Confirm?"))));
+            const confirmed = await confirmFn({
               title: t("Reset to Defaults"),
               message: t(
                 "Are you sure you want to reset all theme settings to defaults? This action cannot be undone.",
@@ -1586,3 +1592,6 @@ return baseclass.extend({
     },
   },
 });
+
+ThemeSettings.protonMixin = ThemeSettings.prototype.protonMixin;
+return ThemeSettings;
