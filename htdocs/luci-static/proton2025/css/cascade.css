@@ -4367,15 +4367,7 @@ html.proton-tabs-proton #packages .cbi-tabmenu li.active a {
 }
 
 .cbi-progressbar>div::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 100%;
-    width: 100vw;
-    background: inherit;
-    opacity: 0.3;
-    pointer-events: none;
+    display: none !important;
 }
 
 :root[data-theme="light"] .cbi-progressbar>div {
@@ -6782,27 +6774,29 @@ body.modal-overlay-active #modal_overlay {
     scroll-behavior: smooth;
 }
 
+/* Package Manager Controls (OpenWrt Clean 3-Column Layout with Dark/Silver Theme) */
 #view>.controls:has(.cbi-progressbar) {
     display: flex !important;
     flex-wrap: wrap !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 14px 24px !important;
-    margin: 24px 0 !important;
-    padding: 16px 20px !important;
-    background: linear-gradient(135deg, var(--proton-bg-secondary) 0%, var(--proton-bg-tertiary) 100%) !important;
-    border-radius: var(--proton-radius-lg);
-    border: 1px solid var(--proton-border);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    animation: fadeInUp 0.4s ease-out;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 16px 24px !important;
+    margin: 20px 0 !important;
+    padding: 18px 20px !important;
+    background: rgba(13, 17, 23, 0.85) !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    animation: fadeInUp 0.3s ease-out;
 }
 
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(8px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -6810,324 +6804,267 @@ body.modal-overlay-active #modal_overlay {
 }
 
 #view>.controls:has(.cbi-progressbar)>div {
-    flex: 0 1 auto !important;
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    flex-wrap: wrap !important;
-    gap: 10px !important;
-    padding: 0 !important;
     margin: 0 !important;
+    padding: 0 !important;
     background: transparent !important;
     border: none !important;
 }
 
-#view>.controls:has(.cbi-progressbar)>div>* {
-    align-self: auto !important;
-}
-
-#view>.controls:has(.cbi-progressbar)>div:nth-child(5)>* {
-    flex: 0 0 auto !important;
-}
-
-#view>.controls:has(.cbi-progressbar)>div:nth-child(3) .control-group {
-    flex-wrap: nowrap !important;
-}
-
-#view>.controls:has(.cbi-progressbar)>div:nth-child(3) .control-group input[type="text"] {
-    max-width: 230px !important;
-}
-
-#view>.controls:has(.cbi-progressbar)>div>label:first-child {
-    font-weight: 600 !important;
-    color: var(--proton-fg) !important;
-    font-size: 0.82rem !important;
-    flex: 0 0 auto !important;
-    min-width: 0 !important;
-    white-space: nowrap !important;
-    text-align: left !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-    text-transform: none !important;
-    letter-spacing: normal !important;
-}
-
+/* Row 1: Disk space full width */
 #view>.controls:has(.cbi-progressbar)>div:nth-child(1) {
-    order: 0;
+    order: 1 !important;
     flex: 1 1 100% !important;
-}
-
-#view>.controls:has(.cbi-progressbar)>div:nth-child(3) {
-    order: 1;
-    flex: 1 1 calc(50% - 12px) !important;
+    width: 100% !important;
+    display: flex !important;
     flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 8px !important;
+    align-items: stretch !important;
+    gap: 0 !important;
 }
 
-#view>.controls:has(.cbi-progressbar)>div:nth-child(4) {
-    order: 2;
-    flex: 1 1 calc(50% - 12px) !important;
-    flex-direction: column !important;
-    align-items: flex-end !important;
-    gap: 8px !important;
-}
-
-#view>.controls:has(.cbi-progressbar)>div:nth-child(2) {
-    order: 3;
-    flex: 1 1 calc(50% - 12px) !important;
-    justify-content: flex-start !important;
-}
-
-#view>.controls:has(.cbi-progressbar)>div:nth-child(5) {
-    order: 4;
-    flex: 1 1 calc(50% - 12px) !important;
-    justify-content: flex-end !important;
+#view>.controls:has(.cbi-progressbar)>div:nth-child(1)>label:first-child {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #f1f5f9 !important;
+    margin: 0 0 4px 0 !important;
+    line-height: 1.3 !important;
 }
 
 #view>.controls .cbi-progressbar {
-    flex: 1 !important;
-    height: 28px !important;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.02) 100%) !important;
-    border-radius: var(--proton-radius) !important;
-    overflow: hidden !important;
-    border: 1px solid var(--proton-border) !important;
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    height: 8px !important;
+    min-height: 8px !important;
+    max-height: 8px !important;
+    min-width: 170px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-radius: 4px !important;
     position: relative !important;
-    min-width: 200px !important;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+    margin: 1.5em 0 8px 0 !important;
+    overflow: visible !important;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !important;
 }
 
 #view>.controls .cbi-progressbar>div {
     height: 100% !important;
-    background: linear-gradient(135deg, #4a8fe7 0%, #5e9eff 50%, #4ecdc4 100%) !important;
-    border-radius: 0 !important;
-    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    position: relative;
-    box-shadow: 0 0 15px rgba(74, 143, 231, 0.4);
+    background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%) !important;
+    border-radius: 3px !important;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.4) !important;
+    transition: width 0.4s ease !important;
+    position: relative !important;
 }
 
-#view>.controls .cbi-progressbar>div::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    animation: shimmer 2s infinite;
+#view>.controls .cbi-progressbar>div::before,
+#view>.controls .cbi-progressbar>div::after {
+    display: none !important;
+    content: none !important;
 }
 
 #view>.controls .cbi-progressbar::after {
-    content: attr(data-label, attr(title));
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.8rem;
-    color: var(--proton-fg);
-    white-space: nowrap;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    display: none !important;
+    content: none !important;
 }
 
-:root[data-theme="light"] #view>.controls .cbi-progressbar::after {
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+#view>.controls .cbi-progressbar::before {
+    content: attr(title) !important;
+    position: absolute !important;
+    top: -1.45em !important;
+    left: 0 !important;
+    font-size: 13.5px !important;
+    color: #cbd5e1 !important;
+    font-weight: 500 !important;
+    white-space: pre !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+    pointer-events: none !important;
+}
+
+#view>.controls .cbi-progressbar[data-label]::before {
+    content: attr(data-label) !important;
+}
+
+/* Row 2: 3 Columns for Filter, Download, Actions */
+#view>.controls:has(.cbi-progressbar)>div:nth-child(2) {
+    order: 2 !important;
+    flex: 1 1 200px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+}
+
+#view>.controls:has(.cbi-progressbar)>div:nth-child(3) {
+    order: 3 !important;
+    flex: 1.2 1 260px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+}
+
+#view>.controls:has(.cbi-progressbar)>div:nth-child(4) {
+    order: 4 !important;
+    flex: 1.6 1 320px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+}
+
+#view>.controls:has(.cbi-progressbar)>div>label:first-child {
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    color: #f1f5f9 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
 }
 
 #view>.controls .control-group {
     display: flex !important;
-    gap: 8px !important;
     align-items: center !important;
-    flex-wrap: wrap !important;
-    flex: 1 !important;
+    gap: 6px !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
 }
 
 #view>.controls .control-group input[type="text"] {
     flex: 1 1 auto !important;
-    min-width: 90px !important;
-    max-width: 150px !important;
-    padding: 6px 10px !important;
-    background: var(--proton-bg-primary) !important;
-    border: 1px solid var(--proton-border) !important;
-    border-radius: var(--proton-radius-sm) !important;
-    color: var(--proton-fg) !important;
-    font-size: 0.82rem !important;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    min-width: 100px !important;
+    max-width: 260px !important;
+    height: 32px !important;
+    padding: 4px 10px !important;
+    background: rgba(10, 14, 20, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    border-radius: 4px !important;
+    color: #f1f5f9 !important;
+    font-size: 13px !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.2s, box-shadow 0.2s !important;
 }
 
 #view>.controls .control-group input[type="text"]:focus {
     outline: none !important;
-    border-color: var(--proton-accent) !important;
-    background: var(--proton-bg-secondary) !important;
-    box-shadow: 0 0 0 3px var(--proton-accent-glow), 0 4px 12px rgba(74, 143, 231, 0.15) !important;
-    transform: translateY(-1px);
+    border-color: #38bdf8 !important;
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25) !important;
 }
 
 #view>.controls .control-group input[type="text"]::placeholder {
-    color: var(--proton-muted) !important;
+    color: #64748b !important;
 }
 
+/* Outlined Clean Buttons (like OpenWrt standard dark) */
 #view>.controls .btn,
-#view>.controls button {
-    padding: 8px 10px !important;
-    border-radius: var(--proton-radius-sm) !important;
-    font-size: 0.78rem !important;
+#view>.controls button,
+#view>.controls .cbi-button {
+    height: 32px !important;
+    padding: 0 12px !important;
+    border-radius: 4px !important;
+    font-size: 13px !important;
     font-weight: 500 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     cursor: pointer !important;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    background: rgba(15, 23, 42, 0.5) !important;
+    color: #e2e8f0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
     white-space: nowrap !important;
-    border: 1px solid var(--proton-border) !important;
-    background: var(--proton-bg-tertiary) !important;
-    color: var(--proton-fg) !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: background 0.15s, border-color 0.15s, color 0.15s !important;
 }
 
 #view>.controls .btn:hover,
-#view>.controls button:hover {
-    background: var(--proton-bg-hover) !important;
-    border-color: var(--proton-accent) !important;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+#view>.controls button:hover,
+#view>.controls .cbi-button:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    transform: none !important;
+    box-shadow: none !important;
 }
 
 #view>.controls .cbi-button-positive {
-    background: linear-gradient(135deg, var(--proton-success) 0%, #48bb78 100%) !important;
-    border-color: var(--proton-success) !important;
-    color: #fff !important;
-    box-shadow: 0 2px 8px rgba(56, 161, 105, 0.3);
-    position: relative;
-    overflow: hidden;
+    background: transparent !important;
+    border: 1px solid #10b981 !important;
+    color: #10b981 !important;
+    box-shadow: none !important;
 }
 
-#view>.controls .cbi-button-positive::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(120, 240, 165, 0.55);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-#view>.controls .cbi-button-positive:hover::before {
-    width: 300px;
-    height: 300px;
+#view>.controls .cbi-button-positive::before,
+#view>.controls .cbi-button-positive::after {
+    display: none !important;
 }
 
 #view>.controls .cbi-button-positive:hover {
-    background: linear-gradient(135deg, var(--proton-success) 0%, #48bb78 100%) !important;
-    border-color: var(--proton-success) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 20px rgba(56, 161, 105, 0.5) !important;
+    background: rgba(16, 185, 129, 0.15) !important;
+    border-color: #34d399 !important;
+    color: #34d399 !important;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.3) !important;
 }
 
 #view>.controls .cbi-button-action {
-    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%) !important;
-    border-color: rgba(239, 68, 68, 0.5) !important;
-    color: #fff !important;
-    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.4);
-    position: relative;
-    overflow: hidden;
+    background: transparent !important;
+    border: 1px solid #38bdf8 !important;
+    color: #38bdf8 !important;
+    box-shadow: none !important;
 }
 
-#view>.controls .cbi-button-action::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 100, 100, 0.55);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-#view>.controls .cbi-button-action:hover::before {
-    width: 300px;
-    height: 300px;
+#view>.controls .cbi-button-action::before,
+#view>.controls .cbi-button-action::after {
+    display: none !important;
 }
 
 #view>.controls .cbi-button-action:hover {
-    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
-    border-color: #ef4444 !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.6) !important;
+    background: rgba(56, 189, 248, 0.15) !important;
+    border-color: #7dd3fc !important;
+    color: #7dd3fc !important;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.3) !important;
+}
+
+/* Row 3: Display LuCI translation packages */
+#view>.controls:has(.cbi-progressbar)>div:nth-child(5) {
+    order: 5 !important;
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin-top: 6px !important;
 }
 
 #view>.controls:has(.cbi-progressbar)>div:nth-child(5)>label:first-child {
-    font-size: 0.68rem !important;
-    font-weight: 400 !important;
-    color: var(--proton-muted) !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: #cbd5e1 !important;
+    margin: 0 !important;
 }
 
-#view>.controls>div>div:has(input[type="radio"]) {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 10px !important;
+#view>.controls:has(.cbi-progressbar)>div:nth-child(5)>div {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 14px !important;
 }
 
-#view>.controls label:has(input[type="radio"]) {
+#view>.controls:has(.cbi-progressbar)>div:nth-child(5) label:has(input[type="radio"]) {
     display: inline-flex !important;
     align-items: center !important;
     gap: 5px !important;
-    padding: 0 !important;
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
+    font-size: 13px !important;
+    color: #e2e8f0 !important;
     cursor: pointer !important;
-    transition: color 0.15s ease !important;
-    color: var(--proton-fg-secondary) !important;
-    font-size: 0.78rem !important;
-    font-weight: 400 !important;
-}
-
-#view>.controls label:has(input[type="radio"]):hover {
-    color: var(--proton-fg) !important;
-    background: transparent !important;
-    border: none !important;
-}
-
-#view>.controls label:has(input[type="radio"]:checked) {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    color: var(--proton-fg) !important;
-    font-weight: 500 !important;
-}
-
-#view>.controls input[type="radio"] {
-    appearance: none !important;
-    -webkit-appearance: none !important;
-    display: inline-block !important;
-    width: 14px !important;
-    height: 14px !important;
     margin: 0 !important;
-    border-radius: 50% !important;
-    border: 1.5px solid var(--proton-border) !important;
-    background: var(--proton-bg-solid) !important;
+    padding: 0 !important;
+}
+
+#view>.controls:has(.cbi-progressbar)>div:nth-child(5) input[type="radio"] {
+    appearance: auto !important;
+    -webkit-appearance: auto !important;
+    accent-color: #38bdf8 !important;
     cursor: pointer !important;
-    transition: border-color 0.15s ease, background 0.15s ease !important;
-}
-
-#view>.controls input[type="radio"]:checked {
-    border-color: var(--proton-accent) !important;
-    background: var(--proton-accent) !important;
-    box-shadow: inset 0 0 0 2.5px var(--proton-bg-solid) !important;
-}
-
-#view>.controls>div:has([data-command]) .control-group,
-#view>.controls>div:nth-child(4) .control-group {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 8px !important;
-    flex: 1 !important;
+    margin: 0 !important;
+    width: 15px !important;
+    height: 15px !important;
 }
 
 #packages.table {
@@ -7586,28 +7523,17 @@ body.modal-overlay-active #modal_overlay {
     }
 
     #view>.controls .cbi-progressbar {
-        min-width: auto !important;
         width: 100% !important;
-        height: 32px !important;
-        flex: none !important;
+        height: 8px !important;
+        min-height: 8px !important;
+        max-height: 8px !important;
+        margin: 1.5em 0 8px 0 !important;
+        overflow: visible !important;
     }
 
-    #view>.controls .cbi-progressbar::after {
-        font-size: 0.8rem !important;
-        right: 10px !important;
-    }
-
+    #view>.controls .cbi-progressbar::after,
     #view>.controls .cbi-progressbar[data-label]::after {
-        left: 10px !important;
-        right: 10px !important;
-        transform: none !important;
-        top: 0 !important;
-        bottom: 0 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-overflow: ellipsis !important;
-        overflow: hidden !important;
+        display: none !important;
     }
 
     #view>.controls label:has(input[type="radio"]) {
@@ -11538,8 +11464,7 @@ body:not(.login-page) {
     border-radius: 6px !important;
 }
 
-.cbi-progressbar>div,
-#view>.controls .cbi-progressbar>div {
+.cbi-progressbar:not(#view > .controls .cbi-progressbar)>div {
     background: linear-gradient(90deg, #991b1b 0%, #dc2626 60%, #ef4444 100%) !important;
     box-shadow: 0 0 12px rgba(220, 38, 38, 0.5) !important;
     border-radius: 6px 0 0 6px !important;
@@ -11685,4 +11610,96 @@ table tr:hover td {
 /* Status overview active rows */
 #view table tr td a {
     color: #fca5a5 !important;
+}
+
+/* Package Manager Controls Overrides (Highest Specificity) */
+body #view > .controls:has(.cbi-progressbar) .cbi-progressbar {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    height: 8px !important;
+    min-height: 8px !important;
+    max-height: 8px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-radius: 4px !important;
+    position: relative !important;
+    margin: 1.5em 0 8px 0 !important;
+    overflow: visible !important;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+body #view > .controls:has(.cbi-progressbar) .cbi-progressbar > div {
+    height: 100% !important;
+    background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%) !important;
+    border-radius: 3px !important;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.4) !important;
+    transition: width 0.4s ease !important;
+    position: relative !important;
+}
+
+body #view > .controls:has(.cbi-progressbar) .cbi-progressbar > div::after,
+body #view > .controls:has(.cbi-progressbar) .cbi-progressbar > div::before,
+body #view > .controls:has(.cbi-progressbar) .cbi-progressbar::after {
+    display: none !important;
+    content: none !important;
+}
+
+body #view > .controls:has(.cbi-progressbar) .cbi-progressbar::before {
+    content: attr(title) !important;
+    position: absolute !important;
+    top: -1.45em !important;
+    left: 0 !important;
+    font-size: 13.5px !important;
+    color: #cbd5e1 !important;
+    font-weight: 500 !important;
+    white-space: pre !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+body #view > .controls:has(.cbi-progressbar) .cbi-progressbar[data-label]::before {
+    content: attr(data-label) !important;
+}
+
+body #view > .controls:has(.cbi-progressbar) .btn,
+body #view > .controls:has(.cbi-progressbar) button,
+body #view > .controls:has(.cbi-progressbar) .cbi-button {
+    height: 32px !important;
+    padding: 0 12px !important;
+    border-radius: 4px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(15, 23, 42, 0.5) !important;
+    color: #e2e8f0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+body #view > .controls:has(.cbi-progressbar) .cbi-button-positive {
+    background: transparent !important;
+    border: 1px solid #10b981 !important;
+    color: #10b981 !important;
+    box-shadow: none !important;
+}
+
+body #view > .controls:has(.cbi-progressbar) .cbi-button-positive:hover {
+    background: rgba(16, 185, 129, 0.15) !important;
+    border-color: #34d399 !important;
+    color: #34d399 !important;
+}
+
+body #view > .controls:has(.cbi-progressbar) .cbi-button-action {
+    background: transparent !important;
+    border: 1px solid #38bdf8 !important;
+    color: #38bdf8 !important;
+    box-shadow: none !important;
+}
+
+body #view > .controls:has(.cbi-progressbar) .cbi-button-action:hover {
+    background: rgba(56, 189, 248, 0.15) !important;
+    border-color: #7dd3fc !important;
+    color: #7dd3fc !important;
 }
