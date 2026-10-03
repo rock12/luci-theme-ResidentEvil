@@ -6856,9 +6856,9 @@ body.modal-overlay-active #modal_overlay {
     line-height: 0 !important;
     font-size: 0 !important;
     overflow: hidden !important;
-    background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%) !important;
+    background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%) !important;
     border-radius: 3px !important;
-    box-shadow: 0 0 8px rgba(56, 189, 248, 0.4) !important;
+    box-shadow: 0 0 8px rgba(220, 38, 38, 0.45) !important;
     transition: width 0.4s ease !important;
     position: absolute !important;
     top: 0 !important;
@@ -6957,8 +6957,8 @@ body.modal-overlay-active #modal_overlay {
 
 #view>.controls .control-group input[type="text"]:focus {
     outline: none !important;
-    border-color: #38bdf8 !important;
-    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25) !important;
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.25) !important;
 }
 
 #view>.controls .control-group input[type="text"]::placeholder {
@@ -7017,8 +7017,8 @@ body.modal-overlay-active #modal_overlay {
 
 #view>.controls .cbi-button-action {
     background: transparent !important;
-    border: 1px solid #38bdf8 !important;
-    color: #38bdf8 !important;
+    border: 1px solid #ef4444 !important;
+    color: #ef4444 !important;
     box-shadow: none !important;
 }
 
@@ -7028,10 +7028,10 @@ body.modal-overlay-active #modal_overlay {
 }
 
 #view>.controls .cbi-button-action:hover {
-    background: rgba(56, 189, 248, 0.15) !important;
-    border-color: #7dd3fc !important;
-    color: #7dd3fc !important;
-    box-shadow: 0 0 8px rgba(56, 189, 248, 0.3) !important;
+    background: rgba(239, 68, 68, 0.15) !important;
+    border-color: #f87171 !important;
+    color: #f87171 !important;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.3) !important;
 }
 
 /* Row 3: Display LuCI translation packages */
@@ -7073,7 +7073,7 @@ body.modal-overlay-active #modal_overlay {
 #view>.controls:has(.cbi-progressbar)>div:nth-child(5) input[type="radio"] {
     appearance: auto !important;
     -webkit-appearance: auto !important;
-    accent-color: #38bdf8 !important;
+    accent-color: #ef4444 !important;
     cursor: pointer !important;
     margin: 0 !important;
     width: 15px !important;
@@ -11664,9 +11664,9 @@ body #view > .controls:has(.cbi-progressbar) .cbi-progressbar > div {
     line-height: 0 !important;
     font-size: 0 !important;
     overflow: hidden !important;
-    background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%) !important;
+    background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%) !important;
     border-radius: 3px !important;
-    box-shadow: 0 0 8px rgba(56, 189, 248, 0.4) !important;
+    box-shadow: 0 0 8px rgba(220, 38, 38, 0.45) !important;
     transition: width 0.4s ease !important;
     position: absolute !important;
     top: 0 !important;
@@ -11732,13 +11732,14 @@ body #view > .controls:has(.cbi-progressbar) .cbi-button-positive:hover {
 
 body #view > .controls:has(.cbi-progressbar) .cbi-button-action {
     background: transparent !important;
-    border: 1px solid #38bdf8 !important;
-    color: #38bdf8 !important;
+    border: 1px solid #ef4444 !important;
+    color: #ef4444 !important;
     box-shadow: none !important;
 }
 
 body #view > .controls:has(.cbi-progressbar) .cbi-button-action:hover {
-    background: rgba(56, 189, 248, 0.15) !important;
-    border-color: #7dd3fc !important;
-    color: #7dd3fc !important;
+    background: rgba(239, 68, 68, 0.15) !important;
+    border-color: #f87171 !important;
+    color: #f87171 !important;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.3) !important;
 }
