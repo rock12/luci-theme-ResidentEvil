@@ -266,7 +266,7 @@ body {
 	margin-top: 0;
 }
 </style>
-{% let __pv = "1.6.6"; %}
+{% let __pv = "1.6.7"; %}
 <link rel="stylesheet" media="screen" fetchpriority="high" href="{{ media }}/css/cascade.css?v={{ __pv }}" />
 <link rel="stylesheet" media="screen" href="{{ media }}/css/cascade-widgets.css?v={{ __pv }}" />
 {#

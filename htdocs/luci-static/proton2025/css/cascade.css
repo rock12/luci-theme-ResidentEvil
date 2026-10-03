@@ -7535,12 +7535,68 @@ body.modal-overlay-active #modal_overlay {
         justify-content: center !important;
     }
 
+    #view>.controls:has(.cbi-progressbar) {
+        padding: 14px 12px !important;
+        margin: 12px 0 !important;
+        gap: 14px !important;
+    }
+
+    #view>.controls:has(.cbi-progressbar) > div {
+        padding: 0 !important;
+        gap: 8px !important;
+        width: 100% !important;
+        flex: 1 1 100% !important;
+    }
+
+    #view>.controls:has(.cbi-progressbar) .control-group {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    #view>.controls:has(.cbi-progressbar) .control-group input[type="text"] {
+        flex: 1 1 140px !important;
+        width: auto !important;
+        min-height: 38px !important;
+        height: 38px !important;
+        font-size: 14px !important;
+    }
+
+    #view>.controls:has(.cbi-progressbar) .btn,
+    #view>.controls:has(.cbi-progressbar) button,
+    #view>.controls:has(.cbi-progressbar) .cbi-button {
+        min-height: 38px !important;
+        height: 38px !important;
+        padding: 0 14px !important;
+        font-size: 13.5px !important;
+        width: auto !important;
+    }
+
+    #view>.controls:has(.cbi-progressbar) > div:nth-child(4) .control-group button {
+        flex: 1 1 calc(50% - 6px) !important;
+        width: auto !important;
+    }
+
+    #view>.controls:has(.cbi-progressbar) > div:nth-child(5) {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+    }
+
+    #view>.controls:has(.cbi-progressbar) > div:nth-child(5) > div {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 14px !important;
+    }
+
     #view>.controls .cbi-progressbar {
         width: 100% !important;
         height: 8px !important;
         min-height: 8px !important;
         max-height: 8px !important;
-        margin: 1.5em 0 8px 0 !important;
+        margin: 28px 0 10px 0 !important;
         overflow: visible !important;
     }
 
